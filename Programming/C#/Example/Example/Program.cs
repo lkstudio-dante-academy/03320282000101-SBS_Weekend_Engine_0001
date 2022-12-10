@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * C# 프로젝트 주요 주제
+ * C# 학습 주제
  * - Example_01 (C# 기초)
  * - Example_02 (자료형, 변수/상수)
  */
