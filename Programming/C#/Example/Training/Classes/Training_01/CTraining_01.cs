@@ -1,5 +1,5 @@
-#define T01_01
-#define T01_02
+//#define T01_01
+//#define T01_02
 #define T01_03
 
 using System;
@@ -20,7 +20,7 @@ using System.Threading.Tasks;
  *
  * 연습 문제 1 - 2
  * - 정수 2 개를 입력 받아 해당 데이터를 교환하기
- * - 단, 단순히 출력 순서만 변경하는 것이 아니라 실제 변수에 있는 데이터가 서로 교환되어야한다.
+ * - 단, 단순히 출력 순서만 변경하는 것이 아니라 실제 변수에 있는 데이터가 서로 교환되어야한다
  * 
  * Ex)
  * 정수 (2 개) 입력 : 10 20
@@ -33,7 +33,7 @@ using System.Threading.Tasks;
  * 
  * 
  * 연습 문제 1 - 3
- * - 정수 2 개를 입력 받아 &&, || 연산자 결과 출력하기 (단, 해당 연산자를 직접적으로 사용하는 불가)
+ * - 정수 2 개를 입력 받아 &&, || 연산자 결과 출력하기 (단, 해당 연산자를 직접적으로 사용 불가)
  * 
  * Ex)
  * 정수 (2 개) 입력 : 0 10
@@ -46,7 +46,8 @@ using System.Threading.Tasks;
 // 경험자
 /* 
  * 연습 문제 1 - 1
- * - 정수를 입력 받아 홀수/짝수를 구분해서 출력하기 (단, 0 을 입력하지 않으면 계속 정수를 입력 받는다)
+ * - 정수를 입력 받아 홀수/짝수를 구분해서 출력하기 (단, 0 을 입력하지 않으면 계속 정수를 입력
+ * 받는다)
  * - 입력 받은 정수 중에 홀수는 왼쪽부터, 짝수는 오른쪽부터 차례대로 위치시킨다
  * 
  * Ex)
@@ -102,11 +103,36 @@ namespace Training.Classes.Training_01 {
 		/** 초기화 */
 		public static void Start(string[] args) {
 #if T01_01
+			Console.Write("정수 입력 : ");
+			int nVal = int.Parse(Console.ReadLine());
 
+			Console.WriteLine("결과: {0}", (nVal & 0x01) != 0 ? "홀수" : "짝수"); 
 #elif T01_02
+			Console.Write("정수 (2 개) 입력 : ");
+			var oTokens = Console.ReadLine().Split();
 
+			int nVal01 = int.Parse(oTokens[0]);
+			int nVal02 = int.Parse(oTokens[1]);
+
+			Console.WriteLine("=====> 교환 전 <=====");
+			Console.WriteLine("{0}, {1}", nVal01, nVal02);
+
+			int nTemp = nVal01;
+			nVal01 = nVal02;
+			nVal02 = nTemp;
+
+			Console.WriteLine("\n=====> 교환 후 <=====");
+			Console.WriteLine("{0}, {1}", nVal01, nVal02);
 #elif T01_03
+			Console.Write("정수 (2 개) 입력 : ");
+			var oTokens = Console.ReadLine().Split();
 
+			int nVal01 = int.Parse(oTokens[0]);
+			int nVal02 = int.Parse(oTokens[1]);
+
+			Console.WriteLine("=====> 결과 <=====");
+			Console.WriteLine("{0} && {1} = {2}", nVal01, nVal02, (nVal01 * nVal02) != 0);
+			Console.WriteLine("{0} || {1} = {2}", nVal01, nVal02, (nVal01 + nVal02) != 0);
 #endif // #if T01_01
 		}
 

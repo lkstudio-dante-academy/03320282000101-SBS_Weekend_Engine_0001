@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Classes\Example_01\CExample_01.cs" />
     <Compile Include="Classes\Example_02\CExample_02.cs" />
+    <Compile Include="Classes\Example_03\CExample_03.cs" />
+    <Compile Include="Classes\Example_04\CExample_04.cs" />
+    <Compile Include="Classes\Example_05\CExample_05.cs" />
+    <Compile Include="Classes\Example_06\CExample_06.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

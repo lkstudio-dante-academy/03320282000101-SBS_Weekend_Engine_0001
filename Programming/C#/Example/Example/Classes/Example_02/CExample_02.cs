@@ -1,4 +1,4 @@
-#define E02_VAR
+//#define E02_VAR
 #define E02_CONST
 
 using System;
@@ -93,6 +93,20 @@ using System.Threading.Tasks;
  * Ex)
  * int nVal = 0;
  * float fVal = 0.0f;
+ * 
+ * 상수란?
+ * - 일반적인 변수와 달리 한번 데이터가 할당되고 나면 더이상 해당 데이터를 변경하는 것은 불가능
+ * 하고 해당 데이터를 읽어들일 수만 있는 공간을 의미한다.
+ * 
+ *  C# 상수 선언 방법
+ *  - const 자료형 + 상수 이름
+ *  
+ *  C# 이름 작성 시 주의 사항
+ *  - C# 에서 이름 작성 시 활용 할 수 있는 문자는 알파벳 (대/소문자), _ (언더 스코어), 숫자 (0 ~ 9)\
+ *  가 존재한다. 알파벳 이외에도 한글 등을 사용하는 것이 가능하지만 프로그래밍에서 특정 대상의
+ *  이름을 작성 할 때는 알파벳, _, 숫자 만을 사용하는 것이 관례이다.
+ *  
+ *  또한, 첫 문자는 숫자로 시작 할 수 없다는 제한이 존재한다.
  */
 namespace Example.Classes.Example_02 {
 	class CExample_02 {
@@ -141,8 +155,35 @@ namespace Example.Classes.Example_02 {
 			Console.WriteLine("float : {0}, {1}", float.MinValue, fFloat);
 			Console.WriteLine("double : {0}, {1}", double.MinValue, dblDouble);
 			Console.WriteLine("decimal : {0}, {1}", decimal.MinValue, dmDecimal);
-#elif E02_CONST
 
+			bool bIsBool = true;
+			char chLetter = 'A';
+			string oStr = "Hello, World!";
+			object oObj = 10;
+
+			Console.WriteLine("\n=====> 기타 <=====");
+			Console.WriteLine("bool : {0}", bIsBool);
+			Console.WriteLine("char : {0}", chLetter);
+			Console.WriteLine("string : {0}", oStr);
+			Console.WriteLine("object : {0}", (int)oObj);
+#elif E02_CONST
+			const int nConstVal = 10;
+			const float fConstVal = 3.14f;
+			
+			/*
+			 * C# 상수 유형
+			 * - 심볼릭 상수
+			 * - 리터널 상수
+			 * 
+			 * 심볼릭 상수 vs 리터널 상수
+			 * - 심볼릭 상수는 이름이 존재하는 반면, 리터널 상수는 이름이 따로 존재하지 않는다.
+			 * (즉, 심볼릭 상수는 필요에 따라 해당 상수를 재사용 할 수 있지만 리터널 상수는
+			 * 재사용하는 것이 불가능하다.)
+			 */
+			//nConstVal = 20;
+
+			Console.WriteLine("=====> 상수 <=====");
+			Console.WriteLine("{0}, {1}", nConstVal, fConstVal);
 #endif // #if E02_VAR
 		}
 	}
