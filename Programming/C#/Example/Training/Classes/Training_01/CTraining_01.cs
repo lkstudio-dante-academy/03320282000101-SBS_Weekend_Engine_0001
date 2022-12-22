@@ -1,9 +1,9 @@
-//#define T01_01
-//#define T01_02
+#define T01_01
+#define T01_02
 #define T01_03
-
-//#define T01_STARTER
-#define T01_EXPERTER
+#define T01_04
+#define T01_05
+#define T01_06
 
 using System;
 using System.Collections.Generic;
@@ -48,7 +48,7 @@ using System.Threading.Tasks;
 
 // 경험자
 /* 
- * 연습 문제 1 - 1
+ * 연습 문제 1 - 4
  * - 정수를 입력 받아 홀수/짝수를 구분해서 출력하기 (단, 0 을 입력하지 않으면 계속 정수를 입력
  * 받는다)
  * - 입력 받은 정수 중에 홀수는 왼쪽부터, 짝수는 오른쪽부터 차례대로 위치시킨다
@@ -65,7 +65,7 @@ using System.Threading.Tasks;
  * 1, 5, 7, 4, 2
  * 
  * 
- * 연습 문제 1 - 2
+ * 연습 문제 1 - 5
  * - 야구 게임 제작하기
  * - 프로그램이 시작하면 0 ~ 9 사이에 존재하는 숫자 4 개를 생성한다 (단, 각 숫자는 중복되지 않는다.)
  * - 4 개의 숫자를 입력 받아 Ball 또는 Strike 여부를 검사한다
@@ -88,7 +88,7 @@ using System.Threading.Tasks;
  * 게임을 종료합니다.
  * 
  * 
- * 연습 문제 1 - 3
+ * 연습 문제 1 - 6
  * - 행, 열 개수를 입력 받은 후 달팽이 형태로 2 차원 배열 초기화히기
  * 
  * Ex)
@@ -105,7 +105,6 @@ namespace Training.Classes.Training_01 {
 	internal class CTraining_01 {
 		/** 초기화 */
 		public static void Start(string[] args) {
-#if T01_STARTER
 #if T01_01
 			Console.Write("정수 입력 : ");
 			int nVal = int.Parse(Console.ReadLine());
@@ -137,9 +136,7 @@ namespace Training.Classes.Training_01 {
 			Console.WriteLine("=====> 결과 <=====");
 			Console.WriteLine("{0} && {1} = {2}", nVal01, nVal02, (nVal01 * nVal02) != 0);
 			Console.WriteLine("{0} || {1} = {2}", nVal01, nVal02, (nVal01 + nVal02) != 0);
-#endif // #if T01_01
-#elif T01_EXPERTER
-#if T01_01
+#elif T01_04
 			int nVal = 0;
 			int nNumOddVals = 0;
 			int nNumEvenVals = 0;
@@ -185,7 +182,7 @@ namespace Training.Classes.Training_01 {
 			for(int i = nNumEvenVals - 1; i >= 0; --i) {
 				Console.Write("{0}, ", oVals[oVals.Length - (i + 1)]);
 			}
-#elif T01_02
+#elif T01_05
 			int nNumVals = 0;
 
 			var oRandom = new Random((int)DateTime.Now.Ticks);
@@ -237,7 +234,7 @@ namespace Training.Classes.Training_01 {
 
 				Console.WriteLine("결과 : {0} Strike, {1} Ball", nStrikeCount, nBallCount);
 			} while(nStrikeCount < oAnswerVals.Length);
-#elif T01_03
+#elif T01_06
 			Console.Write("행, 열 개수 입력 : ");
 			var oTokens = Console.ReadLine().Split();
 
@@ -279,7 +276,20 @@ namespace Training.Classes.Training_01 {
 				Console.WriteLine();
 			}
 #endif // #if T01_01
-#endif // T01_STARTER
 		}
+
+#if T01_01
+
+#elif T01_02
+
+#elif T01_03
+
+#elif T01_04
+
+#elif T01_05
+
+#elif T01_06
+
+#endif // #if T01_01
 	}
 }

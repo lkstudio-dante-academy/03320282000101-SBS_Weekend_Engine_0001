@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// C# 사용
 /*
  * 과제 1 - 1
  * - 점수를 입력 받아 해당 점수에 해당하는 학점 출력하기 (단, 1 자리 수에 따라 -, 0, + 출력)
