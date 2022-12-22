@@ -2,6 +2,9 @@
 //#define T01_02
 #define T01_03
 
+#define T01_STARTER
+#define T01_EXPERTER
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,6 +105,7 @@ namespace Training.Classes.Training_01 {
 	internal class CTraining_01 {
 		/** 초기화 */
 		public static void Start(string[] args) {
+#if T01_STARTER
 #if T01_01
 			Console.Write("정수 입력 : ");
 			int nVal = int.Parse(Console.ReadLine());
@@ -134,14 +138,15 @@ namespace Training.Classes.Training_01 {
 			Console.WriteLine("{0} && {1} = {2}", nVal01, nVal02, (nVal01 * nVal02) != 0);
 			Console.WriteLine("{0} || {1} = {2}", nVal01, nVal02, (nVal01 + nVal02) != 0);
 #endif // #if T01_01
+#elif T01_EXPERTER
+#if T02_01
+
+#elif T02_02
+
+#elif T02_03
+
+#endif // #if T02_01
+#endif // T01_STARTER
 		}
-
-#if T01_01
-
-#elif T01_02
-
-#elif T01_03
-
-#endif // #if T01_01
 	}
 }

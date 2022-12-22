@@ -12,10 +12,11 @@ using System.Threading.Tasks;
  * - Example_04 (연산자)
  * - Example_05 (조건문)
  * - Example_06 (반복문)
- * - Example_07 (메서드)
- * - Example_08 (컬렉션)
+ * - Example_07 (컬렉션)
+ * - Example_08 (메서드)
  * - Example_09 (클래스)
  * - Example_10 (제네릭)
+ * - Example_11 (델리게이트)
  */
 namespace Example {
 	class Program {
@@ -53,6 +54,11 @@ namespace Example {
 			//Classes.Example_04.CExample_04.Start(args);
 			//Classes.Example_05.CExample_05.Start(args);
 			Classes.Example_06.CExample_06.Start(args);
+			//Classes.Example_07.CExample_07.Start(args);
+			//Classes.Example_08.CExample_08.Start(args);
+			//Classes.Example_09.CExample_09.Start(args);
+			//Classes.Example_10.CExample_10.Start(args);
+			//Classes.Example_11.CExample_11.Start(args);
 
 			Console.ReadKey();
 		}
