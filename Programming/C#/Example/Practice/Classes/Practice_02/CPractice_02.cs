@@ -237,31 +237,209 @@ namespace Practice.Classes.Practice_02 {
 		/** 초기화 */
 		public static void Start(string[] args) {
 #if P02_01
+			Console.Write("단 입력 : ");
+			int nVal = int.Parse(Console.ReadLine());
 
+			Console.WriteLine("\n=====> 결과 <=====");
+
+			for(int i = 1; i < 10; ++i) {
+				Console.WriteLine("{0} * {1} = {2}", nVal, i, nVal * i);
+			}
 #elif P02_02
+			var oVals = new int[10];
+			var oRandom = new Random((int)DateTime.Now.Ticks);
 
+			for(int i = 0; i < oVals.Length; ++i) {
+				oVals[i] = oRandom.Next(0, 100);
+			}
+
+			Console.WriteLine("=====> 배열 요소 <=====");
+
+			for(int i = 0; i < oVals.Length; ++i) {
+				Console.Write("{0}, ", oVals[i]);
+			}
+
+			int nMinVal = int.MaxValue;
+			int nMaxVal = int.MinValue;
+
+			for(int i = 0; i < oVals.Length; ++i) {
+				nMinVal = (nMinVal < oVals[i]) ? nMinVal : oVals[i];
+				nMaxVal = (nMaxVal > oVals[i]) ? nMaxVal : oVals[i];
+			}
+
+			Console.WriteLine("\n\n최소 : {0}", nMinVal);
+			Console.WriteLine("최대 : {0}", nMaxVal);
 #elif P02_03
+			Console.Write("문자열 길이 입력 : ");
+			int nLength = int.Parse(Console.ReadLine());
 
+			var oRandom = new Random();
+			var oLetters = new char[nLength];
+
+			for(int i = 0; i < oLetters.Length; ++i) {
+				char chLetter = (oRandom.Next(0, 2) <= 0) ? 'A' : 'a';
+				oLetters[i] = (char)(chLetter + oRandom.Next(0, ('Z' - 'A') + 1));
+			}
+
+			Console.WriteLine("결과 : {0}", string.Concat(oLetters));
 #elif P02_04
+			Console.Write("개수 입력 : ");
+			int nNumVals = int.Parse(Console.ReadLine());
 
+			Console.WriteLine("\n=====> 결과 <=====");
+
+			int nVal = 0;
+			int nPrevVal = 0;
+			int nNextVal = 1;
+
+			for(int i = 0; i < nNumVals; ++i) {
+				Console.Write("{0}, ", nVal);
+
+				nPrevVal = nVal;
+				nVal = nNextVal;
+				nNextVal = nVal + nPrevVal;
+			}
+
+			Console.WriteLine();
 #elif P02_05
+			Console.Write("문자열 입력 : ");
+			string oStr = Console.ReadLine();
 
+			var oLetters = oStr.ToArray();
+
+			for(int i = 0; i < oLetters.Length / 2; ++i) {
+				char chTemp = oLetters[i];
+				oLetters[i] = oLetters[oLetters.Length - (i + 1)];
+				oLetters[oLetters.Length - (i + 1)] = chTemp;
+			}
+
+			Console.WriteLine("결과 : {0}", string.Concat(oLetters));
 #elif P02_06
+			Console.Write("문자열 입력 : ");
+			string oStr = Console.ReadLine();
 
+			int nLeft = 0;
+			int nRight = oStr.Length - 1;
+
+			while(nLeft < nRight && oStr[nLeft] == oStr[nRight]) {
+				nLeft += 1;
+				nRight -= 1;
+			}
+
+			Console.WriteLine("결과 : {0}", (nLeft >= nRight) ? "회문입니다" : "회문이 아닙니다");
 #elif P02_07
+			Console.Write("너비, 높이 입력 : ");
+			var oTokens = Console.ReadLine().Split();
 
+			int nWidth = int.Parse(oTokens[0]);
+			int nHeight = int.Parse(oTokens[1]);
+
+			var oVals = new int[nHeight, nWidth];
+			var oAnswerVals = new int[nHeight, nWidth];
+
+			SetupVals(oVals);
+			Array.Copy(oVals, oAnswerVals, oVals.Length);
+
+			ShuffleVals(oVals);
+
+			while(!IsAnswer(oVals, oAnswerVals)) {
+				PrintVals(oVals);
+
+				Console.Write("\n위치 입력 : ");
+				oTokens = Console.ReadLine().Split();
+
+				int nRow = int.Parse(oTokens[0]);
+				int nCol = int.Parse(oTokens[1]);
+
+				var oXOffsets = new int[4] {
+					1, -1, 0, 0
+				};
+
+				var oYOffsets = new int[4] {
+					0, 0, 1, -1
+				};
+
+				for(int i = 0; i < oXOffsets.Length; ++i) {
+					int nNearRow = nRow + oYOffsets[i];
+					int nNearCol = nCol + oXOffsets[i];
+
+					// 배열을 벗어났을 경우
+					if(nNearCol < 0 || nNearCol >= oVals.GetLength(1) || nNearRow < 0 || nNearRow >= oVals.GetLength(0)) {
+						continue;
+					}
+
+					// 공백이 존재 할 경우
+					if(oVals[nNearRow, nNearCol] == 0) {
+						int nTemp = oVals[nRow, nCol];
+						oVals[nRow, nCol] = oVals[nNearRow, nNearCol];
+						oVals[nNearRow, nNearCol] = nTemp;
+					}
+				}
+			}
 #elif P02_08
+			Console.Write("개수 입력 : ");
+			int nNumVals = int.Parse(Console.ReadLine());
 
+			Console.WriteLine("\n=====> 결과 <=====");
+
+			for(int i = 0; i < nNumVals; ++i) {
+				Console.Write("{0}, ", GetFibonacci(i));
+			}
+
+			Console.WriteLine();
 #elif P02_09
+			Console.Write("크기 입력 : ");
+			int nSize = int.Parse(Console.ReadLine());
 
+			var oVals = new int[nSize, nSize];
+			SetupVals(oVals);
+
+			Console.WriteLine("\n=====> 배열 요소 <=====");
+			PrintVals(oVals);
+
+			Console.Write("\n회전 방향 입력 (0 : 왼쪽, 1 : 오른쪽) : ");
+			int nDirection = int.Parse(Console.ReadLine());
+
+			RotateVals(oVals, nDirection);
+
+			Console.WriteLine("\n=====> 배열 요소 - 회전 후 <=====");
+			PrintVals(oVals);
 #elif P02_10
+			var oMap = new char[,] {
+				{ '#', '#', '#', '#', 'S', '#', '#', '#', '#' },
+				{ '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+				{ '#', '#', '#', ' ', ' ', '#', '#', '#', '#' },
+				{ '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', '#' },
+				{ '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+				{ '#', '#', ' ', '#', ' ', '#', ' ', ' ', '#' },
+				{ '#', '#', 'E', '#', '#', '#', '#', '#', '#' }
+			};
 
+			Console.WriteLine("=====> 탐색 전 <=====");
+			PrintMap(oMap);
+
+			FindMap(oMap, 4, 0);
+
+			Console.WriteLine("\n=====> 탐색 후 <=====");
+			PrintMap(oMap);
 #elif P02_11
+			Console.Write("숫자 입력 : ");
+			string oStr = Console.ReadLine();
 
+			Console.WriteLine("\n=====> 결과 <=====");
+			PrintDigits(oStr);
 #elif P02_12
+			Console.Write("개수 입력 : ");
+			int nNumVals = int.Parse(Console.ReadLine());
 
+			Console.WriteLine("\n=====> 결과 <=====");
+			PrintHanoiTower(nNumVals);
 #elif P02_13
+			Console.Write("수식 입력 : ");
+			string oInfix = Console.ReadLine();
 
+			string oPostfix = ConvertInToPostfix(oInfix);
+			Console.WriteLine("결과 : {0}", GetCalcResult(oPostfix));
 #endif // #elif P02_01
 		}
 
@@ -278,19 +456,300 @@ namespace Practice.Classes.Practice_02 {
 #elif P02_06
 
 #elif P02_07
+		/** 값을 설정한다 */
+		public static void SetupVals(int[,] a_oVals) {
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					a_oVals[i, j] = (i * a_oVals.GetLength(1)) + j;
+				}
+			}
+		}
 
+		/** 정답 여부를 검사한다 */
+		public static bool IsAnswer(int[,] a_oVals, int[,] a_oAnswerVals) {
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					// 값이 다를 경우
+					if(a_oVals[i, j] != a_oAnswerVals[i, j]) {
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		/** 값을 재배치한다 */
+		public static void ShuffleVals(int[,] a_oVals) {
+			var oRandom = new Random((int)DateTime.Now.Ticks);
+
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					int nRow = oRandom.Next(0, a_oVals.GetLength(0));
+					int nCol = oRandom.Next(0, a_oVals.GetLength(1));
+
+					int nTemp = a_oVals[i, j];
+					a_oVals[i, j] = a_oVals[nRow, nCol];
+					a_oVals[nRow, nCol] = nTemp;
+				}
+			}
+		}
+
+		/** 값을 출력한다 */
+		public static void PrintVals(int[,] a_oVals) {
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					Console.Write("{0,4}", (a_oVals[i, j] <= 0) ? " " : $"{a_oVals[i, j]}");
+				}
+
+				Console.WriteLine();
+			}
+		}
 #elif P02_08
+		/** 피보나치 값을 반환한다 */
+		public static int GetFibonacci(int a_nVal) {
+			if(a_nVal <= 1) {
+				return (a_nVal <= 0) ? 0 : 1;
+			}
 
+			return GetFibonacci(a_nVal - 1) + GetFibonacci(a_nVal - 2);
+		}
 #elif P02_09
+		/** 값을 설정한다 */
+		public static void SetupVals(int[,] a_oVals) {
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					a_oVals[i, j] = (i * a_oVals.GetLength(1)) + j;
+				}
+			}
+		}
 
+		/** 값을 회전한다 */
+		public static void RotateVals(int[,] a_oVals, int a_nDirection) {
+			for(int i = 0; i < a_oVals.GetLength(0) / 2; ++i) {
+				for(int j = i; j < a_oVals.GetLength(0) - (i + 1); ++j) {
+					int nLBRow = a_oVals.GetLength(0) - (j + 1);
+					int nLBCol = i;
+
+					int nLTRow = i;
+					int nLTCol = j;
+
+					int nRTRow = j;
+					int nRTCol = a_oVals.GetLength(1) - (i + 1);
+
+					int nRBRow = a_oVals.GetLength(0) - (i + 1);
+					int nRBCol = a_oVals.GetLength(1) - (j + 1);
+
+					// 왼쪽 방향 일 경우
+					if(a_nDirection <= 0) {
+						int nTemp = a_oVals[nLBRow, nLBCol];
+						a_oVals[nLBRow, nLBCol] = a_oVals[nLTRow, nLTCol];
+						a_oVals[nLTRow, nLTCol] = a_oVals[nRTRow, nRTCol];
+						a_oVals[nRTRow, nRTCol] = a_oVals[nRBRow, nRBCol];
+						a_oVals[nRBRow, nRBCol] = nTemp;
+					} else {
+						int nTemp = a_oVals[nLBRow, nLBCol];
+						a_oVals[nLBRow, nLBCol] = a_oVals[nRBRow, nRBCol];
+						a_oVals[nRBRow, nRBCol] = a_oVals[nRTRow, nRTCol];
+						a_oVals[nRTRow, nRTCol] = a_oVals[nLTRow, nLTCol];
+						a_oVals[nLTRow, nLTCol] = nTemp;
+					}
+				}
+			}
+		}
+
+		/** 값을 출력한다 */
+		public static void PrintVals(int[,] a_oVals) {
+			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
+				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
+					Console.Write("{0,4}", a_oVals[i, j]);
+				}
+
+				Console.WriteLine();
+			}
+		}
 #elif P02_10
+		/** 맵을 출력한다 */
+		public static void PrintMap(char[,] a_oMap) {
+			for(int i = 0; i < a_oMap.GetLength(0); ++i) {
+				for(int j = 0; j < a_oMap.GetLength(1); ++j) {
+					Console.Write("{0}", a_oMap[i, j]);
+				}
 
+				Console.WriteLine();
+			}
+		}
+
+		/** 경로를 탐색한다 */
+		public static bool FindMap(char[,] a_oMap, int a_nPosX, int a_nPosY) {
+			// 배열을 벗어났을 경우
+			if(a_nPosX < 0 || a_nPosX >= a_oMap.GetLength(1) || a_nPosY < 0 || a_nPosY >= a_oMap.GetLength(0)) {
+				return false;
+			}
+
+			// 이동이 불가능 할 경우
+			if(a_oMap[a_nPosY, a_nPosX] == '*' || a_oMap[a_nPosY, a_nPosX] == '#') {
+				return false;
+			}
+
+			// 목적지에 도착했을 경우
+			if(a_oMap[a_nPosY, a_nPosX] == 'E') {
+				return true;
+			}
+
+			char chLetter = a_oMap[a_nPosY, a_nPosX];
+			a_oMap[a_nPosY, a_nPosX] = (chLetter == 'S') ? 'S' : '*';
+
+			var oXOffsets = new int[4] {
+				1, -1, 0, 0
+			};
+
+			var oYOffsets = new int[4] {
+				0, 0, 1, -1
+			};
+
+			for(int i = 0; i < oXOffsets.Length; ++i) {
+				// 경로 탐색에 성공했을 경우
+				if(FindMap(a_oMap, a_nPosX + oXOffsets[i], a_nPosY + oYOffsets[i])) {
+					return true;
+				}
+			}
+
+			a_oMap[a_nPosY, a_nPosX] = chLetter;
+			return false;
+		}
 #elif P02_11
+		/** 숫자를 출력한다 */
+		public static void PrintDigits(string a_oStr) {
+			var oDigitStrs = new string[] {
+				"*****     * ***** ***** *   * ***** ***** ***** ***** *****",
+				"*   *     *     *     * *   * *     *         * *   * *   *",
+				"*   *     *     *     * *   * *     *         * *   * *   *",
+				"*   *     * ***** ***** ***** ***** *****     * ***** *****",
+				"*   *     * *         *     *     * *   *     * *   *     *",
+				"*   *     * *         *     *     * *   *     * *   *     *",
+				"*****     * ***** *****     * ***** *****     * ***** *****"
+			};
 
+			for(int i = 0; i < oDigitStrs.Length; ++i) {
+				for(int j = 0; j < a_oStr.Length; ++j) {
+					// 숫자 일 경우
+					if(char.IsDigit(a_oStr[j])) {
+						int nDigit = a_oStr[j] - '0';
+						Console.Write("{0} ", oDigitStrs[i].Substring((nDigit * 5) + nDigit, 5));
+					}
+				}
+
+				Console.WriteLine();
+			}
+		}
 #elif P02_12
+		/** 하노이 탑 결과를 출력한다 */
+		public static void PrintHanoiTower(int a_nNumVals) {
+			DoPrintHanoiTower(a_nNumVals, 1, 3);
+		}
 
+		/** 하노이 탑 결과를 출력한다 */
+		private static void DoPrintHanoiTower(int a_nVal, int a_nSrc, int a_nDest) {
+			if(a_nVal <= 1) {
+				Console.WriteLine("{0} 번 원반 : {1} -> {2} 이동", a_nVal, a_nSrc, a_nDest);
+			} else {
+				DoPrintHanoiTower(a_nVal - 1, a_nSrc, 6 - (a_nSrc + a_nDest));
+
+				Console.WriteLine("{0} 번 원반 : {1} -> {2} 이동", a_nVal, a_nSrc, a_nDest);
+				DoPrintHanoiTower(a_nVal - 1, 6 - (a_nSrc + a_nDest), a_nDest);
+			}
+		}
 #elif P02_13
+		/** 우선 순위를 반환한다 */
+		public static int GetPriority(char a_chOperator) {
+			switch(a_chOperator) {
+				case '*': case '/': return 1;
+				case '+': case '-': return 2;
+			}
 
+			return 3;
+		}
+
+		/** 수식 결과를 반환한다 */
+		public static decimal GetCalcResult(string a_oPostfix) {
+			var oStack = new Stack<decimal>();
+
+			for(int i = 0; i < a_oPostfix.Length; ++i) {
+				// 피연산자 일 경우
+				if(char.IsDigit(a_oPostfix[i])) {
+					oStack.Push(a_oPostfix[i] - '0');
+				} else {
+					decimal dmRhs = oStack.Pop();
+					decimal dmLhs = oStack.Pop();
+
+					switch(a_oPostfix[i]) {
+						case '+': oStack.Push(dmLhs + dmRhs); break;
+						case '-': oStack.Push(dmLhs - dmRhs); break;
+						case '*': oStack.Push(dmLhs * dmRhs); break;
+						case '/': oStack.Push(dmLhs / dmRhs); break;
+					}
+				}
+			}
+
+			return oStack.Pop();
+		}
+
+		/** 중위 -> 후위 표기법으로 변환한다 */
+		public static string ConvertInToPostfix(string a_oInfix) {
+			var oStack = new Stack<char>();
+			var oStrBuilder = new StringBuilder();
+
+			string oValidOperators = "+-*/()";
+
+			for(int i = 0; i < a_oInfix.Length; ++i) {
+				// 공백 일 경우
+				if(char.IsWhiteSpace(a_oInfix[i])) {
+					continue;
+				}
+
+				// 피연산자 일 경우
+				if(char.IsDigit(a_oInfix[i])) {
+					oStrBuilder.Append(a_oInfix[i]);
+				}
+				// 유효한 연산자 일 경우
+				else if(oValidOperators.Contains(a_oInfix[i])) {
+					// 닫힌 괄호 일 경우
+					if(a_oInfix[i] == ')') {
+						while(oStack.Count > 0) {
+							char chOperator = oStack.Pop();
+
+							// 열린 괄호 일 경우
+							if(chOperator == '(') {
+								break;
+							}
+
+							oStrBuilder.Append(chOperator);
+						}
+					} else {
+						while(oStack.Count > 0) {
+							int nPriority01 = GetPriority(a_oInfix[i]);
+							int nPriority02 = GetPriority(oStack.Peek());
+
+							// 현재 연산자 우선 순위가 높을 경우
+							if(nPriority01 < nPriority02) {
+								break;
+							}
+
+							oStrBuilder.Append(oStack.Pop());
+						}
+
+						oStack.Push(a_oInfix[i]);
+					}
+				}
+			}
+
+			while(oStack.Count > 0) {
+				oStrBuilder.Append(oStack.Pop());
+			}
+
+			return oStrBuilder.ToString();
+		}
 #endif // #elif P02_01
 	}
 }
