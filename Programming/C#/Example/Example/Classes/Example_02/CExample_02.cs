@@ -169,7 +169,7 @@ namespace Example.Classes.Example_02 {
 #elif E02_CONST
 			const int nConstVal = 10;
 			const float fConstVal = 3.14f;
-			
+
 			/*
 			 * C# 상수 유형
 			 * - 심볼릭 상수

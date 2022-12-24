@@ -1,8 +1,8 @@
-#define T01_01
-#define T01_02
-#define T01_03
-#define T01_04
-#define T01_05
+//#define T01_01
+//#define T01_02
+//#define T01_03
+//#define T01_04
+//#define T01_05
 #define T01_06
 
 using System;

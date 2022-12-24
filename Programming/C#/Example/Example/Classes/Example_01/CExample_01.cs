@@ -17,13 +17,10 @@ using System.Threading.Tasks;
  * 해당 작업은 컴파일러에 의해서 수행된다. (즉, 컴파일러는 사용자 (프로그래머) 와 컴퓨터
  * 사이에 존재하는 통역사와 같은 역할을 수행한다.)
  */
-namespace Example.Classes.Example_01
-{
-	class CExample_01
-	{
+namespace Example.Classes.Example_01 {
+	class CExample_01 {
 		/** 초기화 */
-		public static void Start(string[] args)
-		{
+		public static void Start(string[] args) {
 			/*
 			 * Console 클래스는 콘솔 프로그램을 대상으로 특정 데이터를 출력하거나
 			 * 입력 받는 역할을 수행한다. (즉, Console 클래스를 활용하면 원하는
