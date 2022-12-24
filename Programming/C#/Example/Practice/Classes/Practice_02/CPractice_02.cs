@@ -10,6 +10,7 @@
 #define P02_10
 #define P02_11
 #define P02_12
+#define P02_13
 
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ using System.Threading.Tasks;
  * 
  * 
  * 과제 2 - 3
- * - 문자열 길이를 입력 받은 후 해당 길이만큼의 랜덤한 문자로 구성된 문자열 생성하기
+ * - 문자열 길이를 입력 받은 후 해당 길이만큼의 랜덤한 알파벳 문자로 구성된 문자열 생성하기
  * 
  * Ex)
  * 문자열 길이 입력 : 10
@@ -121,12 +122,12 @@ using System.Threading.Tasks;
  * 
  * 과제 2 - 9
  * - 2 차원 배열 회전하기
- * - 2 차원 배열 크기를 입력 받은 후 0 부터 차례대로 각 요소를 초기화한다 (단, 입력 가능한 최대 크기는 50 으로 제한)
+ * - 2 차원 배열 크기를 입력 받은 후 0 부터 차례대로 각 요소를 초기화한다
  * - 회전 방향을 입력 받아 해당 방향으로 90 도 회전 된 결과 출력하기 (단, 회전 과정에서 별도의 배열을 사용하는 것은 불가)
  * - 단, 2 차원 배열 크기는 정방 크기로 제한 (Ex. 3 x 3, 5 x 5, 등등...)
  * 
  * Ex)
- * 2 차원 배열 크기 입력 : 3 3
+ * 크기 입력 : 3
  * 
  * =====> 배열 요소 <=====
  * 0 1 2
@@ -209,6 +210,8 @@ using System.Threading.Tasks;
  * 
  * Ex)
  * 개수 입력 : 3
+ * 
+ * =====> 결과 <=====
  * 1 번 원반 : 1 -> 3 이동
  * 2 번 원반 : 1 -> 2 이동
  * 1 번 원반 : 3 -> 1 이동
@@ -217,7 +220,17 @@ using System.Threading.Tasks;
  * 2 번 원반 : 2 -> 3 이동
  * 1 번 원반 : 1 -> 3 이동
  * 
- * 하노이 탑 시뮬레이션이 종료되었습니다
+ * 
+ * 과제 2 - 13
+ * - 사칙 연산 수식을 입력 받아 해당 결과 출력하기
+ * - 단, 문제를 단순화하기 위해서 수식의 피연산자는 1 자릿수 정수로 제한
+ * 
+ * PS.
+ * 후위 표기법 변환 방법 및 후위 표기법 연산 방법 참고
+ * 
+ * Ex)
+ * 수식 입력 : (3 + 5) * 2 - 1
+ * 결과 : 15
  */
 namespace Practice.Classes.Practice_02 {
 	internal class CPractice_02 {
@@ -247,6 +260,8 @@ namespace Practice.Classes.Practice_02 {
 
 #elif P02_12
 
+#elif P02_13
+
 #endif // #elif P02_01
 		}
 
@@ -273,6 +288,8 @@ namespace Practice.Classes.Practice_02 {
 #elif P02_11
 
 #elif P02_12
+
+#elif P02_13
 
 #endif // #elif P02_01
 	}
