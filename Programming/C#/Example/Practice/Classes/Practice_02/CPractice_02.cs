@@ -418,7 +418,7 @@ namespace Practice.Classes.Practice_02 {
 			Console.WriteLine("=====> 탐색 전 <=====");
 			PrintMap(oMap);
 
-			FindMap(oMap, 4, 0);
+			FindPath(oMap, 4, 0);
 
 			Console.WriteLine("\n=====> 탐색 후 <=====");
 			PrintMap(oMap);
@@ -581,7 +581,7 @@ namespace Practice.Classes.Practice_02 {
 		}
 
 		/** 경로를 탐색한다 */
-		public static bool FindMap(char[,] a_oMap, int a_nPosX, int a_nPosY) {
+		public static bool FindPath(char[,] a_oMap, int a_nPosX, int a_nPosY) {
 			// 배열을 벗어났을 경우
 			if(a_nPosX < 0 || a_nPosX >= a_oMap.GetLength(1) || a_nPosY < 0 || a_nPosY >= a_oMap.GetLength(0)) {
 				return false;
@@ -610,7 +610,7 @@ namespace Practice.Classes.Practice_02 {
 
 			for(int i = 0; i < oXOffsets.Length; ++i) {
 				// 경로 탐색에 성공했을 경우
-				if(FindMap(a_oMap, a_nPosX + oXOffsets[i], a_nPosY + oYOffsets[i])) {
+				if(FindPath(a_oMap, a_nPosX + oXOffsets[i], a_nPosY + oYOffsets[i])) {
 					return true;
 				}
 			}
