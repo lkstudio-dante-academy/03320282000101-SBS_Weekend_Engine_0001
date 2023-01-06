@@ -527,7 +527,7 @@ namespace Practice.Classes.Practice_02 {
 		/** 값을 회전한다 */
 		public static void RotateVals(int[,] a_oVals, int a_nDirection) {
 			for(int i = 0; i < a_oVals.GetLength(0) / 2; ++i) {
-				for(int j = i; j < a_oVals.GetLength(0) - (i + 1); ++j) {
+				for(int j = i; j < a_oVals.GetLength(1) - (i + 1); ++j) {
 					int nLBRow = a_oVals.GetLength(0) - (j + 1);
 					int nLBCol = i;
 
