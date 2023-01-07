@@ -1,7 +1,7 @@
 //#define E08_COLLECTION_01
 //#define E08_COLLECTION_02
 //#define E08_COLLECTION_03
-#define E08_COLLECTION_04
+//#define E08_COLLECTION_04
 #define E08_COLLECTION_05
 
 using System;
@@ -76,6 +76,12 @@ using System.Threading.Tasks;
  * 
  * 스택/큐 컬렉션은 다른 컬렉션과 달리 특정 데이터에 접근하는 것이 불가능하며, 데이터의 입력과 출력 순서가 강제된다는
  * 특징이 존재한다.
+ * 
+ * 해시 테이블이란?
+ * - 데이터의 빠른 탐색을 목적으로 구현 된 컬렉션을 의미한다. (단, 해당 컬렉션은 데이터의 순서가
+ * 존재하지 않는다.) 즉, 해시 테이블은 데이터의 빠른 탐색을 위해서 데이터가 추가 되는 순간 해당
+ * 데이터를 가능한 빠르게 탐색하기 위해서 내부적으로 설정 된 연산에 의해서 데이터의 추가 위치가
+ * 결정되는 특징이 존재한다.
  */
 namespace Example.Classes.Example_07 {
 	internal class CExample_07 {
@@ -311,7 +317,101 @@ namespace Example.Classes.Example_07 {
 
 			Console.WriteLine();
 #elif E08_COLLECTION_05
+			/*
+			 * Dictionary 는 키/벨류 쌍으로 데이터를 관리하기 때문에 다른 컬렉션과 달리 2 개의
+			 * 자료형을 명시 할 필요가 있다. 키는 특정 데이터의 위치를 찾기 위한 용도로 사용되기
+			 * 때문에 중복을 허용하지 않는 반면, 벨류는 실제 제어하기 위한 데이터이기 때문에
+			 * 중복이 가능하다는 것을 알 수 있다.
+			 */
+			Dictionary<string, int> oValDict01 = new Dictionary<string, int>();
+			Dictionary<string, float> oValDict02 = new Dictionary<string, float>();
+			Dictionary<string, string> oValDict03 = new Dictionary<string, string>();
 
+			for(int i = 0; i < 10; ++i) {
+				string oKey = string.Format("Key_{0:00}", i + 1);
+
+				/*
+				 * Add 메서드는 Dictionary 에 데이터를 추가하는 역할을 수행한다. 단, 해당 메서드는
+				 * 이미 Dictionary 에 동일한 키를 지니는 데이터가 존재 할 경우 예외를 발생시키기
+				 * 때문에 해당 메서드를 호출하기 전에는 반드시 키의 존재 여부를 검사 할 필요가
+				 * 있다.
+				 */
+				oValDict01.Add(oKey, i + 1);
+				oValDict02.Add(oKey, i + 1.0f);
+				oValDict03.Add(oKey, (i + 1).ToString());
+			}
+
+			Console.WriteLine("=====> 딕셔너리 요소 <=====");
+
+			/*
+			 * KeyValuePair 구조체는 키/벨류 데이터를 저장하기 위한 용도로 활용된다. (즉, 해당
+			 * 구조체를 활용하면 Dictionary 에 저장 된 특정 데이터를 가져오는 것이 가능하다.)
+			 */
+			foreach(KeyValuePair<string, int> stKeyVal in oValDict01) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
+
+			Console.WriteLine();
+
+			foreach(KeyValuePair<string, float> stKeyVal in oValDict02) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
+
+			Console.WriteLine();
+
+			foreach(KeyValuePair<string, string> stKeyVal in oValDict03) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
+
+			/*
+			 * Dictionary 에 저장 된 특정 데이터에 접근하기 위해서는 [ ] (인덱스 연산자) 를
+			 * 사용하면 된다. (즉, 인덱스 연산자에 키 데이터를 명시하면 해당 키에 대응되는
+			 * 값을 반환한다는 것을 알 수 있다.)
+			 * 
+			 * 단, Dictionary 에 저장되어 있지 않은 키를 명시했을 경우에는 예외가 발생하기 때문에
+			 * 해당 연산자를 사용하기 전에 반드시 키의 존재 여부를 파악 할 필요가 있다.
+			 */
+			Console.WriteLine("\n\n=====> 인덱스 연산자 결과 <=====");
+			Console.WriteLine("ValDict01[{0}] = {1}", "Key_05", oValDict01["Key_05"]);
+			Console.WriteLine("ValDict02[{0}] = {1}", "Key_02", oValDict02["Key_02"]);
+			Console.WriteLine("ValDict03[{0}] = {1}", "Key_10", oValDict03["Key_10"]);
+
+			/*
+			 * Dictionary 에 저장 된 데이터를 제거하기 위해서는 Remove 메서드를 활용하면 된다.
+			 * (즉, 해당 메서드에 제거하고 싶은 데이터의 키를 명시하면 해당 데이터가 제거 된다는
+			 * 것을 알 수 있다.)
+			 */
+			oValDict01.Remove("Key_01");
+			oValDict02.Remove("Key_05");
+			oValDict03.Remove("Key_10");
+
+			/*
+			 * ContainsKey 메서드는 Dictionary 에 특정 키에 해당하는 데이터의 존재 여부를
+			 * 검사는 역할을 수행한다. (즉, 해당 메서드를 활용하면 데이터에 접근하는 코드를
+			 * 작성 할 때 좀 더 안전하게 동작하도록 코드를 구성하는 것이 가능하다.)
+			 */
+			// 키가 존재 할 경우
+			if(oValDict01.ContainsKey("Key_02")) {
+				Console.WriteLine("\nValDict01 에 Key_02 데이터가 존재합니다.");
+			}
+
+			Console.WriteLine("\n=====> 딕셔너리 요소 - 제거 후 <=====");
+
+			foreach(KeyValuePair<string, int> stKeyVal in oValDict01) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
+
+			Console.WriteLine();
+
+			foreach(KeyValuePair<string, float> stKeyVal in oValDict02) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
+
+			Console.WriteLine();
+
+			foreach(KeyValuePair<string, string> stKeyVal in oValDict03) {
+				Console.Write("[{0}]:{1}, ", stKeyVal.Key, stKeyVal.Value);
+			}
 #endif // #if E08_COLLECTION_01
 		}
 	}

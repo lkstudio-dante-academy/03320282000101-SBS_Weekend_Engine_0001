@@ -1,15 +1,15 @@
-#define P02_01
-#define P02_02
-#define P02_03
-#define P02_04
-#define P02_05
-#define P02_06
-#define P02_07
-#define P02_08
-#define P02_09
-#define P02_10
-#define P02_11
-#define P02_12
+//#define P02_01
+//#define P02_02
+//#define P02_03
+//#define P02_04
+//#define P02_05
+//#define P02_06
+//#define P02_07
+//#define P02_08
+//#define P02_09
+//#define P02_10
+//#define P02_11
+//#define P02_12
 #define P02_13
 
 using System;
@@ -248,6 +248,8 @@ namespace Practice.Classes.Practice_02 {
 						int nTemp = oVals[nRow, nCol];
 						oVals[nRow, nCol] = oVals[nNearRow, nNearCol];
 						oVals[nNearRow, nNearCol] = nTemp;
+
+						break;
 					}
 				}
 			}
@@ -455,7 +457,7 @@ namespace Practice.Classes.Practice_02 {
 
 #elif P02_07
 		/** 값을 설정한다 */
-			public static void SetupVals(int[,] a_oVals) {
+		public static void SetupVals(int[,] a_oVals) {
 			for(int i = 0; i < a_oVals.GetLength(0); ++i) {
 				for(int j = 0; j < a_oVals.GetLength(1); ++j) {
 					a_oVals[i, j] = (i * a_oVals.GetLength(1)) + j;
