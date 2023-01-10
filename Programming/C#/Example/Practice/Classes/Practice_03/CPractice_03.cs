@@ -12,17 +12,136 @@ using System.Threading.Tasks;
 
 namespace Practice.Classes.Practice_03 {
 	internal class CPractice_03 {
-#if P03_01
+#if P03_02
+		/** 결과를 반환한다 */
+		private static int GetResult(int a_nMySel, int a_nComputeSel) {
+			var oResults = new int[,] {
+				{  0,  1, -1 },
+				{ -1,  0,  1 },
+				{  1, -1,  0 }
+			};
 
-#elif P03_02
+			return oResults[a_nMySel - 1, a_nComputeSel - 1];
+		}
 
+		/** 선택 문자열을 반환한다 */
+		private static string GetSelStr(int a_nSel) {
+			var oSelStrs = new string[] {
+				"바위", "가위", "보"
+			};
+
+			return oSelStrs[a_nSel - 1];
+		}
+
+		/** 결과 문자열을 반환한다 */
+		private static string GetResultStr(int a_nResult) {
+			var oResultStrs = new string[] {
+				"졌습니다.", "비겼습니다.", "이겼습니다."
+			};
+
+			return oResultStrs[a_nResult + 1];
+		}
 #elif P03_03
+		/** 단어를 반환한다 */
+		private static string GetWord() {
+			var oWords = new string[] {
+				"Apple",
+				"Samsung",
+				"Microsoft"
+			};
 
+			var oRandom = new Random();
+			return oWords[oRandom.Next(0, oWords.Length)];
+		}
+
+		/** 문자를 출력한다 */
+		private static void PrintLetters(char[] a_oLetters) {
+			for(int i = 0; i < a_oLetters.Length; ++i) {
+				Console.Write("{0} ", a_oLetters[i]);
+			}
+
+			Console.WriteLine();
+		}
 #elif P03_04
+		/** 잔돈 패턴을 반환한다 */
+		private static int GetChangePatterns(int a_nTarget, int a_nIdx, List<(int, int)> a_oNumInfoDict) {
+			// 진행이 불가능 할 경우
+			if(a_nTarget <= 0 || a_nIdx >= a_oNumInfoDict.Count) {
+				// 환전이 완료 되었을 경우
+				if(a_nTarget == 0) {
+					for(int i = 0; i < a_oNumInfoDict.Count; ++i) {
+						Console.Write("{0} 원 ({1} 개), ", a_oNumInfoDict[i].Item1, a_oNumInfoDict[i].Item2);
+					}
 
+					Console.WriteLine();
+				}
+
+				return (a_nTarget == 0) ? 1 : 0;
+			}
+
+			int nNumPatterns = 0;
+
+			for(int i = 0; i <= a_nTarget / a_oNumInfoDict[a_nIdx].Item1; ++i) {
+				// 환전이 가능 할 경우
+				if(a_oNumInfoDict[a_nIdx].Item2 + i <= 15) {
+					var stPrevNumInfo = a_oNumInfoDict[a_nIdx];
+					a_oNumInfoDict[a_nIdx] = (a_oNumInfoDict[a_nIdx].Item1, a_oNumInfoDict[a_nIdx].Item2 + i);
+
+					nNumPatterns += GetChangePatterns(a_nTarget - (i * a_oNumInfoDict[a_nIdx].Item1), a_nIdx + 1, a_oNumInfoDict);
+					a_oNumInfoDict[a_nIdx] = stPrevNumInfo;
+				}
+			}
+
+			return nNumPatterns;
+		}
 #elif P03_05
+		/** 맵을 출력한다 */
+		private static void PrintMap(char[,] a_oMap) {
+			for(int i = 0; i < a_oMap.GetLength(0); ++i) {
+				for(int j = 0; j < a_oMap.GetLength(1); ++j) {
+					Console.Write("{0}", a_oMap[i, j]);
+				}
 
-#endif // #if P03_01
+				Console.WriteLine();
+			}
+		}
+
+		/** 모든 경로를 탐색한다 */
+		private static void FindAllPaths(char[,] a_oMap, int a_nPosX, int a_nPosY, List<char[,]> a_oOutMapList) {
+			// 배열을 벗어났을 경우
+			if(a_nPosX < 0 || a_nPosX >= a_oMap.GetLength(1) || a_nPosY < 0 || a_nPosY >= a_oMap.GetLength(0)) {
+				return;
+			}
+
+			// 이동이 불가능 할 경우
+			if(a_oMap[a_nPosY, a_nPosX] == '*' || a_oMap[a_nPosY, a_nPosX] == '#') {
+				return;
+			}
+
+			// 목적지에 도착했을 경우
+			if(a_oMap[a_nPosY, a_nPosX] == 'E') {
+				a_oOutMapList.Add((char[,])a_oMap.Clone());
+				return;
+			}
+
+			char chLetter = a_oMap[a_nPosY, a_nPosX];
+			a_oMap[a_nPosY, a_nPosX] = (chLetter == 'S') ? 'S' : '*';
+
+			var oXOffsets = new int[4] {
+				1, -1, 0, 0
+			};
+
+			var oYOffsets = new int[4] {
+				0, 0, 1, -1
+			};
+
+			for(int i = 0; i < oXOffsets.Length; ++i) {
+				FindAllPaths(a_oMap, a_nPosX + oXOffsets[i], a_nPosY + oYOffsets[i], a_oOutMapList);
+			}
+
+			a_oMap[a_nPosY, a_nPosX] = chLetter;
+		}
+#endif // #if P03_02
 
 		/** 초기화 */
 		public static void Start(string[] args) {
@@ -44,6 +163,26 @@ namespace Practice.Classes.Practice_03 {
 			 * 숫자 입력 : 45
 			 * 정답니다.
 			 */
+			var oRandom = new Random();
+
+			int nNum = 0;
+			int nAnswer = oRandom.Next(0, 100);
+
+			Console.WriteLine("정답 : {0}\n", nAnswer);
+
+			do {
+				Console.Write("숫자 입력 : ");
+				nNum = int.Parse(Console.ReadLine());
+
+				// 정답 일 경우
+				if(nNum == nAnswer) {
+					Console.WriteLine("정답입니다.");
+				} else {
+					Console.WriteLine("정답은 {0} 보다 {1}", nNum, (nNum < nAnswer) ? "높습니다." : "낮습니다.");
+				}
+
+				Console.WriteLine();
+			} while(nNum != nAnswer);
 #elif P03_02
 			/*
 			 * 과제 3 - 2
@@ -53,17 +192,40 @@ namespace Practice.Classes.Practice_03 {
 			 * 
 			 * Ex)
 			 * 바위 (1), 가위 (2), 보 (3) 입력 : 1
-			 * 결과 : 이겼습니다. (나 - 바위, 컴퓨터 - 가위)
+			 * 이겼습니다. (나 - 바위, 컴퓨터 - 가위)
 			 * 
 			 * 바위 (1), 가위 (2), 보 (3) 입력 : 2
-			 * 결과 : 비겼습니다. (나 - 가위, 컴퓨터 - 가위)
+			 * 비겼습니다. (나 - 가위, 컴퓨터 - 가위)
 			 * 
 			 * 바위 (1), 가위 (2), 보 (3) 입력 : 3
-			 * 결과 : 졌습니다. (나 - 보, 컴퓨터 - 가위)
+			 * 졌습니다. (나 - 보, 컴퓨터 - 가위)
 			 * 
 			 * 전적 : 1 승 1 무 1 패
 			 * 게임을 종료합니다.
 			 */
+			int nMySel = 0;
+			int nComputeSel = 0;
+
+			int nResult = 0;
+			int nWinCount = 0;
+			int nDrawCount = 0;
+
+			var oRandom = new Random();
+
+			do {
+				Console.Write("바위 (1), 가위 (2), 보 (3) 입력 : ");
+
+				nMySel = int.Parse(Console.ReadLine());
+				nComputeSel = oRandom.Next(1, 4);
+
+				nResult = GetResult(nMySel, nComputeSel);
+				Console.WriteLine("{0} (나 - {1}, 컴퓨터 - {2})\n", GetResultStr(nResult), GetSelStr(nMySel), GetSelStr(nComputeSel));
+
+				nWinCount += (nResult >= 1) ? 1 : 0;
+				nDrawCount += (nResult == 0) ? 1 : 0;
+			} while(nResult >= 0);
+
+			Console.WriteLine("전적 : {0} 승 {1} 무 1 패", nWinCount, nDrawCount);
 #elif P03_03
 			/*
 			 * 과제 3 - 3
@@ -89,6 +251,32 @@ namespace Practice.Classes.Practice_03 {
 			 * A p p l e
 			 * 게임을 종료합니다.
 			 */
+			string oAnswer = GetWord();
+			var oLetters = new char[oAnswer.Length];
+
+			for(int i = 0; i < oLetters.Length; ++i) {
+				oLetters[i] = '_';
+			}
+
+			Console.WriteLine("정답 : {0}\n", oAnswer);
+
+			do {
+				PrintLetters(oLetters);
+
+				Console.Write("입력 : ");
+				char chLetter = char.Parse(Console.ReadLine());
+
+				for(int i = 0; i < oAnswer.Length; ++i) {
+					// 문자가 존재 할 경우
+					if(char.ToUpper(oAnswer[i]) == char.ToUpper(chLetter)) {
+						oLetters[i] = oAnswer[i];
+					}
+				}
+
+				Console.WriteLine();
+			} while(oLetters.Contains('_'));
+
+			PrintLetters(oLetters);
 #elif P03_04
 			/*
 			 * 과제 3 - 4
@@ -97,12 +285,19 @@ namespace Practice.Classes.Practice_03 {
 			 * - 단, 최대 동전 개수는 각 동전마다 15 개로 제한
 			 * 
 			 * Ex)
-			 * 총 20 가지
-			 * - 10 원 (0 개), 50 원 (0 개), 100 원 (0 개), 500 원 (2 개)
-			 * - 10 원 (0 개), 50 원 (0 개), 100 원 (5 개), 500 원 (1 개)
+			 * 10 원 (0 개), 50 원 (0 개), 100 원 (0 개), 500 원 (2 개)
+			 * 10 원 (0 개), 50 원 (0 개), 100 원 (5 개), 500 원 (1 개)
 			 * 
 			 * ... 이하 생략
+			 * 
+			 * 결과 : 53 가지
 			 */
+			List<(int, int)> oCoinInfoList = new List<(int, int)>() {
+				(10, 0), (50, 0), (100, 0), (500, 0)
+			};
+
+			int nNumPatterns = GetChangePatterns(1000, 0, oCoinInfoList);
+			Console.WriteLine("\n결과 : {0} 가지", nNumPatterns);
 #elif P03_05
 			/*
 			 * 과제 3 - 6
@@ -155,6 +350,35 @@ namespace Practice.Classes.Practice_03 {
 			 * 탈출 가능 한 경우 * 를 통해서 이동 경로를 표기한다
 			 * 공백 일 경우 이동이 가능하며, # 기호는 이동이 불가능한 위치를 의미한다
 			 */
+			var oMap = new char[,] {
+				{ '#', '#', '#', '#', 'S', '#', '#', '#', '#' },
+				{ '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+				{ '#', '#', '#', ' ', ' ', ' ', '#', '#', '#' },
+				{ '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', '#' },
+				{ '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+				{ '#', '#', ' ', '#', ' ', '#', ' ', ' ', '#' },
+				{ '#', '#', 'E', '#', '#', '#', '#', '#', '#' }
+			};
+
+			Console.WriteLine("=====> 탐색 전 <=====");
+			PrintMap(oMap);
+
+			var oMapList = new List<char[,]>();
+			FindAllPaths(oMap, 4, 0, oMapList);
+
+			Console.WriteLine("\n=====> 탐색 후 <=====");
+
+			// 경로가 없을 경우
+			if(oMapList.Count <= 0) {
+				PrintMap(oMap);
+			} else {
+				for(int i = 0; i < oMapList.Count; ++i) {
+					Console.WriteLine("경로 {0}.", i + 1);
+					PrintMap(oMapList[i]);
+
+					Console.WriteLine();
+				}
+			}
 #endif // #if P03_01
 		}
 	}
