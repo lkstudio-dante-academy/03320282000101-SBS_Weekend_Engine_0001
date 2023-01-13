@@ -12,16 +12,18 @@ using System.Threading.Tasks;
 
 namespace Practice.Classes.Practice_03 {
 	internal class CPractice_03 {
-#if P03_02
+#if P03_01
+
+#elif P03_02       
 		/** 결과를 반환한다 */
-		private static int GetResult(int a_nMySel, int a_nComputeSel) {
+		private static int GetResult(int a_nMySel, int a_nComputerSel) {
 			var oResults = new int[,] {
 				{  0,  1, -1 },
 				{ -1,  0,  1 },
 				{  1, -1,  0 }
 			};
 
-			return oResults[a_nMySel - 1, a_nComputeSel - 1];
+			return oResults[a_nMySel - 1, a_nComputerSel - 1];
 		}
 
 		/** 선택 문자열을 반환한다 */
