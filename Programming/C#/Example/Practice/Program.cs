@@ -9,7 +9,8 @@ namespace Practice {
 		static void Main(string[] args) {
 			//Classes.Practice_01.CPractice_01.Start(args);
 			//Classes.Practice_02.CPractice_02.Start(args);
-			Classes.Practice_03.CPractice_03.Start(args);
+			//Classes.Practice_03.CPractice_03.Start(args);
+			Classes.Practice_04.CPractice_04.Start(args);
 
 			Console.ReadKey();
 		}
