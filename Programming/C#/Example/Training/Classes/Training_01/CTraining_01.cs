@@ -13,6 +13,20 @@ using System.Threading.Tasks;
 
 namespace Training.Classes.Training_01 {
 	internal class CTraining_01 {
+#if T01_01
+
+#elif T01_02
+
+#elif T01_03
+
+#elif T01_04
+
+#elif T01_05
+
+#elif T01_06
+
+#endif // #if T01_01
+
 		/** 초기화 */
 		public static void Start(string[] args) {
 #if T01_01
@@ -274,19 +288,5 @@ namespace Training.Classes.Training_01 {
 			}
 #endif // #if T01_01
 		}
-
-#if T01_01
-
-#elif T01_02
-
-#elif T01_03
-
-#elif T01_04
-
-#elif T01_05
-
-#elif T01_06
-
-#endif // #if T01_01
 	}
 }

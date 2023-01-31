@@ -10,6 +10,14 @@ using System.Threading.Tasks;
 
 namespace Example.Classes.Example_10 {
 	internal class CExample_10 {
+#if E10_GENERIC_01
+
+#elif E10_GENERIC_02
+
+#elif E10_GENERIC_03
+
+#endif // E10_GENERIC_01
+
 		/** 초기화 */
 		public static void Start(string[] args) {
 #if E10_GENERIC_01
@@ -20,13 +28,5 @@ namespace Example.Classes.Example_10 {
 
 #endif // E10_GENERIC_01
 		}
-
-#if E10_GENERIC_01
-
-#elif E10_GENERIC_02
-
-#elif E10_GENERIC_03
-
-#endif // E10_GENERIC_01
 	}
 }

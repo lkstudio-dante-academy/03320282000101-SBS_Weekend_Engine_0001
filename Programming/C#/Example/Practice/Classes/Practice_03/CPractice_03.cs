@@ -14,7 +14,7 @@ namespace Practice.Classes.Practice_03 {
 	internal class CPractice_03 {
 #if P03_01
 
-#elif P03_02
+#elif P03_02       
 		/** 결과를 반환한다 */
 		private static int GetResult(int a_nMySel, int a_nComputerSel) {
 			var oResults = new int[,] {
