@@ -21,10 +21,7 @@ namespace Practice.Classes.Practice_05 {
 		/** 초기화 */
 		public static void Start(string[] args) {
 #if P05_01
-			/*
-			 * 과제 5 - 1
-			 * - 
-			 */
+
 #elif P05_02
 
 #elif P05_03
