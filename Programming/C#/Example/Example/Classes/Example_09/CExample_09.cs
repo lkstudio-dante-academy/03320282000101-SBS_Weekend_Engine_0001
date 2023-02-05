@@ -104,88 +104,6 @@ using System.Threading.Tasks;
  */
 namespace Example.Classes.Example_09 {
 	internal class CExample_09 {
-		/** 초기화 */
-		public static void Start(string[] args) {
-#if E08_CLASS_01
-			/*
-			 * 클래스는 사용자 정의 자료형이기 때문에 특정 클래스를 사용해서 변수를 선언하는 것이 가능하다. 이때, 특정
-			 * 클래스를 통해 선언 된 변수는 객체라고 지칭되기 때문에 클래스를 통한 변수의 선언은 변수를 선언한다는 
-			 * 표현보다 객체를 생성한다는 표현을 사용하는 것이 일반적인 관례이다.
-			 * 
-			 * 즉, 클래스는 객체를 생성하기 위한 틀의 개념이라는 것을 알 수 있다. 또한, 클래스는 사물의 특징을 표현하지만
-			 * 구체적인 정보는 빠져 있으며 해당 정보는 객체의 생성을 통해 설정하는 것이 가능하다.
-			 * 
-			 * 객체의 특정 맴버에 접근하기 위해서는 . (맴버 지정 연산자) 를 사용하면 된다. (즉, 객체는 변수와 메서드를
-			 * 포함하고 있기 때문에 특정 객체 하위에 존재하는 특정 맴버에 접근하기 위해서는 반드시 맴버 지정 연산자를
-			 * 사용해야한다.)
-			 */
-			CPCharacter oCharacterA = new CPCharacter();
-			oCharacterA.SetID("1");
-			oCharacterA.LV = 1;
-			oCharacterA.HP = 20;
-			oCharacterA.Name = "캐릭터 A";
-
-			CPCharacter oCharacterB = new CPCharacter(20, 850);
-			oCharacterB.SetID("2");
-
-			CPCharacter oCharacterC = new CPCharacter(40, 1500, "캐릭터 C");
-			oCharacterC.SetID("3");
-
-			Console.WriteLine("=====> {0} 정보 <=====", oCharacterA.Name);
-			Console.WriteLine("ID : {0}, LV : {1}, HP : {2}\n", oCharacterA.ID, oCharacterA.LV, oCharacterA.HP);
-
-			oCharacterB.ShowInfo();
-
-			Console.WriteLine();
-			oCharacterC.ShowInfo();
-
-#elif E08_CLASS_02
-			var oParent = new CParent(10, 3.14f);
-			var oChild = new CChild(20, 3.14f, "Hello, World!");
-
-			/*
-			 * protected 보호 수준은 클래스 내부와 자식 클래스에서만 접근 가능하기 때문에 해당 영역 이외에서는 접근이 불가능하다는 것을
-			 * 알 수 있다.
-			 */
-			//oParent.m_fVal = 0.0f;
-
-			Console.WriteLine("=====> 부모 정보 <=====");
-			oParent.ShowInfo();
-
-			Console.WriteLine("\n=====> 자식 정보 <=====");
-			oChild.ShowInfo();
-#elif E08_CLASS_03
-			CParent oParentA = new CParent();
-			CParent oParentB = new CChild();
-
-			CChild oChild = oParentB as CChild;
-
-			Console.WriteLine("=====> Parent A 호출 <=====");
-			oParentA.ShowInfo();
-
-			Console.WriteLine("\n=====> Parent B 호출 <=====");
-			oParentB.ShowInfo();
-
-			Console.WriteLine("\n=====> Child 호출 <=====");
-			oChild.ShowInfo();
-#elif E08_CLASS_04
-			var oGlobalDataA = new CGlobalData();
-			var oGlobalDataB = new CGlobalData();
-
-			CGlobalData.AddIntVal(10);
-			CGlobalData.AddRealVal(10.0f);
-
-			Console.WriteLine("=====> 전역 데이터 <=====");
-			Console.WriteLine("정수 : {0}, 실수 : {1}", CGlobalData.m_nVal, CGlobalData.m_fVal);
-
-			Console.WriteLine("\n=====> 전역 데이터 A <=====");
-			oGlobalDataA.ShowInfo();
-
-			Console.WriteLine("\n=====> 전역 데이터 B <=====");
-			oGlobalDataB.ShowInfo();
-#endif // E08_CLASS_01
-		}
-
 #if E08_CLASS_01
 		/*
 		 * 접근 제어 지시자란?
@@ -452,6 +370,18 @@ namespace Example.Classes.Example_09 {
 			}
 		}
 #elif E08_CLASS_04
+		/*
+		 * 클래스 변수 및 메서드란?
+		 * - 일반적인 맴버 변수 및 메서드는 생성 된 객체에 종속되는 반면 클래스 변수 및 메서드는 클래스 자체에 종속되는 특징이
+		 * 존재한다.
+		 * 
+		 * 따라서, 맴버 변수 및 메서드는 객체를 생성해야지만 가능하지만 클래스 변수 및 메서드는 객체를 생성하지 않고도 사용
+		 * 하는 것이 가능하다.
+		 * 
+		 * C# 클래스 변수 및 메서드 선언 방법
+		 * - static + 변수 선언
+		 * - static + 메서드 구현
+		 */
 		/** 전역 데이터 */
 		class CGlobalData {
 			public static int m_nVal = 0;
@@ -473,5 +403,91 @@ namespace Example.Classes.Example_09 {
 			}
 		}
 #endif // E08_CLASS_01
+
+		/** 초기화 */
+		public static void Start(string[] args) {
+#if E08_CLASS_01
+			/*
+			 * 클래스는 사용자 정의 자료형이기 때문에 특정 클래스를 사용해서 변수를 선언하는 것이 가능하다. 이때, 특정
+			 * 클래스를 통해 선언 된 변수는 객체라고 지칭되기 때문에 클래스를 통한 변수의 선언은 변수를 선언한다는 
+			 * 표현보다 객체를 생성한다는 표현을 사용하는 것이 일반적인 관례이다.
+			 * 
+			 * 즉, 클래스는 객체를 생성하기 위한 틀의 개념이라는 것을 알 수 있다. 또한, 클래스는 사물의 특징을 표현하지만
+			 * 구체적인 정보는 빠져 있으며 해당 정보는 객체의 생성을 통해 설정하는 것이 가능하다.
+			 * 
+			 * 객체의 특정 맴버에 접근하기 위해서는 . (맴버 지정 연산자) 를 사용하면 된다. (즉, 객체는 변수와 메서드를
+			 * 포함하고 있기 때문에 특정 객체 하위에 존재하는 특정 맴버에 접근하기 위해서는 반드시 맴버 지정 연산자를
+			 * 사용해야한다.)
+			 */
+			CPCharacter oCharacterA = new CPCharacter();
+			oCharacterA.SetID("1");
+			oCharacterA.LV = 1;
+			oCharacterA.HP = 20;
+			oCharacterA.Name = "캐릭터 A";
+
+			CPCharacter oCharacterB = new CPCharacter(20, 850);
+			oCharacterB.SetID("2");
+
+			CPCharacter oCharacterC = new CPCharacter(40, 1500, "캐릭터 C");
+			oCharacterC.SetID("3");
+
+			Console.WriteLine("=====> {0} 정보 <=====", oCharacterA.Name);
+			Console.WriteLine("ID : {0}, LV : {1}, HP : {2}\n", oCharacterA.ID, oCharacterA.LV, oCharacterA.HP);
+
+			oCharacterB.ShowInfo();
+
+			Console.WriteLine();
+			oCharacterC.ShowInfo();
+
+#elif E08_CLASS_02
+			var oParent = new CParent(10, 3.14f);
+			var oChild = new CChild(20, 3.14f, "Hello, World!");
+
+			/*
+			 * protected 보호 수준은 클래스 내부와 자식 클래스에서만 접근 가능하기 때문에 해당 영역 이외에서는 접근이 불가능하다는 것을
+			 * 알 수 있다.
+			 */
+			//oParent.m_fVal = 0.0f;
+
+			Console.WriteLine("=====> 부모 정보 <=====");
+			oParent.ShowInfo();
+
+			Console.WriteLine("\n=====> 자식 정보 <=====");
+			oChild.ShowInfo();
+#elif E08_CLASS_03
+			CParent oParentA = new CParent();
+			CParent oParentB = new CChild();
+
+			CChild oChild = oParentB as CChild;
+
+			Console.WriteLine("=====> Parent A 호출 <=====");
+			oParentA.ShowInfo();
+
+			Console.WriteLine("\n=====> Parent B 호출 <=====");
+			oParentB.ShowInfo();
+
+			Console.WriteLine("\n=====> Child 호출 <=====");
+			oChild.ShowInfo();
+#elif E08_CLASS_04
+			var oGlobalDataA = new CGlobalData();
+			var oGlobalDataB = new CGlobalData();
+
+			CGlobalData.AddIntVal(10);
+			CGlobalData.AddRealVal(10.0f);
+
+			/*
+			 * 클래스 변수는 모든 객체가 공유하는 변수이기 때문에 해당 변수의 데이터가 변경되면 모든 객체가 영향을 받는 특징이
+			 * 존재한다. (즉, 전역 변수의 개념과 유사하다.)
+			 */
+			Console.WriteLine("=====> 전역 데이터 <=====");
+			Console.WriteLine("정수 : {0}, 실수 : {1}", CGlobalData.m_nVal, CGlobalData.m_fVal);
+
+			Console.WriteLine("\n=====> 전역 데이터 A <=====");
+			oGlobalDataA.ShowInfo();
+
+			Console.WriteLine("\n=====> 전역 데이터 B <=====");
+			oGlobalDataB.ShowInfo();
+#endif // E08_CLASS_01
+		}
 	}
 }
