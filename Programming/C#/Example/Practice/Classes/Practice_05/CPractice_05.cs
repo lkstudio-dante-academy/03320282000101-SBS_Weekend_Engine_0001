@@ -9,7 +9,16 @@ using System.Threading.Tasks;
 namespace Practice.Classes.Practice_05 {
 	internal class CPractice_05 {
 #if P05_01
+		/** 무기 */
+		private class CWeapon {
+			public int LV { get; private set; } = 0;
+		}
 
+		/** 플레이어 */
+		private class CPlayer {
+			public int NumGolds { get; private set; } = 0;
+			public List<CWeapon> WeaponList { get; private set; } = new List<CWeapon>();
+		};
 #endif // #if P05_01
 
 		/** 초기화 */
