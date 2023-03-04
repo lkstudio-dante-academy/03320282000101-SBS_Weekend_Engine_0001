@@ -222,7 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_fFOV: 45
   m_stDefSize: {x: 1280, y: 720, z: 0}
-  m_oObjsRoot: {fileID: 745017595}
 --- !u!1 &543703024
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +464,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 800621042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5409a0f625c4f3a47a03c73e22ac009b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f3c0e5fb2445714685e4463b3886e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &946935251
