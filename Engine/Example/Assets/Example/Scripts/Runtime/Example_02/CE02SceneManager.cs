@@ -13,6 +13,10 @@ using UnityEngine;
  */
 /** Example 2 */
 public class CE02SceneManager : CSceneManager {
+	#region 프로퍼티
+	public override string SceneName => KDefine.G_SCENE_N_E02;
+	#endregion // 프로퍼티
+
 	#region 함수
 	/** 초기화 */
 	public override void Awake() {

@@ -16,10 +16,18 @@ using UnityEngine;
 /** Example 3 */
 public class CE03SceneManager : CSceneManager {
 	#region 변수
+	private List<GameObject> m_oBulletList = new List<GameObject>();
+
+	[SerializeField] private float m_fBulletSpeed = 0.0f;
 	[SerializeField] private GameObject m_oTarget = null;
-	[SerializeField] private List<GameObject> m_oBulletList = new List<GameObject>();
+	[SerializeField] private GameObject m_oBulletRoot = null;
+	[SerializeField] private GameObject m_oOriginBullet = null;
 	[SerializeField] private List<GameObject> m_oTargetList = new List<GameObject>();
 	#endregion // 변수
+
+	#region 프로퍼티
+	public override string SceneName => KDefine.G_SCENE_N_E03;
+	#endregion // 프로퍼티
 
 	#region 함수
 	/** 초기화 */
@@ -33,6 +41,42 @@ public class CE03SceneManager : CSceneManager {
 
 	/** 상태를 갱신한다 */
 	public void Update() {
+		for(int i = 0; i < m_oBulletList.Count; ++i) {
+			m_oBulletList[i].transform.localPosition += (m_oBulletList[i].transform.forward * m_fBulletSpeed) * Time.deltaTime;
+		}
+
+		// 스페이스 키가 눌렸을 경우
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			/*
+			 * Instantiate 메서드는 원본 객체를 기준으로 사본 객체를 생성하는 역할을 수행한다.
+			 * 유니티는 게임 객체를 생성하는 방법으로 크게 2 가지 방식을 제공한다.
+			 * 
+			 * 유니티 게임 객체 생성 방법
+			 * - new 키워드
+			 * - Instantiate 메서드
+			 * 
+			 * 기본적으로 new 키워드를 통해서도 게임 객체를 생성하는 것이 가능하지만 해당 방식으로 게임 객체를 생성
+			 * 했을 경우 해당 객체에는 Transform 컴포넌트 밖에 존재하지 않기 때문에 만약 다른 컴포넌트가 추가적으로
+			 * 필요하다면 직접 해당 컴포넌트를 추가하고 데이터를 설정해줘야하는 번거로움이 있다.
+			 * 
+			 * 반면, Instantiate 메서드를 통해 게임 객체를 생성하면 원본 게임 객체가 들고 있는 컴포넌트 정보가 같이
+			 * 복사되기 때문에 별도로 컴포넌트를 추가하기 위한 별도의 구문이 불필요하다.
+			 * 
+			 * 따라서, 일반적으로 유니티에서 게임 객체를 생성 할 때는 Instantiate 메서드를 사용하는 방식이 널리 활용
+			 * 되고 있다.
+			 */
+			var oBullet = Instantiate(m_oOriginBullet, Vector3.zero, Quaternion.identity);
+			oBullet.transform.SetParent(m_oBulletRoot.transform, false);
+
+			oBullet.transform.position = m_oTarget.transform.position;
+			oBullet.transform.rotation = m_oTarget.transform.rotation;
+
+			var oDispatcher = oBullet.GetComponent<CTriggerDispatcher>();
+			oDispatcher.EnterCallbck = this.HandleOnTriggerEnter;
+
+			m_oBulletList.Add(oBullet);
+		}
+
 		/*
 		 * 유니티는 특정 물체를 회전하기 위한 오일러 회전 방식과 사원수 회전 방식을 제공한다.
 		 * 오일러 회전 방식은 물체를 각 축을 기준으로 회전하는 3 개의 회전 변화를 혼합해서 최종적은 물체의 회전 정도를 계산하는
@@ -70,7 +114,7 @@ public class CE03SceneManager : CSceneManager {
 		var stRay = new Ray(m_oTarget.transform.position, stWorldDirection.normalized);
 
 		// 물체가 존재 할 경우
-		if(Physics.Raycast(stRay, out RaycastHit stRaycastHit, 300.0f)) {
+		if(Physics.Raycast(stRay, out RaycastHit stRaycastHit, 300.0f) && stRaycastHit.collider.CompareTag("E03Target")) {
 			Debug.LogFormat("{0} 이 전방에 등장했습니다!", stRaycastHit.collider.name);
 		}
 	}
@@ -130,8 +174,31 @@ public class CE03SceneManager : CSceneManager {
 
 	/** 충돌 발생을 처리한다 */
 	private void HandleOnTriggerEnter(CTriggerDispatcher a_oSender, Collider a_oCollider) {
-		GameObject.Destroy(a_oSender.gameObject);
-		GameObject.Destroy(a_oCollider.gameObject);
+		m_oBulletList.Remove(a_oSender.gameObject);
+		m_oTargetList.Remove(a_oCollider.gameObject);
+
+		/*
+		 * 유니티는 게임 객체를 제거하기 위해서 Destroy 메서드와 DestroyImmediate 메서드를 제공한다.
+		 * 
+		 * Destroy 메서드는 해당 메서드 호출 되었을 때 즉시 해당 객체를 제거하는 것이 아니라 내부적으로 해당 객체를
+		 * 잠시 캐시해두었다가 제거가 가능한 시점에 제거하는 특징이 있다.
+		 * 
+		 * 반면, DestroyImmediate 메서드는 호출 즉시 해당 객체를 제거하기 때문에 이로 인해 원치 않는 에러가 발생하는
+		 * 경우가 다반사이다. (즉, 유니티 엔진에서 특정 객체를 대상으로 여러 작업을 수행하기 때문에 해당 작업이 수행
+		 * 중에 갑자기 객체가 제거 되면 이미 제거 된 객체를 대상으로 연산을 수행하기 때문에 문제가 발생한다는 것을
+		 * 알 수 있다.)
+		 * 
+		 * 따라서, 특정 게임 객체를 제거하기 위해서는 가능하면 Destroy 메서드를 사용하는 것을 추천한다.
+		 * 
+		 * 단, 해당 메서드는 즉시 객체를 제거하는 것이 아니기 때문에 만약 특정 객체를 제거 후 추가적인 연산을 진행 할
+		 * 경우 반드시 해당 과정을 고려해서 구문을 작성 할 필요가 있다.
+		 * 
+		 * 만약, 에디터 스크립트 일 경우에는 Destroy 메서드 대신에 DestroyImmediate 메서드를 사용해야한다.
+		 * (즉, 런타임 스크립트에서는 Destroy 메서드를 사용하면 되고 에디터 스크립트에서는 DestroyImmediate 메서드를
+		 * 사용하면 된다.)
+		 */
+		//GameObject.Destroy(a_oSender.gameObject);
+		//GameObject.Destroy(a_oCollider.gameObject);
 	}
 	#endregion // 함수
 }
