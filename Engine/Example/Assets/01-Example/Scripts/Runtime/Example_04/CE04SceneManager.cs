@@ -24,7 +24,9 @@ public class CE04SceneManager : CSceneManager {
 	}
 
 	/** 상태를 갱신한다 */
-	public void Update() {
+	public override void Update() {
+		base.Update();
+
 		/** 스페이스 키를 눌렀을 경우 */
 		if(Input.GetKey(KeyCode.Space) || Input.GetKeyDown(KeyCode.Space)) {
 			m_fPower = Input.GetKeyDown(KeyCode.Space) ? 0.0f : m_fPower;

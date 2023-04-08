@@ -53,7 +53,7 @@ using UnityEngine;
 /** Example 8 */
 public class CE08SceneManager : CSceneManager {
 	#region 변수
-	[SerializeField] private CPopup m_oPopup = null;
+
 	#endregion // 변수
 
 	#region 프로퍼티
@@ -67,11 +67,8 @@ public class CE08SceneManager : CSceneManager {
 	}
 
 	/** 상태를 갱신한다 */
-	public void Update() {
-		// ESC 키를 눌렀을 경우
-		if(Input.GetKeyDown(KeyCode.Escape)) {
-			CFunc.ShowPopup("Popup", this.PopupUIs, "Global/Prefabs/G_Popup", null);
-		}
+	public override void Update() {
+		base.Update();
 	}
 	#endregion // 함수
 }

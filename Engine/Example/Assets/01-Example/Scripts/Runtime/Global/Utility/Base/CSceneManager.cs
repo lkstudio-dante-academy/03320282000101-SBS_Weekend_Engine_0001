@@ -73,6 +73,33 @@ public abstract class CSceneManager : CComponent {
 			Debug.LogWarning($"CSceneManager.OnDestroy Exception : {oException.Message}");
 		}
 	}
+
+	/** 상태를 갱신한다 */
+	public virtual void Update() {
+		// ESC 키를 눌렀을 경우
+		if(Input.GetKeyDown(KeyCode.Escape) &&
+			!this.SceneName.Equals(KDefine.G_SCENE_N_E00)) {
+			CFunc.ShowPopup("AlertPopup",
+				this.PopupUIs, KDefine.G_OBJ_P_ALERT_POPUP, this.SetupAlertPopup);
+		}
+	}
+
+	/** 알림 팝업을 설정한다 */
+	private void SetupAlertPopup(CPopup a_oSender) {
+		var stParams = CAlertPopup.MakeParams("알림",
+			"현재 씬을 종료하시겠습니까?", "확인", "취소", this.OnReceiveAlertPopupCallback);
+
+		var oAlertPopup = a_oSender as CAlertPopup;
+		oAlertPopup.Init(stParams);
+	}
+
+	/** 알림 팝업 콜백을 수신했을 경우 */
+	private void OnReceiveAlertPopupCallback(CAlertPopup a_oSender, bool a_bIsOK) {
+		// 확인을 눌렀을 경우
+		if(a_bIsOK) {
+			CSceneLoader.Instance.LoadScene(KDefine.G_SCENE_N_E00);
+		}
+	}
 	#endregion // 함수
 
 	#region 제네릭 클래스 메서드

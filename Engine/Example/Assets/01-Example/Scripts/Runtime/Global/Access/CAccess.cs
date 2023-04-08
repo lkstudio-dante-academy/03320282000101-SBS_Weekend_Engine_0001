@@ -21,4 +21,21 @@ public static partial class CAccess {
 		}
 	}
 	#endregion // 프로퍼티
+
+	#region 함수
+	/** 저장 가능한 경로를 반환한다 */
+	public static string GetWriteablePath(string a_oPath) {
+		/*
+		 * Application.persistentDataPath 프로퍼티는 저장 가능한
+		 * 경로를 가져오는 역할을 수행한다. (즉, 맥/윈도우즈 플랫폼에서는
+		 * 시스템에 의해서 보호 되는 영역이 아니라면 어떤 경로에서는 파일을
+		 * 생성하고 제거하는 행위가 가능하지만 모바일 플랫폼에서는 특정 앱이
+		 * 접근 할 수 있는 공간이 따로 정해져있기 때문에 멀티 플랫폼 환경을
+		 * 고려한 프로그램을 제작하기 위해서는 유니티에서 제공하는 해당 프로퍼티를
+		 * 활용하는 것을 추천한다.
+		 */
+		return string.Format("{0}/{1}", 
+			Application.persistentDataPath, a_oPath);
+	}
+	#endregion // 함수
 }

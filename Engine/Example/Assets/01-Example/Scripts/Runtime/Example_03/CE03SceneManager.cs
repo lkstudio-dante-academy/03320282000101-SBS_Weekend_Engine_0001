@@ -40,7 +40,9 @@ public class CE03SceneManager : CSceneManager {
 	}
 
 	/** 상태를 갱신한다 */
-	public void Update() {
+	public override void Update() {
+		base.Update();
+
 		for(int i = 0; i < m_oBulletList.Count; ++i) {
 			m_oBulletList[i].transform.localPosition += (m_oBulletList[i].transform.forward * m_fBulletSpeed) * Time.deltaTime;
 		}

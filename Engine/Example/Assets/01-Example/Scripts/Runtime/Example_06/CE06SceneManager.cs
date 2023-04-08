@@ -45,7 +45,9 @@ public class CE06SceneManager : CSceneManager {
 	}
 
 	/** 상태를 갱신한다 */
-	public void Update() {
+	public override void Update() {
+		base.Update();
+
 		// 게임 종료가 아닐 경우
 		if(!m_bIsGameOver) {
 			for(int i = 0; i < m_oObstacleList.Count; ++i) {
