@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * 유니티 UI 시스템이 정상적으로 구동되기 위해서는 반드시 씬 상에 캔버스와 이벤트 시스템 컴포넌트를 지니고 있는 게임 객체 
@@ -53,7 +54,10 @@ using UnityEngine;
 /** Example 8 */
 public class CE08SceneManager : CSceneManager {
 	#region 변수
+	[SerializeField] private Button m_oLoginBtn = null;
 
+	[SerializeField] private InputField m_oIDInput = null;
+	[SerializeField] private InputField m_oPWInput = null;
 	#endregion // 변수
 
 	#region 프로퍼티
@@ -64,11 +68,100 @@ public class CE08SceneManager : CSceneManager {
 	/** 초기화 */
 	public override void Awake() {
 		base.Awake();
+		CUserInfoStorage.Instance.LoadUserInfo();
+
+		/*
+		 * 유니티 GUI 컴포넌트의 이벤트를 처리하기 위한 메서드는 가능하면 스크립트에서 연결해주는 것을 추천한다.
+		 * (즉, 유니티 씬 상에 해당 작업을 수행 할 경우 씬 파일 구조가 변경이 발생하기 때문에 만약 2 명 이상의
+		 * 작업자가 서로 같은 씬을 편집 할 경우 해당 씬을 병합하는 과정에서 충돌이 발생 할 확률이 높아지기 때문에
+		 * 스크립트로 처리 가능한 작업들은 가능하면 스크립트를 통해서 해당 작업을 수행함으로서 나중에 충돌이 발생
+		 * 한다하더라도 충돌을 해결하는 시간을 단축시키는 것이 가능하다.)
+		 */
+		m_oLoginBtn.onClick.AddListener(this.OnTouchLoginBtn);
+
+		/*
+		 * onEndEdit 델리게이트는 입력이 완료 된 시점에 이벤트가 발생하며 onValueChanged 델리게이트는 입력이
+		 * 진행 중에 이벤트가 발생하는 차이점이 존재한다.
+		 * 
+		 * 따라서, 입력을 모두 완료 한 후에 올바른 문자가 입력 되었는지 검사하기 위해서는 onValueChanged 보다
+		 * onEndEdit 델리게이트를 사용하는 것이 좀 더 효율적이다. (즉, onValueChanged 변화가 발생 할 때 마다
+		 * 이벤트가 호출되기 때문에 입력 과정이 길어지면 불필요한 처리가 늘어난다는 것을 의미한다.)
+		 */
+		m_oIDInput.onEndEdit.AddListener(this.OnInputID);
+		m_oIDInput.onValueChanged.AddListener(this.OnChangeID);
+
+		m_oPWInput.onEndEdit.AddListener(this.OnInputPW);
+		m_oPWInput.onValueChanged.AddListener(this.OnChangePW);
 	}
 
 	/** 상태를 갱신한다 */
 	public override void Update() {
 		base.Update();
+	}
+
+	/** 아이디가 입력 되었을 경우 */
+	private void OnInputID(string a_oStr) {
+		Debug.Log($"OnInputID : {a_oStr}");
+	}
+
+	/** 아이디가 갱신 되었을 경우 */
+	private void OnChangeID(string a_oStr) {
+		Debug.Log($"OnChangeID : {a_oStr}");
+	}
+
+	/** 패스워드가 입력 되었을 경우 */
+	private void OnInputPW(string a_oStr) {
+		Debug.Log($"OnInputPW : {a_oStr}");
+	}
+
+	/** 패스워드가 갱신 되었을 경우 */
+	private void OnChangePW(string a_oStr) {
+		Debug.Log($"OnChangePW : {a_oStr}");
+	}
+
+	/** 로그인 버튼을 눌렀을 경우 */
+	private void OnTouchLoginBtn() {
+		/*
+		 * string.IsNullOrEmpty 메서드는 문자열을 대상을 null 참조 여부 또는 빈 문자열 여부를 검사하는 역할을
+		 * 수행한다. (즉, 해당 메서드는 활용하면 문자열을 대상으로 좀 더 안전하게 빈 문자열 여부를 검사하는 것이 
+		 * 가능하다.)
+		 * 
+		 * C# 문자열은 참조 형식 데이터에 해당하기 때문에 null 참조 상태가 될 수 있기 때문에 문자열을 대상으로
+		 * 특정 연산을 수행 할 때는 반드시 그 전에 문자열이 null 참조인지 아닌지 검사해 줄 필요가 있다.
+		 */
+		// 아이디 또는 패스워드를 입력하지 않았을 경우
+		if(string.IsNullOrEmpty(m_oIDInput.text) || string.IsNullOrEmpty(m_oPWInput.text)) {
+			CFunc.ShowAlertPopup("아이디와 패스워드를\n모두 입력해주세요.",
+				this.OnReceiveAlertPoupCallback, string.Empty);
+
+			return;
+		}
+
+		bool bIsValidID = !string.IsNullOrEmpty(CUserInfoStorage.Instance.UserInfo.ID);
+		bool bIsValidPW = !string.IsNullOrEmpty(CUserInfoStorage.Instance.UserInfo.PW);
+
+		// 아이디와 패스워드가 설정 되어있을 경우
+		if(bIsValidID && bIsValidPW) {
+			// 아이디 또는 패스워드가 다를 경우
+			if(!m_oIDInput.text.Equals(CUserInfoStorage.Instance.UserInfo.ID) ||
+				!m_oPWInput.text.Equals(CUserInfoStorage.Instance.UserInfo.PW)) {
+				CFunc.ShowAlertPopup("올바른 아이디와 패스워드를\n입력해주세요.",
+					this.OnReceiveAlertPoupCallback, string.Empty);
+
+				return;
+			}
+		}
+
+		CUserInfoStorage.Instance.UserInfo.ID = m_oIDInput.text;
+		CUserInfoStorage.Instance.UserInfo.PW = m_oPWInput.text;
+
+		CUserInfoStorage.Instance.SaveUserInfo();
+		CSceneLoader.Instance.LoadScene(KDefine.G_SCENE_N_E09);
+	}
+
+	/** 알림 팝업 콜백을 수신했을 경우 */
+	private void OnReceiveAlertPoupCallback(CAlertPopup a_oSender, bool a_bIsOK) {
+		// Do Something
 	}
 	#endregion // 함수
 }

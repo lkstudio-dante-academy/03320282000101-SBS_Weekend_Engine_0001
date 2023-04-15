@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 /** 유저 정보 */
+[JsonObject]
 public class CUserInfo : CBaseInfo {
-	// Do Something
+	#region 프로퍼티
+	public string ID { get; set; } = string.Empty;
+	public string PW { get; set; } = string.Empty;
+	#endregion // 프로퍼티
 }
 
 /** 유저 정보 저장소 */

@@ -180,13 +180,36 @@ public static partial class CFunc {
 			oPopup.Show();
 		}
 	}
+
+	/** 알림 팝업을 출력한다 */
+	public static void ShowAlertPopup(string a_oMsg,
+		System.Action<CAlertPopup, bool> a_oCallback, string a_oCancelBtnText = "취소", GameObject a_oParent = null) {
+		var stParams = CAlertPopup.MakeParams("알림", a_oMsg, "확인", a_oCancelBtnText, a_oCallback);
+
+		/*
+		 * ?? (널 병합 연산자) 는 참조 데이터를 대상으로 사용 가능한 연산자로서 해당 연산자를 활용하면 특정 참조
+		 * 데이터가 null 일 경우를 처리 할 수 있는 구문을 제작하는 것이 가능하다. (즉, 해당 연산자는 좌항 데이터가
+		 * null 일 경우 우항에 명시 된 구문을 실행하는 특징이 존재한다는 것을 알 수 있다.)
+		 */
+		CFunc.ShowPopup("AlertPopup",
+				a_oParent ?? CSceneManager.ActiveScenePopupUIs,
+				KDefine.G_OBJ_P_ALERT_POPUP,
+				(a_oSender) => {
+					CFunc.SetupAlertPopup(a_oSender, stParams);
+				});
+	}
+
+	/** 알림 팝업을 설정한다 */
+	private static void SetupAlertPopup(CPopup a_oSender, CAlertPopup.STParams a_stParams) {
+		(a_oSender as CAlertPopup).Init(a_stParams);
+	}
 	#endregion // 함수
 
 	#region 제네릭 함수
 	/** 객체를 읽어들인다 */
 	public static T ReadObj<T>(string a_oFilePath) where T : CBaseInfo {
 		string oJSON = CFunc.ReadStr(a_oFilePath);
-		return JsonConvert.DeserializeObject(oJSON) as T;
+		return JsonConvert.DeserializeObject<T>(oJSON);
 	}
 
 	/** 객체를 기록한다 */

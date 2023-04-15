@@ -31,6 +31,12 @@ public abstract class CSceneManager : CComponent {
 	#endregion // 프로퍼티
 
 	#region 클래스 프로퍼티
+	public static GameObject ActiveSceneUIs { get; private set; } = null;
+	public static GameObject ActiveScenePopupUIs { get; private set; } = null;
+
+	public static GameObject ActiveSceneObjs { get; private set; } = null;
+	public static GameObject ActiveSceneStaticObjs { get; private set; } = null;
+
 	public static CSceneManager ActiveSceneManager =>
 		CSceneManager.m_oSceneManagerDict.GetValueOrDefault(SceneManager.GetActiveScene().name);
 	#endregion // 클래스 프로퍼티
@@ -53,6 +59,15 @@ public abstract class CSceneManager : CComponent {
 
 		this.Objs = GameObject.Find("Objs");
 		this.StaticObjs = GameObject.Find("StaticObjs");
+
+		// 액티브 씬 일 경우
+		if(this.IsActiveScene) {
+			CSceneManager.ActiveSceneUIs = this.UIs;
+			CSceneManager.ActiveScenePopupUIs = this.PopupUIs;
+
+			CSceneManager.ActiveSceneObjs = this.Objs;
+			CSceneManager.ActiveSceneStaticObjs = this.StaticObjs;
+		}
 	}
 
 	/** 초기화 */
@@ -79,18 +94,8 @@ public abstract class CSceneManager : CComponent {
 		// ESC 키를 눌렀을 경우
 		if(Input.GetKeyDown(KeyCode.Escape) &&
 			!this.SceneName.Equals(KDefine.G_SCENE_N_E00)) {
-			CFunc.ShowPopup("AlertPopup",
-				this.PopupUIs, KDefine.G_OBJ_P_ALERT_POPUP, this.SetupAlertPopup);
+			CFunc.ShowAlertPopup("현재 씬을 종료하시겠습니까?", this.OnReceiveAlertPopupCallback);
 		}
-	}
-
-	/** 알림 팝업을 설정한다 */
-	private void SetupAlertPopup(CPopup a_oSender) {
-		var stParams = CAlertPopup.MakeParams("알림",
-			"현재 씬을 종료하시겠습니까?", "확인", "취소", this.OnReceiveAlertPopupCallback);
-
-		var oAlertPopup = a_oSender as CAlertPopup;
-		oAlertPopup.Init(stParams);
 	}
 
 	/** 알림 팝업 콜백을 수신했을 경우 */
