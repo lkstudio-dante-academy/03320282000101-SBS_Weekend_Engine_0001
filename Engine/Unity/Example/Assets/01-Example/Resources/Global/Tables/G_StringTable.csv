@@ -1,0 +1,7 @@
+ID,Description,Korean,English
+C_STORE_TEXT,상점 공통 텍스트,상점,Store
+C_EQUIPMENTS_TEXT,장비 공통 텍스트,장비,Equipments
+C_SETTINGS_TEXT,설정 공통 텍스트,설정,Settings
+C_BGM_TEXT,배경음 공통 텍스트,배경음,BGM
+C_SFX_TEXT,효과음 공통 텍스트,효과음,SFX
+C_VIBRATE_TEXT,진동 공통 텍스트,진동,Vibrate

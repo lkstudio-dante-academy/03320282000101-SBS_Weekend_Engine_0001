@@ -6,36 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_00 (\uBA54\uB274).unity"
+    path: "Assets/01-Example/Scenes/Example_00 (\uBA54\uB274).unity"
     guid: 2f4b1d781f1636c4a9177bf2ffdf9776
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_01 (\uC720\uB2C8\uD2F0 \uAE30\uCD08).unity"
-    guid: 370a68e10e550e444998e6f3927dd6f9
+    path: "Assets/01-Example/Scenes/Example_01 (\uC720\uB2C8\uD2F0 \uAE30\uCD08).unity"
+    guid: bcc58e6579098624f99688791660c746
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_02 (\uCE74\uBA54\uB77C).unity"
-    guid: a47e336c6aaccc44fbd0ae87f3cd9ed7
+    path: "Assets/01-Example/Scenes/Example_02 (\uCE74\uBA54\uB77C).unity"
+    guid: 9c9dbcb37a232e2489622cf98495c2cb
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_03 (\uC2A4\uD06C\uB9BD\uD2B8).unity"
-    guid: a001d2ee27113fd4e8bfce0510a7d1d2
+    path: "Assets/01-Example/Scenes/Example_03 (\uC2A4\uD06C\uB9BD\uD2B8).unity"
+    guid: e506d43816a993f4bbf5e0992cbdccc6
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_04 (\uBB3C\uB9AC \uC5D4\uC9C4).unity"
-    guid: 6c5a5ba4d0979104ba5eb2ecfb33bd19
+    path: "Assets/01-Example/Scenes/Example_04 (\uBB3C\uB9AC \uC5D4\uC9C4).unity"
+    guid: 9d1299bf4b7e57d469f4c840effb9efb
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_05 (\uD50C\uB798\uD53C \uBC84\uB4DC - \uC2DC\uC791).unity"
-    guid: 17dd7e6afaf1e7b42a32bc95c2b35057
+    path: "Assets/01-Example/Scenes/Example_05 (\uD50C\uB798\uD53C \uBC84\uB4DC -
+      \uC2DC\uC791).unity"
+    guid: 308fdf489a8916f47a299512c988421f
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_06 (\uD50C\uB798\uD53C \uBC84\uB4DC - \uD50C\uB808\uC774).unity"
-    guid: c2b5ba305930c274cb2dc95ab7883a9e
+    path: "Assets/01-Example/Scenes/Example_06 (\uD50C\uB798\uD53C \uBC84\uB4DC -
+      \uD50C\uB808\uC774).unity"
+    guid: dba6e677e5f4b814a8ddbc3c601a87aa
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_07 (\uD50C\uB798\uD53C \uBC84\uB4DC - \uACB0\uACFC).unity"
-    guid: 6f9d0cde03bdf3d429fa69e7765889a3
+    path: "Assets/01-Example/Scenes/Example_07 (\uD50C\uB798\uD53C \uBC84\uB4DC -
+      \uACB0\uACFC).unity"
+    guid: 7ad39577e506ee74098a88c42e029664
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_08 (UGUI - \uB85C\uADF8\uC778).unity"
-    guid: 54520eb9c13a2724abc84f19f1a6c79b
+    path: "Assets/01-Example/Scenes/Example_08 (UGUI - \uB85C\uADF8\uC778).unity"
+    guid: 1256ecceb2bdaf0449f65988c60a2b98
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_09 (UGUI - \uC11C\uBC84 \uC120\uD0DD).unity"
+    path: "Assets/01-Example/Scenes/Example_09 (UGUI - \uC11C\uBC84 \uC120\uD0DD).unity"
     guid: 01b1b7b5136b56f44bd6a87a48ee3951
   - enabled: 1
-    path: "Assets/Example/Scenes/Example_10 (UGUI - \uBA54\uC778 \uBA54\uB274).unity"
+    path: "Assets/01-Example/Scenes/Example_10 (\uC0AC\uC6B4\uB4DC).unity"
     guid: e9a0a6cedc7e9fd4892753f15c4751c4
   m_configObjects: {}
