@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** 정렬 순서 정보 */
+public struct STSortingOrderInfo {
+	public int m_nOrder;
+	public string m_oLayer;
+}
+
 /** 전역 상수 */
 public static partial class KDefine {
 	#region 기본
@@ -25,5 +31,7 @@ public static partial class KDefine {
 	public const string G_SCENE_N_E08 = "Example_08 (UGUI - 로그인)";
 	public const string G_SCENE_N_E09 = "Example_09 (UGUI - 서버 선택)";
 	public const string G_SCENE_N_E10 = "Example_10 (사운드)";
+	public const string G_SCENE_N_E11 = "Example_11 (스프라이트)";
+	public const string G_SCENE_N_E12 = "Example_12 (애니메이션)";
 	#endregion // 기본
 }

@@ -39,12 +39,12 @@ public class CE10SceneManager : CSceneManager {
 
 	/** 배경음 음소거 버튼을 눌렀을 경우 */
 	private void OnTouchBGSndMuteBtn() {
-		//CSndManager.Instance.SetIsBGSndMute(true);
+		CSndManager.Instance.SetIsMuteBGSnd(!CSndManager.Instance.IsMuteBGSnd);
 	}
 
 	/** 효과음 음소거 버튼을 눌렀을 경우 */
 	private void OnTouchFXSndsMuteBtn() {
-		//CSndManager.Instance.SetIsFXSndsMute(true);
+		CSndManager.Instance.SetIsMuteFXSnds(!CSndManager.Instance.IsMuteFXSnds);
 	}
 	#endregion // 함수
 }

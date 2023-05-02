@@ -41,6 +41,13 @@ public static partial class CExtension {
 		return a_fSender >= a_fRhs + float.Epsilon;
 	}
 
+	/** 정렬 순서를 변경한다 */
+	public static void ExSetSortingOrder(this Renderer a_oSender, 
+		STSortingOrderInfo a_stOrderInfo) {
+		a_oSender.sortingOrder = a_stOrderInfo.m_nOrder;
+		a_oSender.sortingLayerName = a_stOrderInfo.m_oLayer;
+	}
+
 	/** 비교 결과를 반환한다 */
 	public static int ExCompare(this float a_fSender, float a_fRhs) {
 		// 값이 동일 할 경우
