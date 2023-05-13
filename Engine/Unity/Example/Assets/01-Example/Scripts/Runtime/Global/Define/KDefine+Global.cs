@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** 마우스 버튼 */
+public enum EMouseBtn {
+	NONE = -1,
+	LEFT,
+	RIGHT,
+	MIDDLE,
+	[HideInInspector] MAX_VAL
+}
+
 /** 정렬 순서 정보 */
 public struct STSortingOrderInfo {
 	public int m_nOrder;
@@ -33,5 +42,8 @@ public static partial class KDefine {
 	public const string G_SCENE_N_E10 = "Example_10 (사운드)";
 	public const string G_SCENE_N_E11 = "Example_11 (스프라이트)";
 	public const string G_SCENE_N_E12 = "Example_12 (애니메이션)";
+	public const string G_SCENE_N_E13 = "Example_13 (두더지 잡기 - 시작)";
+	public const string G_SCENE_N_E14 = "Example_14 (두더지 잡기 - 플레이)";
+	public const string G_SCENE_N_E15 = "Example_15 (두더지 잡기 - 결과)";
 	#endregion // 기본
 }

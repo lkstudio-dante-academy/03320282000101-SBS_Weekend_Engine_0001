@@ -28,7 +28,7 @@ public static partial class CExtension {
 
 	/** 작음 여부를 검사한다 */
 	public static bool ExIsLessEquals(this float a_fSender, float a_fRhs) {
-		return a_fSender <= a_fRhs - float.Epsilon;
+		return a_fSender.ExIsLess(a_fRhs) || Mathf.Approximately(a_fSender, a_fRhs);
 	}
 
 	/** 큰 여부를 검사한다 */
@@ -38,7 +38,7 @@ public static partial class CExtension {
 
 	/** 큰 여부를 검사한다 */
 	public static bool ExIsGreateEquals(this float a_fSender, float a_fRhs) {
-		return a_fSender >= a_fRhs + float.Epsilon;
+		return a_fSender.ExIsGreate(a_fRhs) || Mathf.Approximately(a_fSender, a_fRhs);
 	}
 
 	/** 정렬 순서를 변경한다 */

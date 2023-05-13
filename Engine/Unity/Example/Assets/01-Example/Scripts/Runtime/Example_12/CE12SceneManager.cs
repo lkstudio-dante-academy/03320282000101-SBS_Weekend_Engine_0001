@@ -1,5 +1,5 @@
 //#define E12_TWEEN
-#define E12_LEGACY
+//#define E12_LEGACY
 #define E12_MECANIM
 
 using System.Collections;
@@ -34,10 +34,20 @@ public class CE12SceneManager : CSceneManager {
 
 	private Sequence m_oSequence01 = null;
 	private Sequence m_oSequence02 = null;
+#elif E12_MECANIM
+	private Animator m_oAnimator = null;
+	private SpriteRenderer m_oSprite = null;
 #endif // #if E12_TWEEN
 
+	[Header("=====> Tween <=====")]
 	[SerializeField] private GameObject m_oTweenTarget01 = null;
 	[SerializeField] private GameObject m_oTweenTarget02 = null;
+
+	[Header("=====> Legacy <=====")]
+	[SerializeField] private GameObject m_oLegacyTarget = null;
+
+	[Header("=====> Mecanim <=====")]
+	[SerializeField] private GameObject m_oMecanimTarget = null;
 	#endregion // 변수
 
 	#region 프로퍼티
@@ -54,6 +64,15 @@ public class CE12SceneManager : CSceneManager {
 
 		m_stOriginPos = m_oTweenTarget02.transform.localPosition;
 		m_stOriginRoate = m_oTweenTarget02.transform.localEulerAngles;
+#elif E12_LEGACY
+		var oDispatcher = m_oLegacyTarget.GetComponent<CEventDispatcher>();
+		oDispatcher.EventCallback = this.HandleOnEvent;
+#elif E12_MECANIM
+		m_oSprite = m_oMecanimTarget.GetComponent<SpriteRenderer>();
+		m_oSprite.flipX = false;
+
+		m_oAnimator = m_oMecanimTarget.GetComponent<Animator>();
+		m_oAnimator.SetBool("IsMove", false);
 #endif // #if E12_TWEEN
 	}
 
@@ -91,11 +110,24 @@ public class CE12SceneManager : CSceneManager {
 			m_oSequence02.Join(m_oTweenTarget02.transform.DOMove(m_stOriginPos + new Vector3(250.0f, 0.0f, 0.0f), 1.0f));
 			m_oSequence02.Join(m_oTweenTarget02.transform.DORotate(new Vector3(0.0f, 0.0f, -90.0f), 1.0f));
 		}
-#elif E12_LEGACY
-
 #elif E12_MECANIM
+		m_oAnimator.SetBool("IsMove", Input.GetKey(KeyCode.LeftArrow) ||
+			Input.GetKey(KeyCode.RightArrow));
 
+		// 이동 키를 눌렀을 경우
+		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+			var nSpeed = Input.GetKey(KeyCode.LeftArrow) ? -500.0f : 500.0f;
+			var stVelocity = Vector3.right * (nSpeed * Time.deltaTime);
+
+			m_oSprite.flipX = Input.GetKey(KeyCode.LeftArrow);
+			m_oMecanimTarget.transform.Translate(stVelocity, Space.Self);
+		}
 #endif // #if E12_TWEEN
+	}
+
+	/** 이벤트를 처리한다 */
+	private void HandleOnEvent(CEventDispatcher a_oSender, string a_oEvent) {
+		Debug.LogFormat("HandleOnEvent: {0}", a_oEvent);
 	}
 	#endregion // 함수
 }
