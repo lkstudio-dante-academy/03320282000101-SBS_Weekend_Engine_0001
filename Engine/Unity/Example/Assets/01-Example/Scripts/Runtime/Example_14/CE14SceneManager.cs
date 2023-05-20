@@ -15,11 +15,15 @@ public class CE14SceneManager : CSceneManager {
 
 	#region 변수
 	private int m_nScore = 0;
-	private float m_fPlayTime = 30.0f;
+	private float m_fPlayTime = 10.0f;
 
 	[SerializeField] private Text m_oTimeText = null;
 	[SerializeField] private Text m_oScoreText = null;
 
+	[SerializeField] private GameObject m_oScoreRoot = null;
+	[SerializeField] private GameObject m_oTargetRoot = null;
+
+	[SerializeField] private GameObject m_oOriginScoreText = null;
 	[SerializeField] private List<GameObject> m_oTargetList = new List<GameObject>();
 	#endregion // 변수
 
@@ -32,6 +36,7 @@ public class CE14SceneManager : CSceneManager {
 	/** 초기화 */
 	public override void Awake() {
 		base.Awake();
+		CE05DataStorage.Instance.Score = 0;
 	}
 
 	/** 상태를 갱신한다 */
@@ -44,6 +49,11 @@ public class CE14SceneManager : CSceneManager {
 			// 플레이 시간이 종료 되었을 경우
 			if(m_fPlayTime.ExIsLessEquals(0.0f)) {
 				this.State = EState.GAME_OVER;
+				CE05DataStorage.Instance.Score = m_nScore;
+
+				// 결과 씬을 로드한다
+				CSceneLoader.Instance.LoadScene(KDefine.G_SCENE_N_E15,
+					UnityEngine.SceneManagement.LoadSceneMode.Additive);
 			}
 
 			// 마우스 버튼을 눌렀을 경우
@@ -59,6 +69,14 @@ public class CE14SceneManager : CSceneManager {
 					if(oTarget.Catch()) {
 						int nExtraScore = (oTarget.TargetKinds <= CE14Target.ETargetKinds._1) ? 10 : -20;
 						m_nScore = Mathf.Max(m_nScore + nExtraScore, 0);
+
+						var stPos = oTarget.transform.localPosition;
+						stPos = stPos.ExToWorld(m_oTargetRoot).ExToLocal(m_oScoreRoot);
+
+						var oScoreText = CFactory.CreateCloneObj<CE14ScoreText>("ScoreText",
+							m_oScoreRoot, m_oOriginScoreText, stPos, Vector3.one, Vector3.zero);
+
+						oScoreText.StartScoreAni(nExtraScore);
 					}
 				}
 			}

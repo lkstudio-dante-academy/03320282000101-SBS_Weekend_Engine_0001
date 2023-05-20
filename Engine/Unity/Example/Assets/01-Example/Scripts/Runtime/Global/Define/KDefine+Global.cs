@@ -45,5 +45,6 @@ public static partial class KDefine {
 	public const string G_SCENE_N_E13 = "Example_13 (두더지 잡기 - 시작)";
 	public const string G_SCENE_N_E14 = "Example_14 (두더지 잡기 - 플레이)";
 	public const string G_SCENE_N_E15 = "Example_15 (두더지 잡기 - 결과)";
+	public const string G_SCENE_N_E16 = "Example_16 (쉐이더)";
 	#endregion // 기본
 }

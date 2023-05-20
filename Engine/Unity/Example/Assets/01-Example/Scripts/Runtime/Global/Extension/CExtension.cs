@@ -69,6 +69,24 @@ public static partial class CExtension {
 		float fMaxVal = a_stSender.x.ExIsGreate(a_stSender.y) ? a_stSender.x : a_stSender.y;
 		return fMaxVal.ExIsGreate(a_stSender.z) ? fMaxVal : a_stSender.z;
 	}
+
+	/** 월드 => 지역으로 변환한다 */
+	public static Vector3 ExToLocal(this Vector3 a_stSender, 
+		GameObject a_oParent, bool a_bIsCoord = true) {
+		var stVec4 = new Vector4(a_stSender.x, a_stSender.y, a_stSender.z,
+			a_bIsCoord ? 1.0f : 0.0f);
+
+		return a_oParent.transform.worldToLocalMatrix * stVec4;
+	}
+
+	/** 지역 => 월드로 변환한다 */
+	public static Vector3 ExToWorld(this Vector3 a_stSender,
+		GameObject a_oParent, bool a_bIsCoord = true) {
+		var stVec4 = new Vector4(a_stSender.x, a_stSender.y, a_stSender.z,
+			a_bIsCoord ? 1.0f : 0.0f);
+
+		return a_oParent.transform.localToWorldMatrix * stVec4;
+	}
 	#endregion // 클래스 함수
 
 	#region 제네릭 클래스 함수
