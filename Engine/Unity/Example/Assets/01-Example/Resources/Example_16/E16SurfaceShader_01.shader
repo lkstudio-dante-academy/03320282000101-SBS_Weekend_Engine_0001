@@ -28,12 +28,12 @@ Shader "Example_16/E16SurfaceShader_01" {
 		* 
 		* Tags 옵션 종류
 		* - RenderType			<- 물체의 불투명/반투명 여부
-		* - RenderQueue			<- 물체가 그려지는 순서
+		* - Queue			<- 물체가 그려지는 순서
 		* - RenderPipeline		<- 렌더링 파이프라인 종류
 		*/
 		Tags {
 			"RenderType" = "Opaque"
-			"RenderQueue" = "Geometry+1"
+			"Queue" = "Geometry+1"
 		}
 
 		/*

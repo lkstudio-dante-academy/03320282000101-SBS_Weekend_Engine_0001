@@ -6,7 +6,7 @@ Shader "Example_16/E16SurfaceShader_02" {
 	SubShader{
 		Tags {
 			"RenderType" = "Opaque"
-			"RenderQueue" = "Geometry+1"
+			"Queue" = "Geometry+1"
 		}
 
 		CGPROGRAM
