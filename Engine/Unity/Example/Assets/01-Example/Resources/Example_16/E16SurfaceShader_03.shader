@@ -25,8 +25,8 @@ Shader "Example_16/E16SurfaceShader_03" {
 	}
 	SubShader{
 		Tags {
-			"RenderType" = "Opaque"
 			"Queue" = "Geometry+1"
+			"RenderType" = "Opaque"
 		}
 
 		CGPROGRAM

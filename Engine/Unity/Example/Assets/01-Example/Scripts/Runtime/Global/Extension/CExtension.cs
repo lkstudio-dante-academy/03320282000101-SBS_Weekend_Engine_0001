@@ -21,6 +21,11 @@ using UnityEngine;
 /** 확장 클래스 */
 public static partial class CExtension {
 	#region 클래스 함수
+	/** 동일 여부를 검사한다 */
+	public static bool ExIsEquals(this float a_fSender, float a_fRhs) {
+		return Mathf.Approximately(a_fSender, a_fRhs);
+	}
+
 	/** 작음 여부를 검사한다 */
 	public static bool ExIsLess(this float a_fSender, float a_fRhs) {
 		return a_fSender < a_fRhs - float.Epsilon;

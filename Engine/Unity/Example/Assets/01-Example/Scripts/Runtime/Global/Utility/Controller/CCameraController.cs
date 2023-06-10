@@ -12,6 +12,7 @@ public class CCameraController : CComponent {
 	 * (즉, 해당 속성을 사용하면 public 제한자를 사용하는 것보다 좀 더 안전하게 변수를 활용하는 것이 가능하다는 것을 알 수
 	 * 있다.)
 	 */
+	[SerializeField] private bool m_bIsResetPos = true;
 	[SerializeField] private float m_fFOV = 45.0f;	
 	[SerializeField] private Vector3 m_stDefSize = new Vector3(1280.0f, 720.0f, 0.0f);
 
@@ -66,7 +67,10 @@ public class CCameraController : CComponent {
 		m_oCamera.orthographic = false;
 		m_oCamera.fieldOfView = m_fFOV;
 
-		m_oCamera.transform.localPosition = new Vector3(0.0f, 0.0f, -fDistance);
+		// 위치 설정이 가능 할 경우
+		if(m_bIsResetPos) {
+			m_oCamera.transform.localPosition = new Vector3(0.0f, 0.0f, -fDistance);
+		}
 	}
 
 	/** 기본 옵션을 설정한다 */

@@ -32,8 +32,8 @@ Shader "Example_16/E16SurfaceShader_01" {
 		* - RenderPipeline		<- 렌더링 파이프라인 종류
 		*/
 		Tags {
-			"RenderType" = "Opaque"
 			"Queue" = "Geometry+1"
+			"RenderType" = "Opaque"
 		}
 
 		/*
