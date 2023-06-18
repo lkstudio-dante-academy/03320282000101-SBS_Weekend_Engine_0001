@@ -45,6 +45,8 @@ public abstract class CSceneManager : CComponent {
 	/** 초기화 */
 	public override void Awake() {
 		base.Awake();
+
+		Physics.gravity = new Vector3(0.0f, -1750.0f, 0.0f);
 		CSceneManager.m_oSceneManagerDict.TryAdd(this.SceneName, this);
 
 		/*

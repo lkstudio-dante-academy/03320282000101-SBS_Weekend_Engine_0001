@@ -6,7 +6,10 @@ using UnityEngine;
 public class CE19Player : CComponent {
 	#region 변수
 	private Animation m_oAni = null;
+
 	[SerializeField] private GameObject m_oContents = null;
+	[SerializeField] private GameObject m_oBulletRoot = null;
+	[SerializeField] private GameObject m_oBulletSpawnPos = null;
 	#endregion // 변수
 
 	#region 함수
@@ -28,11 +31,33 @@ public class CE19Player : CComponent {
 		float fVertical = Input.GetAxisRaw("Vertical");
 		float fHorizontal = Input.GetAxisRaw("Horizontal");
 
-		var stVertical = Vector3.forward * fVertical;
-		var stHorizontal = Vector3.right * fHorizontal;
+		float fMouseX = Input.GetAxisRaw("Mouse X");
+
+		var stVertical = this.transform.forward * fVertical;
+		var stHorizontal = this.transform.right * fHorizontal;
 
 		var stDirection = Vector3.Normalize(stVertical + stHorizontal);
 		this.transform.localPosition += stDirection * 350.0f * Time.deltaTime;
+
+		// 발사 키를 눌렀을 경우
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			var oSceneManager = CSceneManager.ActiveSceneManager as CE19SceneManager;
+			var stBulletPos = m_oBulletSpawnPos.transform.position.ExToLocal(m_oBulletRoot);
+
+			var oBullet = oSceneManager.ObjPoolManager.SpawnGameObj("Bullet",
+				"Example_19/E19Bullet", stBulletPos, Vector3.one, Vector3.zero, m_oBulletRoot);
+
+			oBullet.transform.forward = this.transform.forward;
+
+			var oRigidbody = oBullet.GetComponent<Rigidbody>();
+			oRigidbody.useGravity = false;
+			oRigidbody.AddForce(this.transform.forward * 2500.0f, ForceMode.VelocityChange);
+		}
+
+		// 마우스 오른쪽 버튼을 눌렀을 경우
+		if(Input.GetMouseButton((int)EMouseBtn.RIGHT)) {
+			this.transform.eulerAngles += Vector3.up * fMouseX * 1500.0f * Time.deltaTime;
+		}
 
 		// 전방/후방 이동 키를 눌렀을 경우
 		if(!fVertical.ExIsEquals(0.0f)) {

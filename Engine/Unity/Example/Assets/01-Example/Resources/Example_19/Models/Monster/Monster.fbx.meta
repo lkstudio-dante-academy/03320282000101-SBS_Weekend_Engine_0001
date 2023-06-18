@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 114cb4bcf81314b65b611fcc4f346ee1
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       1: 100000
@@ -472,7 +472,24 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'L_leg' : position error = 180.138962
+      mm\n\t'L_knee' : position error = 349.421326 mm\n\t'L_ankle' : position error
+      = 276.936096 mm\n\t'L_foot' : position error = 113.205391 mm\n\t'R_leg' : position
+      error = 180.138962 mm\n\t'R_knee' : position error = 349.421326 mm\n\t'R_ankle'
+      : position error = 276.936096 mm\n\t'R_foot' : position error = 113.205391
+      mm\n\t'belly' : position error = 368.750153 mm\n\t'L_arm' : position error
+      = 547.496094 mm\n\t'L_elbow' : position error = 420.077026 mm\n\t'L_wrist'
+      : position error = 455.708801 mm\n\t'L_thumb1' : position error = 98.217720
+      mm\n\t'L_thumb2' : position error = 58.163681 mm\n\t'L_finger1' : position
+      error = 164.254272 mm\n\t'L_finger2' : position error = 61.436241 mm\n\t'R_arm'
+      : position error = 547.496094 mm\n\t'R_elbow' : position error = 420.076874
+      mm\n\t'R_wrist' : position error = 455.708954 mm\n\t'R_thumb1' : position error
+      = 98.217705 mm\n\t'R_thumb2' : position error = 58.163647 mm\n\t'R_finger1'
+      : position error = 164.254211 mm\n\t'R_finger2' : position error = 61.436199
+      mm\n\t'shoulder' : position error = 434.521606 mm\n\t'head' : position error
+      = 237.533798 mm\n\t'L_eye' : position error = 422.403015 mm\n\t'R_eye' : position
+      error = 422.403015 mm\n\t'jaw' : position error = 91.028702 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -1463,7 +1480,6 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importPhysicalCameras: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
@@ -1491,7 +1507,6 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
-    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -2086,7 +2101,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
