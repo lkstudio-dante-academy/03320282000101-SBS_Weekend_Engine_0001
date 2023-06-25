@@ -6,32 +6,75 @@ using UnityEngine.AI;
 /** 적 */
 public class CE19Enemy : CComponent {
 	#region 변수
-	private Animator m_oAnimator = null;
-	private NavMeshAgent m_oNavMeshAgent = null;
-
-	[SerializeField] private GameObject m_oPlayer = null;
+	private bool m_bIsSurvive = false;
+	private int m_nHitCount = 3;
 	#endregion // 변수
+
+	#region 프로퍼티
+	public Animator AnimatorComp { get; private set; } = null;
+	public NavMeshAgent NavMeshAgentComp { get; private set; } = null;
+	public CStateMachine<CE19Enemy> StateMachine { get; private set; } = new CStateMachine<CE19Enemy>();
+	#endregion // 프로퍼티
 
 	#region 함수
 	/** 초기화 */
 	public override void Awake() {
 		base.Awake();
-		m_oAnimator = this.GetComponentInChildren<Animator>();
+		this.AnimatorComp = this.GetComponentInChildren<Animator>();
 
-		m_oNavMeshAgent = this.GetComponentInChildren<NavMeshAgent>();
-		m_oNavMeshAgent.enabled = false;
+		this.NavMeshAgentComp = this.GetComponentInChildren<NavMeshAgent>();
+		this.NavMeshAgentComp.enabled = false;
+
+		this.StateMachine.SetOwner(this);
 	}
 
 	/** 초기화 */
-	public override void Start() {
-		base.Start();
-		m_oNavMeshAgent.enabled = true;
+	public void Init() {
+		m_nHitCount = 3;
+		m_bIsSurvive = true;
+
+		this.NavMeshAgentComp.enabled = true;
+		this.AnimatorComp.SetTrigger("ActiveTrigger");
+		this.StateMachine.SetState(CObjPoolManager.Instance.SpawnObj<CE19EnemyIdleState>());
+	}
+
+	/** 비활성화 되었을 경우 */
+	public void OnDisable() {
+		this.StateMachine.SetState(null);
+		this.NavMeshAgentComp.enabled = false;
 	}
 
 	/** 상태를 갱신한다 */
 	public void Update() {
-		m_oAnimator.SetBool("IsMove", true);
-		m_oNavMeshAgent.SetDestination(m_oPlayer.transform.position);
+		this.StateMachine.Update(Time.deltaTime);
+	}
+
+	/** 타격 되었을 경우 */
+	public void OnHit() {
+		// 생존 상태 일 경우
+		if(m_bIsSurvive) {
+			m_nHitCount = Mathf.Max(0, m_nHitCount - 1);
+			CE19EnemyState oState = null;
+
+			// 타격 횟수가 모두 차감 되었을 경우
+			if(m_nHitCount <= 0) {
+				oState = CObjPoolManager.Instance.SpawnObj<CE19EnemyDieState>();
+				m_bIsSurvive = false;
+			} else {
+				oState = CObjPoolManager.Instance.SpawnObj<CE19EnemyHitState>();
+			}
+
+			this.StateMachine.SetState(oState);
+		}
+	}
+
+	/** 타격이 완료 되었을 경우 */
+	public void OnCompleteHit() {
+		// 생존 상태 일 경우
+		if(m_bIsSurvive) {
+			var oState = CObjPoolManager.Instance.SpawnObj<CE19EnemyIdleState>();
+			this.StateMachine.SetState(oState);
+		}
 	}
 	#endregion // 함수
 }

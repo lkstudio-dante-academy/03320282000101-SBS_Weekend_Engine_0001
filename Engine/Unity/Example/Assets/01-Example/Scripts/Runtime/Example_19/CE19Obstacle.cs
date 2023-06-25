@@ -13,7 +13,7 @@ public class CE19Obstacle : CComponent {
 	public void OnHit() {
 		m_nHitCount -= 1;
 
-		// 히트 횟수가 모두 차감 되었을 경우
+		// 타격 횟수가 모두 차감 되었을 경우
 		if(m_nHitCount <= 0) {
 			var oRigidbody = this.GetComponent<Rigidbody>();
 			oRigidbody.mass = 1.0f;

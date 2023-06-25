@@ -44,7 +44,7 @@ public class CE19Player : CComponent {
 			var oSceneManager = CSceneManager.ActiveSceneManager as CE19SceneManager;
 			var stBulletPos = m_oBulletSpawnPos.transform.position.ExToLocal(m_oBulletRoot);
 
-			var oBullet = oSceneManager.ObjPoolManager.SpawnGameObj("Bullet",
+			var oBullet = oSceneManager.GameObjPoolManager.SpawnGameObj("Bullet",
 				"Example_19/E19Bullet", stBulletPos, Vector3.one, Vector3.zero, m_oBulletRoot);
 
 			oBullet.transform.forward = this.transform.forward;

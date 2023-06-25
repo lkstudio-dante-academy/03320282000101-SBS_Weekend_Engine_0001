@@ -2,55 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * 오브젝트 풀링이란?
- * - 특정 객체를 생성하고 제거하는 과정은 많은 부하를 일으킬 수 있기 때문에 가능하면 해당 과정에서
- * 발생하는 성능 저하를 최소화 시킬 필요가 있다. 
- * 
- * 오브젝트 풀링은 객체 생성 및 제거 과정에서 발생하는 부하를 줄일 수 있는 방법으로서 특정 객체를
- * 생성 후 더이상 필요없으면 해당 객체를 제거하는 것이 아니라 비활성화 후 다시 새로운 객체가 필요한
- * 시점이 되었을때 비활성화 시킨 객체를 재활용함으로서 객체 생성과 관련 된 부하를 줄이는 것이 가능하다.
- */
 /** 객체 풀 관리자 */
-public class CObjPoolManager : CComponent {
+public class CObjPoolManager : CSingleton<CObjPoolManager> {
 	#region 변수
-	private Dictionary<string, Queue<GameObject>> m_oObjDictContainer = new Dictionary<string, Queue<GameObject>>();
+	private Dictionary<System.Type, Queue<object>> m_oObjDictContainer = new Dictionary<System.Type, Queue<object>>();
 	#endregion // 변수
 
 	#region 함수
 	/** 객체를 활성한다 */
-	public GameObject SpawnGameObj(string a_oName, 
-		string a_oObjPath, GameObject a_oParent = null) {
-		return this.SpawnGameObj(a_oName, 
-			a_oObjPath, Vector3.zero, Vector3.one, Vector3.zero, a_oParent);
-	}
+	public T SpawnObj<T>() where T : class, new() {
+		var oQueue = m_oObjDictContainer.GetValueOrDefault(typeof(T)) ??
+			new Queue<object>();
 
-	/** 객체를 활성한다 */
-	public GameObject SpawnGameObj(string a_oName,
-		string a_oObjPath, Vector3 a_stPos, Vector3 a_stScale, Vector3 a_stAngle, 
-		GameObject a_oParent = null) {
-		var oQueue = m_oObjDictContainer.GetValueOrDefault(a_oObjPath) ??
-			new Queue<GameObject>();
+		var oObj = (oQueue.Count >= 1) ? oQueue.Dequeue() : new T();
 
-		var oGameObj = (oQueue.Count >= 1) ? oQueue.Dequeue() :
-			CFactory.CreateCloneObj(a_oName, a_oParent, a_oObjPath);
-
-		oGameObj.transform.localScale = a_stScale;
-		oGameObj.transform.localPosition = a_stPos;
-		oGameObj.transform.localEulerAngles = a_stAngle;
-
-		oGameObj.SetActive(true);
-		m_oObjDictContainer.TryAdd(a_oObjPath, oQueue);
-
-		return oGameObj;
+		m_oObjDictContainer.TryAdd(typeof(T), oQueue);
+		return oObj as T;
 	}
 
 	/** 객체를 비활성한다 */
-	public void DespawnGameObj(string a_oObjPath, GameObject a_oGameObj) {
+	public void DespawnObj<T>(T a_oObj) where T : class, new() {
 		// 큐가 존재 할 경우
-		if(m_oObjDictContainer.TryGetValue(a_oObjPath, out Queue<GameObject> a_oObjQueue)) {
-			a_oGameObj.SetActive(false);
-			a_oObjQueue.Enqueue(a_oGameObj);
+		if(m_oObjDictContainer.TryGetValue(typeof(T), out Queue<object> oQueue)) {
+			oQueue.Enqueue(a_oObj);
 		}
 	}
 	#endregion // 함수

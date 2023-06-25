@@ -11,6 +11,7 @@ TagManager:
   - E17Ground
   - E17Obstacle
   - E19Obstacle
+  - E19Enemy
   layers:
   - Default
   - TransparentFX

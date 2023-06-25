@@ -12,6 +12,11 @@ public class CE19Bullet : CComponent {
 			var oObstacle = a_oCollision.collider.GetComponentInParent<CE19Obstacle>();
 			oObstacle.OnHit();
 		}
+		// 적과 충돌했을 경우
+		else if(a_oCollision.collider.CompareTag("E19Enemy")) {
+			var oEnemy = a_oCollision.collider.GetComponentInChildren<CE19Enemy>();
+			oEnemy.OnHit();
+		}
 
 		var oTrail = this.GetComponentInChildren<TrailRenderer>();
 		oTrail.Clear();
@@ -20,7 +25,7 @@ public class CE19Bullet : CComponent {
 		oRigidbody.velocity = Vector3.zero;
 
 		var oSceneManager = CSceneManager.ActiveSceneManager as CE19SceneManager;
-		oSceneManager.ObjPoolManager.DespawnGameObj("Example_19/E19Bullet", this.gameObject);
+		oSceneManager.GameObjPoolManager.DespawnGameObj("Example_19/E19Bullet", this.gameObject);
 	}
 	#endregion // 함수
 }
