@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /** Example 20 */
 public class CE20SceneManager : CSceneManager {
+	#region 변수
+	[SerializeField] private TMP_Text m_oScoreText = null;
+	#endregion // 변수
+
 	#region 프로퍼티
 	public override string SceneName => KDefine.G_SCENE_N_E20;
 	#endregion // 프로퍼티
@@ -18,7 +23,8 @@ public class CE20SceneManager : CSceneManager {
 
 	/** UI 상태를 갱신한다 */
 	private void UpdateUIsState() {
-		// Do Something
+		// 텍스트를 갱신한다
+		m_oScoreText.text = string.Format("Score : {0}", CE19DataStorage.Instance.Score);
 	}
 
 	/** 다시하기 버튼을 눌렀을 경우 */

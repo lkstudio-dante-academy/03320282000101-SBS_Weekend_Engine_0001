@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/01-Example/Scenes/Example_20 (3D TPS - \uACB0\uACFC).unity"
     guid: 3ec39557e3db7c7498c8742e6cd016ca
+  - enabled: 1
+    path: "Assets/01-Example/Scenes/Example_21 (\uB124\uD2B8\uC6CC\uD06C).unity"
+    guid: 203a0d3e02853be4eae22cee57f2ca6f
   m_configObjects: {}

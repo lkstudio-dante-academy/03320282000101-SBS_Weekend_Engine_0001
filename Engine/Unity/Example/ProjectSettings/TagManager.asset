@@ -12,6 +12,8 @@ TagManager:
   - E17Obstacle
   - E19Obstacle
   - E19Enemy
+  - E19Player
+  - E19EnemyHand
   layers:
   - Default
   - TransparentFX

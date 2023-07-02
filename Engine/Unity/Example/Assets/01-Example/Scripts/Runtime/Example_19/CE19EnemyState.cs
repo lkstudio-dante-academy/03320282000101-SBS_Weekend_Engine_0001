@@ -164,6 +164,8 @@ public class CE19EnemyDieState : CE19EnemyState {
 
 		// 일정 시간이 지났을 경우
 		if(m_fUpdateSkipTime.ExIsGreateEquals(5.0f)) {
+			a_oOwner.DestroyCallback(a_oOwner);
+
 			var oScecneManager = CSceneManager.ActiveSceneManager as CE19SceneManager;
 			oScecneManager.GameObjPoolManager.DespawnGameObj("Example_19/E19Enemy", a_oOwner.gameObject);
 		}

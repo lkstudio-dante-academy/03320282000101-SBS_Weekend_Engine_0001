@@ -50,5 +50,6 @@ public static partial class KDefine {
 	public const string G_SCENE_N_E18 = "Example_18 (3D TPS - 시작)";
 	public const string G_SCENE_N_E19 = "Example_19 (3D TPS - 플레이)";
 	public const string G_SCENE_N_E20 = "Example_20 (3D TPS - 결과)";
+	public const string G_SCENE_N_E21 = "Example_21 (네트워크)";
 	#endregion // 기본
 }

@@ -11,9 +11,15 @@ public class CE19Enemy : CComponent {
 	#endregion // 변수
 
 	#region 프로퍼티
+	public bool IsSurvive => m_bIsSurvive;
+
 	public Animator AnimatorComp { get; private set; } = null;
 	public NavMeshAgent NavMeshAgentComp { get; private set; } = null;
+
 	public CStateMachine<CE19Enemy> StateMachine { get; private set; } = new CStateMachine<CE19Enemy>();
+
+	public System.Action<CE19Enemy> HitCallback { get; private set; } = null;
+	public System.Action<CE19Enemy> DestroyCallback { get; private set; } = null;
 	#endregion // 프로퍼티
 
 	#region 함수
@@ -29,11 +35,15 @@ public class CE19Enemy : CComponent {
 	}
 
 	/** 초기화 */
-	public void Init() {
+	public void Init(System.Action<CE19Enemy> a_oHitCallback,
+		System.Action<CE19Enemy> a_oDestroyCallback) {
 		m_nHitCount = 3;
 		m_bIsSurvive = true;
 
+		this.HitCallback = a_oHitCallback;
+		this.DestroyCallback = a_oDestroyCallback;
 		this.NavMeshAgentComp.enabled = true;
+
 		this.AnimatorComp.SetTrigger("ActiveTrigger");
 		this.StateMachine.SetState(CObjPoolManager.Instance.SpawnObj<CE19EnemyIdleState>());
 	}
@@ -47,6 +57,14 @@ public class CE19Enemy : CComponent {
 	/** 상태를 갱신한다 */
 	public void Update() {
 		this.StateMachine.Update(Time.deltaTime);
+	}
+
+	/** 충돌이 발생했을 경우 */
+	public void OnTriggerEnter(Collider a_oCollider) {	
+		// 플레이어 일 경우
+		if(a_oCollider.CompareTag("E19Player")) {
+			a_oCollider.GetComponentInParent<CE19Player>().OnHit();
+		}
 	}
 
 	/** 타격 되었을 경우 */
@@ -64,6 +82,7 @@ public class CE19Enemy : CComponent {
 				oState = CObjPoolManager.Instance.SpawnObj<CE19EnemyHitState>();
 			}
 
+			this.HitCallback(this);
 			this.StateMachine.SetState(oState);
 		}
 	}

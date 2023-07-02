@@ -5,12 +5,18 @@ using UnityEngine;
 /** 플레이어 */
 public class CE19Player : CComponent {
 	#region 변수
+	private int m_nHP = 0;
 	private Animation m_oAni = null;
 
 	[SerializeField] private GameObject m_oContents = null;
 	[SerializeField] private GameObject m_oBulletRoot = null;
 	[SerializeField] private GameObject m_oBulletSpawnPos = null;
 	#endregion // 변수
+
+	#region 프로퍼티
+	public int HP => m_nHP;
+	public System.Action<CE19Player> HitCallback { get; private set; } = null;
+	#endregion // 프로퍼티
 
 	#region 함수
 	/** 초기화 */
@@ -19,6 +25,12 @@ public class CE19Player : CComponent {
 
 		m_oAni = this.GetComponentInChildren<Animation>();
 		m_oAni.Play("Idle");
+	}
+
+	/** 초기화 */
+	public void Init(int a_nHP, System.Action<CE19Player> a_oHitCallback) {
+		m_nHP = a_nHP;
+		this.HitCallback = a_oHitCallback;
 	}
 
 	/** 상태를 갱신한다 */
@@ -69,6 +81,20 @@ public class CE19Player : CComponent {
 		}
 		else {
 			m_oAni.CrossFade("Idle", 0.25f);
+		}
+	}
+
+	/** 타격 되었을 경우 */
+	public void OnHit() {
+		m_nHP = Mathf.Max(0, m_nHP - 10);
+		this.HitCallback(this);
+	}
+
+	/** 충돌이 발생했을 경우 */
+	public void OnTriggerEnter(Collider a_oCollider) {
+		// 적 일 경우
+		if(a_oCollider.CompareTag("E19EnemyHand")) {
+			this.OnHit();
 		}
 	}
 	#endregion // 함수

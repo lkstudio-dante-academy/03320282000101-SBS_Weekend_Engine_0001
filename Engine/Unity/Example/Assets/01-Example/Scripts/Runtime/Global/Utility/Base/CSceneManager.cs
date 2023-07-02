@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 /** 씬 관리자 */
@@ -20,6 +21,10 @@ public abstract class CSceneManager : CComponent {
 	 * 가져오는 것이 가능하다.
 	 */
 	#region 프로퍼티
+	public Light MainLight { get; private set; } = null;
+	public Camera MainCamera { get; private set; } = null;
+	public EventSystem UIsEventSystem { get; private set; } = null;
+
 	public GameObject UIs { get; private set; } = null;
 	public GameObject PopupUIs { get; private set; } = null;
 
@@ -31,6 +36,10 @@ public abstract class CSceneManager : CComponent {
 	#endregion // 프로퍼티
 
 	#region 클래스 프로퍼티
+	public static Light ActiveSceneMainLight { get; private set; } = null;
+	public static Camera ActiveSceneMainCamera { get; private set; } = null;
+	public static EventSystem ActiveSceneUIsEventScene { get; private set; } = null;
+
 	public static GameObject ActiveSceneUIs { get; private set; } = null;
 	public static GameObject ActiveScenePopupUIs { get; private set; } = null;
 
@@ -50,25 +59,85 @@ public abstract class CSceneManager : CComponent {
 		CSceneManager.m_oSceneManagerDict.TryAdd(this.SceneName, this);
 
 		/*
-		 * GameObject.Find 메서드는 액티브 씬에 특정 게임 객체를 탐색하는 역할을 수행한다. (즉, 해당 메서드는 활용하면 액티브 씬에
-		 * 속해있는 객체를 탐색 할 수 있지만 해당 씬에 많은 게임 객체가 존재 할 경우 모든 게임 객체를 탐색하기 때문에 프로그램 성능이
-		 * 저하된다.)
+		 * scene 프로퍼티를 활용하면 특정 게임 객체가 속해 있는 씬에 접근하는 것이 가능하다. 
+		 * 따라서, 해당 프로퍼티를 활용하면 특정 씬에 속해 있는 게임 객체를 탐색하기 위한 구문을 
+		 * 작성 할 수 있다.
 		 * 
-		 * 따라서, 해당 메서드 또한 한번 실행 후 결과를 캐시함으로서 메서드 호출 횟수를 줄여 줄 필요가 있다.
+		 * 단, 씬을 통해 접근 할 수 있는 게임 객체는 최상단 객체만 접근 할 수 있기 때문에 해당
+		 * 객체를 통해 자식 게임 객체를 탐색하기 위한 구문을 추가적으로 작성해야되는 단점이
+		 * 존재한다.
 		 */
-		this.UIs = GameObject.Find("UIs");
-		this.PopupUIs = GameObject.Find("PopupUIs");
+		var oRootGameObjs = this.gameObject.scene.GetRootGameObjects();
 
-		this.Objs = GameObject.Find("Objs");
-		this.StaticObjs = GameObject.Find("StaticObjs");
+		for(int i = 0; i < oRootGameObjs.Length; ++i) {
+			var oMainLight = oRootGameObjs[i].transform.Find("DirectionalLight");
+			var oMainCamera = oRootGameObjs[i].transform.Find("MainCamera");
+			var oEventSystem = oRootGameObjs[i].transform.Find("EventSystem");
+
+			var oUIs = oRootGameObjs[i].transform.Find("Canvas/UIs");
+			var oPopupUIs = oRootGameObjs[i].transform.Find("Canvas/PopupUIs");
+
+			var oObjs = oRootGameObjs[i].transform.Find("Objs");
+			var oStaticObjs = oRootGameObjs[i].transform.Find("StaticObjs");
+
+			// 메인 광원이 존재 할 경우
+			if(oMainLight != null && this.MainLight == null) {
+				this.MainLight = oMainLight.GetComponent<Light>();
+			}
+
+			// 메인 카메라가 존재 할 경우
+			if(oMainCamera != null && this.MainCamera == null) {
+				this.MainCamera = oMainCamera.GetComponent<Camera>();
+			}
+
+			// 이벤트 시스템이 존재 할 경우
+			if(oEventSystem != null && this.UIsEventSystem == null) {
+				this.UIsEventSystem = oEventSystem.GetComponent<EventSystem>();
+			}
+
+			// UIs 가 존재 할 경우
+			if(oUIs != null && this.UIs == null) {
+				this.UIs = oUIs.gameObject;
+			}
+
+			// Popup UIs 가 존재 할 경우
+			if(oPopupUIs != null && this.PopupUIs == null) {
+				this.PopupUIs = oPopupUIs.gameObject;
+			}
+
+			// Objs 가 존재 할 경우
+			if(oObjs != null && this.Objs == null) {
+				this.Objs = oObjs.gameObject;
+			}
+
+			// Static Objs 가 존재 할 경우
+			if(oStaticObjs != null && this.StaticObjs == null) {
+				this.StaticObjs = oStaticObjs.gameObject;
+			}
+		}
+
+		this.MainLight.gameObject.SetActive(this.IsActiveScene);
+		this.MainCamera.gameObject.SetActive(this.IsActiveScene);
+		this.UIsEventSystem.gameObject.SetActive(this.IsActiveScene);
 
 		// 액티브 씬 일 경우
 		if(this.IsActiveScene) {
-			CSceneManager.ActiveSceneUIs = this.UIs;
-			CSceneManager.ActiveScenePopupUIs = this.PopupUIs;
+			/*
+			 * GameObject.Find 메서드는 액티브 씬에 특정 게임 객체를 탐색하는 역할을 수행한다. (즉, 해당 메서드는 활용하면 액티브 씬에
+			 * 속해있는 객체를 탐색 할 수 있지만 해당 씬에 많은 게임 객체가 존재 할 경우 모든 게임 객체를 탐색하기 때문에 프로그램 성능이
+			 * 저하된다.)
+			 * 
+			 * 따라서, 해당 메서드 또한 한번 실행 후 결과를 캐시함으로서 메서드 호출 횟수를 줄여 줄 필요가 있다.
+			 */
+			CSceneManager.ActiveSceneMainLight = GameObject.Find("DirectionalLight").GetComponent<Light>();
+			CSceneManager.ActiveSceneMainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+			CSceneManager.ActiveSceneUIsEventScene = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
-			CSceneManager.ActiveSceneObjs = this.Objs;
-			CSceneManager.ActiveSceneStaticObjs = this.StaticObjs;
+			CSceneManager.ActiveSceneUIs = GameObject.Find("UIs");
+			CSceneManager.ActiveScenePopupUIs = GameObject.Find("PopupUIs");
+
+			CSceneManager.ActiveSceneObjs = GameObject.Find("Objs");
+			CSceneManager.ActiveSceneStaticObjs = GameObject.Find("StaticObjs");
 		}
 	}
 
