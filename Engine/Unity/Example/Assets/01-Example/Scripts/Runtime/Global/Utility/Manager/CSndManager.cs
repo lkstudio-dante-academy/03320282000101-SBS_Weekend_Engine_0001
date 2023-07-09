@@ -28,7 +28,7 @@ public class CSndManager : CSingleton<CSndManager> {
 	public override void Awake() {
 		base.Awake();
 
-		m_oBGSnd = CFactory.CreateCloneObj<CSnd>("BGSnd", 
+		m_oBGSnd = CFactory.CreateCloneObj<CSnd>("BGSnd",
 			this.gameObject, "Global/Prefabs/G_BGSnd");
 	}
 
@@ -86,7 +86,9 @@ public class CSndManager : CSingleton<CSndManager> {
 
 	/** 진동 재생한다 */
 	public void PlayVibrate() {
+#if UNITY_EDITOR || UNITY_IOS || UNITY_ANDROID
 		Handheld.Vibrate();
+#endif // #if UNITY_EDITOR || UNITY_IOS || UNITY_ANDROID
 	}
 
 	/** 플레이 가능한 효과음을 탐색한다 */

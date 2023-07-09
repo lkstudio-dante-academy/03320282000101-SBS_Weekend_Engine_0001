@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 /** 씬 관리자 */
 public abstract class CSceneManager : CComponent {
 	#region 클래스 변수
+	private static bool m_bIsDirtyUpdateScreenSize = true;
 	private static Dictionary<string, CSceneManager> m_oSceneManagerDict = new Dictionary<string, CSceneManager>();
 	#endregion // 클래스 변수
 
@@ -57,6 +58,19 @@ public abstract class CSceneManager : CComponent {
 
 		Physics.gravity = new Vector3(0.0f, -1750.0f, 0.0f);
 		CSceneManager.m_oSceneManagerDict.TryAdd(this.SceneName, this);
+
+#if UNITY_STANDALONE
+		// 해상도 설정이 필요 할 경우
+		if(this.IsActiveScene && CSceneManager.m_bIsDirtyUpdateScreenSize) {
+			/*
+			 * Screen 클래스를 활용하면 현재 디스플레이의 해상도를 변경하거나 정보를 가져오는
+			 * 것이 가능하다. (즉, 해당 클래스를 활용하면 수직 동기화에 필요한 디스플레이의
+			 * 화면 갱신 주기 등을 가져오는 것이 가능하다.)
+			 */
+			Screen.SetResolution(960, 540, FullScreenMode.Windowed);
+			CSceneManager.m_bIsDirtyUpdateScreenSize = false;
+		}
+#endif // #if UNITY_STANDALONE
 
 		/*
 		 * scene 프로퍼티를 활용하면 특정 게임 객체가 속해 있는 씬에 접근하는 것이 가능하다. 
