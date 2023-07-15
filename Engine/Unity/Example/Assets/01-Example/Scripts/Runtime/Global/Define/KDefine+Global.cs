@@ -20,6 +20,13 @@ public struct STSortingOrderInfo {
 /** 전역 상수 */
 public static partial class KDefine {
 	#region 기본
+	// 해상도
+	public const int G_DESIGN_WIDTH = 1280;
+	public const int G_DESIGN_HEIGHT = 720;
+
+	public static readonly Vector3 G_DESIGN_SIZE = new Vector3(KDefine.G_DESIGN_WIDTH,
+		KDefine.G_DESIGN_HEIGHT, 0.0f);
+
 	// 기타
 	public const int G_COMPARE_LESS = -1;
 	public const int G_COMPARE_EQUALS = 0;
@@ -51,5 +58,8 @@ public static partial class KDefine {
 	public const string G_SCENE_N_E19 = "Example_19 (3D TPS - 플레이)";
 	public const string G_SCENE_N_E20 = "Example_20 (3D TPS - 결과)";
 	public const string G_SCENE_N_E21 = "Example_21 (네트워크)";
+	public const string G_SCENE_N_E22 = "Example_22 (벽돌 깨기 - 시작)";
+	public const string G_SCENE_N_E23 = "Example_23 (벽돌 깨기 - 플레이)";
+	public const string G_SCENE_N_E24 = "Example_24 (벽돌 깨기 - 결과)";
 	#endregion // 기본
 }

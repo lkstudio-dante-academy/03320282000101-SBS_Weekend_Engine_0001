@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 /** 씬 관리자 */
 public abstract class CSceneManager : CComponent {
 	#region 클래스 변수
+	private static bool m_bIsFirstAwake = true;
 	private static bool m_bIsDirtyUpdateScreenSize = true;
 	private static Dictionary<string, CSceneManager> m_oSceneManagerDict = new Dictionary<string, CSceneManager>();
 	#endregion // 클래스 변수
@@ -58,6 +59,12 @@ public abstract class CSceneManager : CComponent {
 
 		Physics.gravity = new Vector3(0.0f, -1750.0f, 0.0f);
 		CSceneManager.m_oSceneManagerDict.TryAdd(this.SceneName, this);
+
+		// 최초 초기화 일 경우
+		if(CSceneManager.m_bIsFirstAwake) {
+			Debug.Log($"Persistent Path: {Application.persistentDataPath}");
+			CSceneManager.m_bIsFirstAwake = false;
+		}
 
 #if UNITY_STANDALONE
 		// 해상도 설정이 필요 할 경우

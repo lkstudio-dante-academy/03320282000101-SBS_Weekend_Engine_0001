@@ -141,14 +141,30 @@ public static partial class CFunc {
 		 * 
 		 * Ex)
 		 * Path.GetDirectoryName("A/B/C/Test.txt").Replace("\\", "/")
-		 */
+		 */		
 		// 디렉토리가 존재하지 않을 경우
 		if(!Directory.Exists(Path.GetDirectoryName(a_oFilePath))) {
 			Directory.CreateDirectory(Path.GetDirectoryName(a_oFilePath));
 		}
 
+		/*
+		 * 주요 FileMode 종류
+		 * - Open
+		 * - OpenOrCreate
+		 * - Create
+		 * - Truncate
+		 * 
+		 * Create vs OpenOrCreate
+		 * - 두 파일 모드 모두 파일이 존재하지 않을 경우 새롭게 파일을 생성해주는
+		 * 특징이 존재한다. Create 모드는 파일이 이미 존재 할 경우 파일에 존재하는
+		 * 데이터를 모두 제거 (Truncate) 하는 반면 OpenOrCreate 모든 기존 데이터
+		 * 유지하는 차이점이 존재한다.
+		 * 
+		 * 따라서, 파일에 존재하는 데이터를 주 기억 장치 (메모리) 에 로드 후 데이터를
+		 * 제어하는 구문을 작성 할 때에는 가능하면 Create 모드를 사용하는 것을 추천한다.
+		 */
 		using(var oWStream = File.Open(a_oFilePath, 
-			FileMode.OpenOrCreate, FileAccess.Write)) {
+			FileMode.Create, FileAccess.Write)) {
 			var oBytes = System.Text.Encoding.Default.GetBytes(a_oStr);
 			oWStream.Write(oBytes, 0, oBytes.Length);
 		}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /*
  * 확장 메서드란?
@@ -21,6 +22,16 @@ using UnityEngine;
 /** 확장 클래스 */
 public static partial class CExtension {
 	#region 클래스 함수
+	/** 월드 위치를 반환한다 */
+	public static Vector3 ExGetWorldPos(this PointerEventData a_oSender,
+		Vector3 a_stDesignSize) {
+		float fNormPosX = a_oSender.position.x / (CAccess.ScreenSize.x / 2.0f) - 1.0f;
+		float fNormPosY = a_oSender.position.y / (CAccess.ScreenSize.y / 2.0f) - 1.0f;
+
+		float fScreenWidth = a_stDesignSize.y * (CAccess.ScreenSize.x / CAccess.ScreenSize.y);
+		return new Vector3(fNormPosX * (fScreenWidth / 2.0f), fNormPosY * (a_stDesignSize.y / 2.0f), 0.0f);
+	}
+
 	/** 동일 여부를 검사한다 */
 	public static bool ExIsEquals(this float a_fSender, float a_fRhs) {
 		return Mathf.Approximately(a_fSender, a_fRhs);

@@ -17,12 +17,23 @@ public static partial class CAccess {
 	#region 프로퍼티
 	public static Vector3 ScreenSize {
 		get {
+#if UNITY_EDITOR
+			/*
+			 * 에디터에서는 Screen 클래스를 사용해서 해상도를 가져 올 경우
+			 * Game 뷰의 해상도가 아닌 모니터의 해상도를 가져오기 때문에 
+			 * 에디터에서 정확한 Game 뷰의 해상도를 가져오기 위해서는 카메라를
+			 * 이용해야한다.
+			 */
+			return new Vector3(Camera.main.pixelWidth, 
+				Camera.main.pixelHeight, 0.0f);
+#else
 			return new Vector3(Screen.width, Screen.height, 0.0f);
+#endif // #if UNITY_EDITOR
 		}
 	}
-	#endregion // 프로퍼티
+#endregion // 프로퍼티
 
-	#region 함수
+#region 함수
 	/** 저장 가능한 경로를 반환한다 */
 	public static string GetWriteablePath(string a_oPath) {
 		/*
@@ -37,5 +48,5 @@ public static partial class CAccess {
 		return string.Format("{0}/{1}", 
 			Application.persistentDataPath, a_oPath);
 	}
-	#endregion // 함수
+#endregion // 함수
 }

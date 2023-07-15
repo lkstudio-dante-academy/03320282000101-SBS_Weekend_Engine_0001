@@ -79,6 +79,11 @@ public partial class CPopup : CComponent {
 		}
 	}
 
+	/** 닫기 애니메이션이 완료 되었을 경우 */
+	private void OnCompleteCloseAni() {
+		Destroy(this.gameObject);
+	}
+
 	/** 팝업을 출력한다 */
 	public void Show() {
 		this.ResetAniState();
@@ -106,7 +111,7 @@ public partial class CPopup : CComponent {
 		this.ResetAniState();
 		this.transform.localScale = Vector3.one;
 
-		m_oAni = this.transform.DOScale(0.0f, 0.25f).SetAutoKill().SetUpdate(true);
+		m_oAni = this.transform.DOScale(0.0f, 0.25f).SetAutoKill().SetUpdate(true).OnComplete(this.OnCompleteCloseAni);
 		Time.timeScale = m_fPrevTimeScale;
 	}
 	#endregion // 함수

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 /** 게임 정보 */
+[JsonObject]
 public class CGameInfo : CBaseInfo {
-	// Do Something
+	#region 프로퍼티
+	public bool IsMuteBGSnd { get; set; } = false;
+	public bool IsMuteFXSnds { get; set; } = false;
+	#endregion // 프로퍼티
 }
 
 /** 게임 정보 저장소 */
