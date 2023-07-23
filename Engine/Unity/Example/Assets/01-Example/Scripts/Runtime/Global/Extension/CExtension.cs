@@ -37,6 +37,13 @@ public static partial class CExtension {
 		return Mathf.Approximately(a_fSender, a_fRhs);
 	}
 
+	/** 동일 여부를 검사한다 */
+	public static bool ExIsEquals(this Vector3 a_stSender, Vector3 a_stRhs) {
+		return a_stSender.x.ExIsEquals(a_stRhs.x) &&
+			a_stSender.y.ExIsEquals(a_stRhs.y) &&
+			a_stSender.z.ExIsEquals(a_stRhs.z);
+	}
+
 	/** 작음 여부를 검사한다 */
 	public static bool ExIsLess(this float a_fSender, float a_fRhs) {
 		return a_fSender < a_fRhs - float.Epsilon;
@@ -102,6 +109,13 @@ public static partial class CExtension {
 			a_bIsCoord ? 1.0f : 0.0f);
 
 		return a_oParent.transform.localToWorldMatrix * stVec4;
+	}
+
+	/** 값을 교환한다 */
+	public static void ExSwap<T>(this List<T> a_oSender, int a_nIdx01, int a_nIdx02) {
+		T tTemp = a_oSender[a_nIdx01];
+		a_oSender[a_nIdx01] = a_oSender[a_nIdx02];
+		a_oSender[a_nIdx02] = tTemp;
 	}
 	#endregion // 클래스 함수
 

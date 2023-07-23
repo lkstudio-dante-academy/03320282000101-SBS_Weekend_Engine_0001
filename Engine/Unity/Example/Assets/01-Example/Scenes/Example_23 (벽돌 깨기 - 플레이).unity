@@ -321,6 +321,132 @@ MonoBehaviour:
   m_fFOV: 45
   m_stDefSize: {x: 1280, y: 720, z: 0}
   m_oObjsRoot: {fileID: 745017595}
+--- !u!1 &429430092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429430093}
+  - component: {fileID: 429430095}
+  - component: {fileID: 429430094}
+  - component: {fileID: 429430096}
+  m_Layer: 0
+  m_Name: ScoreText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &429430093
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429430092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1290853728}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &429430094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429430092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &429430095
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429430092}
+  m_CullTransparentMesh: 1
+--- !u!114 &429430096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429430092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
+--- !u!1 &475886400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475886401}
+  m_Layer: 0
+  m_Name: ObstacleRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475886401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475886400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1787696531}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540131211
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +459,7 @@ GameObject:
   - component: {fileID: 540131215}
   - component: {fileID: 540131214}
   - component: {fileID: 540131213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5371c40d3ccffbc44891d7dfdee18a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_oScoreText: {fileID: 429430094}
   m_oBall: {fileID: 1781362074}
+  m_oObstacleRoot: {fileID: 475886400}
+  m_oOriginObstacle: {fileID: 1801768623606454264, guid: f28f2c0c3274d2d4e91dc8dce4f497a7, type: 3}
   m_oAimingLine: {fileID: 2135136273}
 --- !u!1 &946935251
 GameObject:
@@ -811,7 +940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1220373833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BoundsRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,6 +995,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 357280701}
+  - {fileID: 429430093}
   m_Father: {fileID: 1662882638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -886,7 +1016,7 @@ GameObject:
   - component: {fileID: 1554524180}
   - component: {fileID: 1554524179}
   - component: {fileID: 1554524178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,6 +1313,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1220373833}
+  - {fileID: 475886401}
   m_Father: {fileID: 745017596}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1198,7 +1329,7 @@ GameObject:
   - component: {fileID: 1950590841}
   - component: {fileID: 1950590840}
   - component: {fileID: 1950590839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,9 +1434,9 @@ GameObject:
   - component: {fileID: 1993084432}
   - component: {fileID: 1993084431}
   - component: {fileID: 1993084430}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DownBounds
-  m_TagString: Untagged
+  m_TagString: E23DownBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
