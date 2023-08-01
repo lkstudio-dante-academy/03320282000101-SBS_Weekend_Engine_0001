@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 /** Example 23 */
 public class CE23SceneManager : CSceneManager {
@@ -21,12 +22,15 @@ public class CE23SceneManager : CSceneManager {
 
 	private int m_nScore = 0;
 	private EState m_eState = EState.AIMING;
+	private Vector3 m_stShootPos = Vector3.zero;
 
+	private Tween m_oDropAni = null;
 	private List<Vector3> m_oLinePosList = new List<Vector3>();
 	private List<CE23Obstacle> m_oObstacleList = new List<CE23Obstacle>();
 
 	[Header("=====> UIs <=====")]
 	[SerializeField] private Text m_oScoreText = null;
+	[SerializeField] private Button m_oDropBtn = null;
 
 	[Header("=====> Game Objects <=====")]
 	[SerializeField] private GameObject m_oBall = null;
@@ -47,6 +51,7 @@ public class CE23SceneManager : CSceneManager {
 		this.SetupObstacles();
 
 		CE23DataStorage.Instance.Reset();
+		m_oDropBtn.gameObject.SetActive(false);
 
 		// 볼을 설정한다
 		m_oBall.GetComponent<CE23Ball>().Init(this.HandleOnHit);
@@ -56,6 +61,12 @@ public class CE23SceneManager : CSceneManager {
 		oDispatcher.BeginCallback = this.HandleTouchBegin;
 		oDispatcher.MoveCallback = this.HandleTouchMove;
 		oDispatcher.EndCallback = this.HandleTouchEnd;
+	}
+
+	/** 제거 되었을 경우 */
+	public override void OnDestroy() {
+		base.OnDestroy();
+		m_oDropAni?.Kill();
 	}
 
 	/** 상태를 갱신한다 */
@@ -73,9 +84,20 @@ public class CE23SceneManager : CSceneManager {
 		}
 	}
 
+	/** 낙하 버튼을 눌렀을 경우 */
+	public void OnTouchDropBtn() {
+		var oDropAni = DOTween.Sequence().SetAutoKill();
+		oDropAni.Append(m_oBall.transform.DOLocalMove(m_stShootPos, 0.5f));
+		oDropAni.AppendCallback(this.OnCompleteDrop);
+
+		m_oDropAni?.Kill();
+		m_oDropAni = oDropAni;
+	}
+
 	/** UI 상태를 갱신한다 */
 	private void UpdateUIsState() {
 		m_oScoreText.text = $"{m_nScore}";
+		m_oDropBtn.gameObject.SetActive(m_eState == EState.SHOOT);
 	}
 
 	/** 장애물을 설정한다 */
@@ -100,7 +122,7 @@ public class CE23SceneManager : CSceneManager {
 		Vector3 stPivotPos = new Vector3(fTotalWidth / -2.0f,
 			fTotalHeight / 2.0f, 0.0f);
 
-		for(int i = 0; i < 1; ++i) {
+		for(int i = 0; i < 15; ++i) {
 			int nRow = oIdxList[i] / 10;
 			int nCol = oIdxList[i] % 10;
 
@@ -184,7 +206,7 @@ public class CE23SceneManager : CSceneManager {
 #endif // DISABLE_THIS
 
 			// 충돌체가 존재 할 경우
-			if(Physics.Raycast(stPos, 
+			if(Physics.Raycast(stPos,
 				stDirection.normalized, out RaycastHit stRaycastHit, float.MaxValue, nLayerMask)) {
 				m_oLinePosList.Add(stRaycastHit.point);
 
@@ -200,15 +222,16 @@ public class CE23SceneManager : CSceneManager {
 	}
 
 	/** 터치 종료를 처리한다 */
-	private void HandleTouchEnd(CTouchDispatcher a_oSender, 
+	private void HandleTouchEnd(CTouchDispatcher a_oSender,
 		PointerEventData a_oEventData) {
 		var stTouchPos = a_oEventData.ExGetWorldPos(KDefine.G_DESIGN_SIZE);
 
 		// 볼을 발사 할 수 있을 경우
 		if(m_bIsTouch && stTouchPos.y.ExIsGreate(m_oBall.transform.position.y)) {
 			var stDirection = stTouchPos - m_oBall.transform.position;
+			m_stShootPos = m_oBall.transform.localPosition;
 
-			m_eState = EState.SHOOT;
+			this.SetState(EState.SHOOT);
 			m_oBall.GetComponent<CE23Ball>().Shoot(stDirection, this.OnCompleteMove);
 		}
 
@@ -216,17 +239,31 @@ public class CE23SceneManager : CSceneManager {
 		m_oAimingLine.gameObject.SetActive(false);
 	}
 
+	/** 볼 낙하가 완료 되었을 경우 */
+	private void OnCompleteDrop() {
+		this.SetState(EState.AIMING);
+		m_oBall.GetComponent<CE23Ball>().SetIsShoot(false);
+	}
+
 	/** 볼 이동이 완료 되었을 경우 */
 	private void OnCompleteMove(CE23Ball a_oSender) {
-		m_eState = EState.AIMING;
+		this.SetState(EState.AIMING);
 
 		// 모든 장애물을 제거했을 경우
 		if(m_oObstacleList.Count <= 0) {
 			CE23DataStorage.Instance.Score = m_nScore;
 
-			CSceneLoader.Instance.LoadScene(KDefine.G_SCENE_N_E24, 
+			CSceneLoader.Instance.LoadScene(KDefine.G_SCENE_N_E24,
 				UnityEngine.SceneManagement.LoadSceneMode.Additive);
 		}
 	}
-#endregion // 함수
+	#endregion // 함수
+
+	#region 접근 함수
+	/** 상태를 변경한다 */
+	private void SetState(EState a_eState) {
+		m_eState = a_eState;
+		m_bIsDirtyUpdateState = true;
+	}
+	#endregion // 접근 함수
 }

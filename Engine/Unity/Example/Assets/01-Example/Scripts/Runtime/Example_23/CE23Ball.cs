@@ -47,6 +47,7 @@ public class CE23Ball : CComponent {
 			// 방향 전환이 필요 할 경우
 			if(stNextPos.ExIsEquals(stRayHitPos)) {
 				m_stDirection = Vector3.Reflect(m_stDirection, stRaycastHit.normal);
+				m_stDirection.z = 0.0f;
 
 				// 장애물과 충돌했을 경우
 				if(stRaycastHit.collider.CompareTag("E23Obstacle")) {
@@ -56,7 +57,7 @@ public class CE23Ball : CComponent {
 
 				// 아래쪽 경계와 충돌했을 경우
 				if(stRaycastHit.collider.CompareTag("E23DownBounds")) {
-					m_bIsShoot = false;
+					this.SetIsShoot(false);
 					m_oCallback?.Invoke(this);
 				}
 			}
@@ -67,10 +68,17 @@ public class CE23Ball : CComponent {
 
 	/** 볼을 발사한다 */
 	public void Shoot(Vector3 a_stDirection, System.Action<CE23Ball> a_oCallback) {
-		m_bIsShoot = true;
+		m_oCallback = a_oCallback;
 		m_stDirection = a_stDirection.normalized;
 
-		m_oCallback = a_oCallback;
+		this.SetIsShoot(true);
 	}
 	#endregion // 함수
+
+	#region 접근 함수
+	/** 발사 상태 여부를 변경한다 */
+	public void SetIsShoot(bool a_bIsShoot) {
+		m_bIsShoot = a_bIsShoot;
+	}
+	#endregion // 접근 함수
 }

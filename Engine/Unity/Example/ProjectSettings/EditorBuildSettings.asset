@@ -86,4 +86,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/01-Example/Scenes/Example_24 (\uBCBD\uB3CC \uAE68\uAE30 - \uACB0\uACFC).unity"
     guid: acba0f84567cda84396b49830aeee94a
+  - enabled: 1
+    path: "Assets/01-Example/Scenes/Example_25 (\uAE30\uD0C0).unity"
+    guid: 6b7350bffaff89d46b901735231261d6
   m_configObjects: {}
