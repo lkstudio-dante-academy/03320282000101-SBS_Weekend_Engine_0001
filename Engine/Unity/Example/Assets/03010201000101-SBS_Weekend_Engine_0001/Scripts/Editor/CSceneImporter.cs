@@ -64,7 +64,7 @@ public static partial class CSceneImporter
 		 */
 		var oAssetGUIDs = AssetDatabase.FindAssets("Example_", new string[]
 		{
-			"Assets/03020201000101-SBS_Weekend_Engine_0001/Scenes"
+			"Assets/03010201000101-SBS_Weekend_Engine_0001/Scenes"
 		});
 
 		var oEditorSceneList = new List<EditorBuildSettingsScene>();
