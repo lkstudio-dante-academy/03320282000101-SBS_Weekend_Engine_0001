@@ -43,17 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Example_01 %28기초%29\CExample_01.cs" />
-    <Compile Include="Classes\Example_02 %28자료형 및 변수%29\CExample_02.cs" />
-    <Compile Include="Classes\Example_03 %28데이터 표현 방법%29\CExample_03.cs" />
-    <Compile Include="Classes\Example_04 %28연산자%29\CExample_04.cs" />
-    <Compile Include="Classes\Example_05 %28조건문%29\CExample_05.cs" />
-    <Compile Include="Classes\Example_06 %28반복문%29\CExample_06.cs" />
-    <Compile Include="Classes\Example_07 %28컬렉션%29\CExample_07.cs" />
-    <Compile Include="Classes\Example_08 %28메서드%29\CExample_08.cs" />
-    <Compile Include="Classes\Example_09 %28클래스%29\CExample_09.cs" />
-    <Compile Include="Classes\Example_10 %28제네릭%29\CExample_10.cs" />
-    <Compile Include="Classes\Example_11 %28델리게이트%29\CExample_11.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_01 %28기초%29\CExample_01.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_02 %28자료형 및 변수%29\CExample_02.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_03 %28데이터 표현 방법%29\CExample_03.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_04 %28연산자%29\CExample_04.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_05 %28조건문%29\CExample_05.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_06 %28반복문%29\CExample_06.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_07 %28컬렉션%29\CExample_07.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_08 %28메서드%29\CExample_08.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_09 %28클래스%29\CExample_09.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_10 %28제네릭%29\CExample_10.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_11 %28델리게이트%29\CExample_11.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_01\CPractice_01.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_02\CPractice_02.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_03\CPractice_03.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_04\CPractice_04.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_05\CPractice_05.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_01\CTraining_01.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_02\CTraining_02.cs" />
+    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_03\CTraining_03.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

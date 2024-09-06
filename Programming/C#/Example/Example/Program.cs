@@ -1,3 +1,7 @@
+#define EXAMPLE
+#define PRACTICE
+#define TRAINING
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,22 +33,34 @@ namespace Example {
 		 * 존재하는 명령어들이 실행된다는 것을 의미한다.)
 		 */
 		static void Main(string[] args) {
+#if EXAMPLE
 			/*
 			 * Visual Studio 주석 관련 단축키
 			 * - Ctrl + K, C (주석 처리)
 			 * - Ctrl + K, U (주석 해제)
 			 */
-			//Classes.Example_01.CExample_01.Start(args);
-			//Classes.Example_02.CExample_02.Start(args);
-			//Classes.Example_03.CExample_03.Start(args);
-			//Classes.Example_04.CExample_04.Start(args);
-			//Classes.Example_05.CExample_05.Start(args);
-			//Classes.Example_06.CExample_06.Start(args);
-			//Classes.Example_07.CExample_07.Start(args);
-			//Classes.Example_08.CExample_08.Start(args);
-			//Classes.Example_09.CExample_09.Start(args);
-			//Classes.Example_10.CExample_10.Start(args);
-			Classes.Example_11.CExample_11.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_01.CExample_01.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_02.CExample_02.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_03.CExample_03.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_04.CExample_04.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_05.CExample_05.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_06.CExample_06.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_07.CExample_07.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_08.CExample_08.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_09.CExample_09.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_10.CExample_10.Start(args);
+			_03010201000101_S_W_Engine_0001.E01.Example.Classes.Example_11.CExample_11.Start(args);
+#elif PRACTICE
+			//_03010201000101_S_W_Engine_0001.E01.Practice.Classes.Practice__01.CPractice_01.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Practice.Classes.Practice__02.CPractice_02.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Practice.Classes.Practice__03.CPractice_03.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Practice.Classes.Practice__04.CPractice_04.Start(args);
+			_03010201000101_S_W_Engine_0001.E01.Practice.Classes.Practice__05.CPractice_05.Start(args);
+#elif TRAINING
+			//_03010201000101_S_W_Engine_0001.E01.Training.Classes.Training_01.CTraining_01.Start(args);
+			//_03010201000101_S_W_Engine_0001.E01.Training.Classes.Training_02.CTraining_02.Start(args);
+			_03010201000101_S_W_Engine_0001.E01.Training.Classes.Training_03.CTraining_03.Start(args);
+#endif // #if EXAMPLE
 
 			Console.ReadKey();
 		}
