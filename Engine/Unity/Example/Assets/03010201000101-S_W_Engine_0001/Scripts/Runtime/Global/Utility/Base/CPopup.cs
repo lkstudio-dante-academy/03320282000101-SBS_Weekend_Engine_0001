@@ -27,7 +27,7 @@ public partial class CPopup : CComponent
 		this.transform.localScale = Vector3.zero;
 
 		/*
-		 * 유니티 게임 객체는 계층적인 구조를 지닐 수 있으며 해당 구조는 Transform 컴포넌트에 의해서 관리되고 있기 때문에 만약 특정
+		 * 게임 객체는 계층적인 구조를 지닐 수 있으며 해당 구조는 Transform 컴포넌트에 의해서 관리되고 있기 때문에 만약 특정
 		 * 게임 객체 하위에 존재하는 객체를 탐색하고 싶다면 Transform 컴포넌트가 지니고 있는 Find 메서드를 활용하면 된다.
 		 * 
 		 * 즉, 해당 메서드는 하위 객체를 탐색하는 역할을 수행하면 만약 탐색하고자 하는 객체가 해당 메서드를 호출한 객체 바로 하위에
@@ -50,7 +50,7 @@ public partial class CPopup : CComponent
 		 * 따라서, 테이블과 같은 특정 데이터에 따라 필요한 에셋이 서로 다를 경우 에디터 상에 미리 설정하는 방식은 비효율적이기 때문에 
 		 * 해당 상황에서는 Resource.Load 메서드와 같은 동적으로 에셋을 로드하는 구조로 프로그램을 작성 할 필요가 있다.
 		 * 
-		 * 단, Resources.Load 유니티 에셋 폴더 상에 Resources 라는 이름을 지닌 폴더만 인식 할 수 있기 때문에 해당 메서드를 사용해서
+		 * 단, Resources.Load 메서드는 Unity 에셋 폴더 상에 Resources 라는 이름을 지닌 폴더만 인식 할 수 있기 때문에 해당 메서드를 사용해서
 		 * 에셋을 동적으로 로드하기 위해서는 반드시 해당 에셋이 Resources 폴더 하위에 위치 할 필요가 있다. (즉, 해당 메서드에 명시되는
 		 * 경로는 Resources 폴더를 기준으로 하는 상대 경로를 입력하면 된다.)
 		 * 
@@ -101,7 +101,7 @@ public partial class CPopup : CComponent
 		m_oAni = this.transform.DOScale(1.0f, 0.25f).SetAutoKill().SetUpdate(true);
 
 		/*
-		 * Time.timeScale 은 유니티 상에서 흘러가는 시간의 비율을 조절하는데 사용된다. (즉, Time.deltaTime 은 이전 프레임과 현재 
+		 * Time.timeScale 은 Unity 상에서 흘러가는 시간의 비율을 조절하는데 사용된다. (즉, Time.deltaTime 은 이전 프레임과 현재 
 		 * 프레임 사이에 흘러간 시간 차를 계산 후 최종적으로 Time.timeScale 을 곱해서 프레임 간에 흘러간 시간을 산출한다는 것을 
 		 * 알 수 있다.)
 		 * 

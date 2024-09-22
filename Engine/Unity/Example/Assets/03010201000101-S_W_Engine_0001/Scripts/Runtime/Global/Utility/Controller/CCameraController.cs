@@ -9,7 +9,7 @@ public class CCameraController : CComponent
 	private Camera m_oCamera = null;
 
 	/*
-	 * SerializeField 속성은 private 제한자로 선언 된 변수를 유니티 상에서 수정 할 수 있도록 노출시키는 역할을 수행한다.
+	 * SerializeField 속성은 private 제한자로 선언 된 변수를 Unity 상에서 수정 할 수 있도록 노출시키는 역할을 수행한다.
 	 * (즉, 해당 속성을 사용하면 public 제한자를 사용하는 것보다 좀 더 안전하게 변수를 활용하는 것이 가능하다는 것을 알 수
 	 * 있다.)
 	 */

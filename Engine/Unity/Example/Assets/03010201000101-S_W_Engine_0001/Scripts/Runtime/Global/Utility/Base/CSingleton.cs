@@ -30,8 +30,8 @@ public class CSingleton<T> : CComponent where T : CSingleton<T>
 				CSingleton<T>.m_tInstance = oGameObj.AddComponent<T>();
 
 				/*
-				 * DontDestroyOnLoad 메서드는 유니티 씬이 전환 되도 특정 객체를 제거하지 않게 방지하는 역할을 수행한다. (즉, 
-				 * 기본적으로 유니티는 씬 전환 될 때 기존 씬에 존재하는 모든 객체를 제거한다는 것을 알 수 있다.)
+				 * DontDestroyOnLoad 메서드는 Unity 씬이 전환 되도 특정 객체를 제거하지 않게 방지하는 역할을 수행한다. (즉, 
+				 * 기본적으로 Unity 는 씬 전환 될 때 기존 씬에 존재하는 모든 객체를 제거한다는 것을 알 수 있다.)
 				 * 
 				 * 따라서, 씬이 전환되도 특정 객체를 계속 유지하기 위해서는 반드시 해당 메서드를 활용해야하며 만약 특정 객체의
 				 * 부모가 존재 할 경우 반드시 부모 객체를 지정해줘야한다. (즉, 해당 메서드에 입력으로 전달 할 수 있는 객체는

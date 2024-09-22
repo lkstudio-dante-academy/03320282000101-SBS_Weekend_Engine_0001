@@ -146,7 +146,7 @@ public class CE01Example_06 : CSceneManager
 			 * 서브 루틴과 달리 필요에 따라 루틴이 종료 된 위치부터 다시 동작 할 여지가 있기 때문에 일반적인 루틴에서
 			 * 사용되는 return 키워드는 사용하는 것이 불가능하다.
 			 * 
-			 * 즉, yield return 키워드는 코루틴에서 사용되는 return 키워드를 의미한다. 또한, 유니티에서 코루틴은 항상
+			 * 즉, yield return 키워드는 코루틴에서 사용되는 return 키워드를 의미한다. 또한, Unity 에서 코루틴은 항상
 			 * 반환 형으로 IEnumerator 인터페이스를 따르고 있는 객체를 요구한다는 특징이 있다.
 			 */
 			yield return new WaitForSeconds(DELTA_T_OBSTACLE);

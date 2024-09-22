@@ -25,7 +25,7 @@ public class CSceneLoader : CSingleton<CSceneLoader>
 		System.Action<float> a_oCallback, LoadSceneMode a_eSceneMode)
 	{
 		/*
-		 * SceneManager.LoadSceneAsync 메서드는 유니티 씬을 비동기로 로드하는 역할을 수행한다. (즉, 로드 할 씬이 무거 울 경우
+		 * SceneManager.LoadSceneAsync 메서드는 Unity 씬을 비동기로 로드하는 역할을 수행한다. (즉, 로드 할 씬이 무거 울 경우
 		 * 씬을 로드하는데 시간이 다소 필요하기 때문에 해당 씬을 동기로 로드 할 경우 게임 화면이 잠시 멈추는 현상이 발생한다는 것을
 		 * 알 수 있다.)
 		 * 

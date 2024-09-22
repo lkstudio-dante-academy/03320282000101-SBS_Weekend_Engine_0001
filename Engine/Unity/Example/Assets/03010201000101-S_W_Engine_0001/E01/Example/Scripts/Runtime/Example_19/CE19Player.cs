@@ -41,7 +41,7 @@ public class CE19Player : CComponent
 	{
 		/*
 		 * Input.GetAxis 계열 메서드를 활용하면 스틱과 같은 디바이스의 축 정보를 가져오는 것이
-		 * 가능하다. 또한, 해당 설정은 유니티에서 키보드의 특정 키와 매칭 할 수 있기 때문에
+		 * 가능하다. 또한, 해당 설정은 Unity 에서 키보드의 특정 키와 매칭 할 수 있기 때문에
 		 * 멀티 플랫폼을 염두해두고 있다면 해당 메서드를 활용하는 것을 추천한다.
 		 */
 		float fVertical = Input.GetAxisRaw("Vertical");
