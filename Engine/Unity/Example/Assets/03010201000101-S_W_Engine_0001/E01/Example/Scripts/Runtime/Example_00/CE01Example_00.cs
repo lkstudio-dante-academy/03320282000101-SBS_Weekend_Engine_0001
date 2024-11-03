@@ -53,12 +53,12 @@ public class CE01Example_00 : CSceneManager
 			 * 변수를 사용하면 된다.)
 			 */
 			int nIdx = i;
-			oBtn.onClick.AddListener(() => this.OnTouchBtn(nIdx));
+			oBtn.onClick.AddListener(() => this.OnTouchUIBtn(nIdx));
 		}
 	}
 
 	/** 버튼이 눌렸을 경우 */
-	private void OnTouchBtn(int a_nIdx)
+	private void OnTouchUIBtn(int a_nIdx)
 	{
 		CSceneLoader.Instance.LoadScene(SceneUtility.GetScenePathByBuildIndex(a_nIdx));
 	}
