@@ -6,107 +6,107 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_00
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_00
       (\uBA54\uB274).unity"
     guid: 2f4b1d781f1636c4a9177bf2ffdf9776
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_01
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_01
       (\uC720\uB2C8\uD2F0 \uAE30\uCD08).unity"
     guid: bcc58e6579098624f99688791660c746
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_02
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_02
       (\uCE74\uBA54\uB77C).unity"
     guid: 9c9dbcb37a232e2489622cf98495c2cb
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_03
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_03
       (\uC2A4\uD06C\uB9BD\uD2B8).unity"
     guid: e506d43816a993f4bbf5e0992cbdccc6
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_04
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_04
       (\uBB3C\uB9AC \uC5D4\uC9C4).unity"
     guid: 9d1299bf4b7e57d469f4c840effb9efb
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_05
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_05
       (\uD50C\uB798\uD53C \uBC84\uB4DC - \uC2DC\uC791).unity"
     guid: 308fdf489a8916f47a299512c988421f
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_06
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_06
       (\uD50C\uB798\uD53C \uBC84\uB4DC - \uD50C\uB808\uC774).unity"
     guid: dba6e677e5f4b814a8ddbc3c601a87aa
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_07
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_07
       (\uD50C\uB798\uD53C \uBC84\uB4DC - \uACB0\uACFC).unity"
     guid: 7ad39577e506ee74098a88c42e029664
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_08
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_08
       (UGUI - \uB85C\uADF8\uC778).unity"
     guid: 1256ecceb2bdaf0449f65988c60a2b98
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_09
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_09
       (UGUI - \uC11C\uBC84 \uC120\uD0DD).unity"
     guid: 01b1b7b5136b56f44bd6a87a48ee3951
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_10
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_10
       (\uC0AC\uC6B4\uB4DC).unity"
     guid: e9a0a6cedc7e9fd4892753f15c4751c4
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_11
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_11
       (\uC2A4\uD504\uB77C\uC774\uD2B8).unity"
     guid: 8875c28c88acc974187e69a11c53d00a
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_12
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_12
       (\uC560\uB2C8\uBA54\uC774\uC158).unity"
     guid: eb14d6d5e03ba7742a8265d7bc4bab40
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_13
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_13
       (\uB450\uB354\uC9C0 \uC7A1\uAE30 - \uC2DC\uC791).unity"
     guid: 93eed3f2b7ac46943bad08f15a574afe
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_14
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_14
       (\uB450\uB354\uC9C0 \uC7A1\uAE30 - \uD50C\uB808\uC774).unity"
     guid: 5ad64b82ac3da714e852ad49b4fa56f4
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_15
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_15
       (\uB450\uB354\uC9C0 \uC7A1\uAE30 - \uACB0\uACFC).unity"
     guid: 2a0a2efb1469226478f14c00061de9a0
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_16
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_16
       (\uC250\uC774\uB354).unity"
     guid: 8522c137edd8794489d5c3d2505ef868
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_17
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_17
       (\uB0B4\uBE44\uAC8C\uC774\uC158).unity"
     guid: 9a0f9716303574049a12d0b755d4bf8b
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_18
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_18
       (3D TPS - \uC2DC\uC791).unity"
     guid: 793d54580ebec5f4db96647c03ab9037
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_19
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_19
       (3D TPS - \uD50C\uB808\uC774).unity"
     guid: db314d0eab5388748b4e6ccf787e49ef
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_20
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_20
       (3D TPS - \uACB0\uACFC).unity"
     guid: 3ec39557e3db7c7498c8742e6cd016ca
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_21
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_21
       (\uB124\uD2B8\uC6CC\uD06C).unity"
     guid: 203a0d3e02853be4eae22cee57f2ca6f
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_22
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_22
       (\uBCBD\uB3CC \uAE68\uAE30 - \uC2DC\uC791).unity"
     guid: 376be11e33f4683468aa2601309db331
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_23
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_23
       (\uBCBD\uB3CC \uAE68\uAE30 - \uD50C\uB808\uC774).unity"
     guid: b60b1e72e41f1614ca159ddef136b8b5
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_24
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_24
       (\uBCBD\uB3CC \uAE68\uAE30 - \uACB0\uACFC).unity"
     guid: acba0f84567cda84396b49830aeee94a
   - enabled: 1
-    path: "Assets/03010201000101-S_W_Engine_0001/E01/Example/Scenes/E01Example_25
+    path: "Assets/03020203000101-SBS_Weekend_Engine_0001/E01/Example/Scenes/E01Example_25
       (\uAE30\uD0C0).unity"
     guid: 6b7350bffaff89d46b901735231261d6
   m_configObjects: {}

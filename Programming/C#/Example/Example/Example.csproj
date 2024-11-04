@@ -43,25 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_01 %28기초%29\CE01Example_01.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_02 %28자료형 및 변수%29\CE01Example_02.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_03 %28데이터 표현 방법%29\CE01Example_03.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_04 %28연산자%29\CE01Example_04.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_05 %28조건문%29\CE01Example_05.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_06 %28반복문%29\CE01Example_06.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_07 %28컬렉션%29\CE01Example_07.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_08 %28메서드%29\CE01Example_08.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_09 %28클래스%29\CE01Example_09.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_10 %28제네릭%29\CE01Example_10.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Example\Classes\Example_11 %28델리게이트%29\CE01Example_11.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_01\CP01Practice_01.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_02\CP01Practice_02.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_03\CP01Practice_03.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_04\CP01Practice_04.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Practice\Classes\Practice_05\CP01Practice_05.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_01\CT01Training_01.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_02\CT01Training_02.cs" />
-    <Compile Include="03010201000101-S_W_Engine_0001\E01\Training\Classes\Training_03\CT01Training_03.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_01 %28기초%29\CE01Example_01.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_02 %28자료형 및 변수%29\CE01Example_02.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_03 %28데이터 표현 방법%29\CE01Example_03.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_04 %28연산자%29\CE01Example_04.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_05 %28조건문%29\CE01Example_05.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_06 %28반복문%29\CE01Example_06.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_07 %28컬렉션%29\CE01Example_07.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_08 %28메서드%29\CE01Example_08.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_09 %28클래스%29\CE01Example_09.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_10 %28제네릭%29\CE01Example_10.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Example\Classes\Example_11 %28델리게이트%29\CE01Example_11.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Practice\Classes\Practice_01\CP01Practice_01.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Practice\Classes\Practice_02\CP01Practice_02.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Practice\Classes\Practice_03\CP01Practice_03.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Practice\Classes\Practice_04\CP01Practice_04.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Practice\Classes\Practice_05\CP01Practice_05.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Training\Classes\Training_01\CT01Training_01.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Training\Classes\Training_02\CT01Training_02.cs" />
+    <Compile Include="03020203000101-SBS_Weekend_Engine_0001\E01\Training\Classes\Training_03\CT01Training_03.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
