@@ -26,7 +26,7 @@ public class CE19Bullet : CComponent
 		oTrail.Clear();
 
 		var oRigidbody = this.GetComponent<Rigidbody>();
-		oRigidbody.velocity = Vector3.zero;
+		oRigidbody.linearVelocity = Vector3.zero;
 
 		var oSceneManager = CSceneManager.ActiveSceneManager as CE01Example_19;
 		oSceneManager.GameObjPoolManager.DespawnGameObj("Example_19/E19Bullet", this.gameObject);

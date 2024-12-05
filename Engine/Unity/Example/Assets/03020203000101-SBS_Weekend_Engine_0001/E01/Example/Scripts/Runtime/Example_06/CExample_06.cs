@@ -66,7 +66,7 @@ public class CE01Example_06 : CSceneManager
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				var oRigidbody = m_oPlayer.GetComponent<Rigidbody>();
-				oRigidbody.velocity = Vector3.zero;
+				oRigidbody.linearVelocity = Vector3.zero;
 
 				oRigidbody.AddForce(Vector3.up * 600.0f, ForceMode.VelocityChange);
 			}
