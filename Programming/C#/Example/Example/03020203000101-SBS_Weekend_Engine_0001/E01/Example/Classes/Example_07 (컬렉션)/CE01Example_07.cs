@@ -113,25 +113,29 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * Length 프로퍼티는 배열 요소의 총 개수를 가져오는 역할을 수행한다. (즉, 해당 프로퍼티를 활용하면
 			 * 1 차원 배열의 길이를 가져오는 것이 가능하다.)
 			 */
-			for(int i = 0; i < anVals01.Length; ++i) {
+			for(int i = 0; i < anVals01.Length; ++i)
+			{
 				Console.Write("{0}, ", anVals01[i]);
 			}
 
 			Console.WriteLine();
 
-			for(int i = 0; i < anVals02.Length; ++i) {
+			for(int i = 0; i < anVals02.Length; ++i)
+			{
 				Console.Write("{0}, ", anVals02[i]);
 			}
 
 			Console.WriteLine();
 
-			for(int i = 0; i < anVals03.Length; ++i) {
+			for(int i = 0; i < anVals03.Length; ++i)
+			{
 				Console.Write("{0}, ", anVals03[i]);
 			}
 
 			Console.WriteLine();
 
-			for(int i = 0; i < anVals04.Length; ++i) {
+			for(int i = 0; i < anVals04.Length; ++i)
+			{
 				Console.Write("{0}, ", anVals04[i]);
 			}
 
@@ -140,14 +144,16 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 
 			int[] anVals = new int[nNumVals];
 
-			for(int i = 0; i < anVals.Length; ++i) {
+			for(int i = 0; i < anVals.Length; ++i)
+			{
 				Console.Write("정수 {0} 입력 : ", i + 1);
 				anVals[i] = int.Parse(Console.ReadLine());
 			}
 
 			Console.WriteLine("\n=====> 배열 요소 - 2 <=====");
 
-			for(int i = 0; i < anVals.Length; ++i) {
+			for(int i = 0; i < anVals.Length; ++i)
+			{
 				Console.Write("{0}, ", anVals[i]);
 			}
 
@@ -181,7 +187,8 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * 2 차원 인덱스 -> 1 차원 인덱스로 변환 방법
 			 * - 1 차원 인덱스 : (행 * 열 개수) + 열
 			 */
-			for(int i = 0; i < anVals01.Length; ++i) {
+			for(int i = 0; i < anVals01.Length; ++i)
+			{
 				int nRow = i / anVals01.GetLength(1);
 				int nCol = i % anVals01.GetLength(1);
 
@@ -198,8 +205,10 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * 해당 메서드에 지정하는 번호는 가장 상위 차원이 0 이고 이후 차원부터는 1 씩 증가 된 수를 명시하면
 			 * 된다.
 			 */
-			for(int i = 0; i < anVals01.GetLength(0); ++i) {
-				for(int j = 0; j < anVals01.GetLength(1); ++j) {
+			for(int i = 0; i < anVals01.GetLength(0); ++i)
+			{
+				for(int j = 0; j < anVals01.GetLength(1); ++j)
+				{
 					Console.Write("{0}, ", anVals01[i, j]);
 				}
 
@@ -208,9 +217,12 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 
 			Console.WriteLine("\n=====> 3 차원 배열 <=====");
 
-			for(int i = 0; i < anVals02.GetLength(0); ++i) {
-				for(int j = 0; j < anVals02.GetLength(1); ++j) {
-					for(int k = 0; k < anVals02.GetLength(2); ++k) {
+			for(int i = 0; i < anVals02.GetLength(0); ++i)
+			{
+				for(int j = 0; j < anVals02.GetLength(1); ++j)
+				{
+					for(int k = 0; k < anVals02.GetLength(2); ++k)
+					{
 						Console.Write("{0}, ", anVals02[i, j, k]);
 					}
 
@@ -223,14 +235,16 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			List<int> oValList01 = new List<int>();
 			LinkedList<int> oValList02 = new LinkedList<int>();
 
-			for(int i = 0; i < 10; ++i) {
+			for(int i = 0; i < 10; ++i)
+			{
 				oValList01.Add(i + 1);
 				oValList02.AddLast(i + 1);
 			}
 
 			Console.WriteLine("=====> 배열 리스트 <=====");
 
-			for(int i = 0; i < oValList01.Count; ++i) {
+			for(int i = 0; i < oValList01.Count; ++i)
+			{
 				Console.Write("{0}, ", oValList01[i]);
 			}
 
@@ -246,7 +260,8 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * 따라서, foreach 반복문을 활용하면 연결 리스트의 모든 데이터에 접근하는 것이
 			 * 가능하다는 것을 알 수 있다.
 			 */
-			foreach(int nVal in oValList02) {
+			foreach(int nVal in oValList02)
+			{
 				Console.Write("{0}, ", nVal);
 			}
 
@@ -261,13 +276,15 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 
 			Console.WriteLine("\n\n=====> 배열 리스트 - 추가 후 <=====");
 
-			for(int i = 0; i < oValList01.Count; ++i) {
+			for(int i = 0; i < oValList01.Count; ++i)
+			{
 				Console.Write("{0}, ", oValList01[i]);
 			}
 
 			Console.WriteLine("\n\n=====> 연결 리스트 - 추가 후 <=====");
 
-			foreach(int nVal in oValList02) {
+			foreach(int nVal in oValList02)
+			{
 				Console.Write("{0}, ", nVal);
 			}
 
@@ -276,13 +293,15 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 
 			Console.WriteLine("\n\n=====> 배열 리스트 - 삭제 후 <=====");
 
-			for(int i = 0; i < oValList01.Count; ++i) {
+			for(int i = 0; i < oValList01.Count; ++i)
+			{
 				Console.Write("{0}, ", oValList01[i]);
 			}
 
 			Console.WriteLine("\n\n=====> 연결 리스트 - 삭제 후 <=====");
 
-			foreach(int nVal in oValList02) {
+			foreach(int nVal in oValList02)
+			{
 				Console.Write("{0}, ", nVal);
 			}
 
@@ -291,7 +310,8 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			Stack<int> oStack = new Stack<int>();
 			Queue<int> oQueue = new Queue<int>();
 
-			for(int i = 0; i < 10; ++i) {
+			for(int i = 0; i < 10; ++i)
+			{
 				oStack.Push(i + 1);
 				oQueue.Enqueue(i + 1);
 			}
@@ -308,13 +328,15 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * 즉, Peek 와 Pop/Dequeue 메서드 모두 데이터를 가져오는 것이 가능하지만 Peek 는 데이터를 가져오는
 			 * 행위만하는 반면, Pop/Dequeue 메서드는 데이터를 제거하는 행위도 같이 수행되는 차이가 존재한다.
 			 */
-			while(oStack.Count > 0) {
+			while(oStack.Count > 0)
+			{
 				Console.Write("{0}, ", oStack.Pop());
 			}
 
 			Console.WriteLine("\n\n=====> 큐 요소 <=====");
 
-			while(oQueue.Count > 0) {
+			while(oQueue.Count > 0)
+			{
 				Console.Write("{0}, ", oQueue.Dequeue());
 			}
 

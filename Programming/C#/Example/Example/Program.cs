@@ -2,14 +2,10 @@
 #define PRACTICE
 #define TRAINING
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Example {
-	class Program {
+namespace Example
+{
+	internal class Program
+	{
 		/*
 		 * 메인 메서드란?
 		 * - C# 으로 제작 된 프로그램이 실행 될 때 가장 먼저 호출 (실행) 되는 메서드를
@@ -32,7 +28,8 @@ namespace Example {
 		 * - 정해진 특정 역할을 수행하는 기능을 의미한다. (즉, 메서드를 호출하면 해당 메서드에
 		 * 존재하는 명령어들이 실행된다는 것을 의미한다.)
 		 */
-		static void Main(string[] args) {
+		static void Main(string[] args)
+		{
 #if EXAMPLE
 			/*
 			 * Visual Studio 주석 관련 단축키
@@ -62,7 +59,7 @@ namespace Example {
 			_03020203000101_SBS_Weekend_Engine_0001.E01.Training.Classes.Training_03.CT01Training_03.Start(args);
 #endif // #if EXAMPLE
 
-			Console.ReadKey();
+			System.Console.ReadKey();
 		}
 	}
 }

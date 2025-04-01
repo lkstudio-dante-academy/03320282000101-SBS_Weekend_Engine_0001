@@ -1,5 +1,5 @@
 //#define E06_WHILE
-#define E06_FOR
+//#define E06_FOR
 #define E06_DO_WHILE
 
 using System;
@@ -54,8 +54,10 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			int i = 0;
 			int nTimes = int.Parse(Console.ReadLine());
 
-			while(i < nTimes) {
-				if((i + 1) % 2 == 0) {
+			while(i < nTimes)
+			{
+				if((i + 1) % 2 == 0)
+				{
 					i += 1;
 
 					/*
@@ -109,7 +111,8 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 
 			Console.WriteLine("반복문이 종료되었습니다.");
 #elif E06_DO_WHILE
-			do {
+			do
+			{
 				Console.WriteLine("do ~ while 반복문 실행!");
 			} while(false);
 #endif // #if E06_WHILE

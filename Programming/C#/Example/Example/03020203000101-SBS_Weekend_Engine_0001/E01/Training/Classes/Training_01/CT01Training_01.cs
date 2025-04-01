@@ -15,20 +15,6 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Training.Classes.T
 {
 	internal class CT01Training_01
 	{
-#if T01_01
-
-#elif T01_02
-
-#elif T01_03
-
-#elif T01_04
-
-#elif T01_05
-
-#elif T01_06
-
-#endif // #if T01_01
-
 		/** 초기화 */
 		public static void Start(string[] args)
 		{

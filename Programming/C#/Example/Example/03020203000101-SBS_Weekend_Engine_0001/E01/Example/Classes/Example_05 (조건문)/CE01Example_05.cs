@@ -48,16 +48,26 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			Console.Write("점수 입력 : ");
 			int nScore = int.Parse(Console.ReadLine());
 
-			if(nScore < 60) {
+			if(nScore < 60)
+			{
 				Console.WriteLine("F 학점입니다.");
-			} else {
-				if(nScore >= 90) {
+			}
+			else
+			{
+				if(nScore >= 90)
+				{
 					Console.WriteLine("A 학점입니다.");
-				} else if(nScore >= 80) {
+				}
+				else if(nScore >= 80)
+				{
 					Console.WriteLine("B 학점입니다.");
-				} else if(nScore >= 70) {
+				}
+				else if(nScore >= 70)
+				{
 					Console.WriteLine("C 학점입니다.");
-				} else {
+				}
+				else
+				{
 					Console.WriteLine("D 학점입니다.");
 				}
 			}
@@ -81,15 +91,19 @@ namespace Example._03020203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				case 10:
 					Console.WriteLine("A 학점입니다.");
 					break;
+				
 				case 8:
 					Console.WriteLine("B 학점입니다.");
 					break;
+				
 				case 7:
 					Console.WriteLine("C 학점입니다.");
 					break;
+				
 				case 6:
 					Console.WriteLine("D 학점입니다.");
 					break;
+				
 				default:
 					Console.WriteLine("F 학점입니다.");
 					break;
