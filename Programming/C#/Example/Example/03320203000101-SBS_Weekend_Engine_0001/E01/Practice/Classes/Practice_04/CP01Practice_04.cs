@@ -157,7 +157,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * [1] : 1 개
 			 * [2] : 1 개
 			 * 
-			 * ... 이하 생략
+			 * ...이하 생략
 			 */
 			var oVals = new int[100];
 			var oRandom = new Random();

@@ -276,7 +276,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Training.Classes.T
 			 * 이름 : 회원 B
 			 * 전화번호 : 1234
 			 * 
-			 * ... 이하 생략
+			 * ...이하 생략
 			 */
 			var oMemberManagerApp = new CMemberManagerApp();
 			oMemberManagerApp.Run();

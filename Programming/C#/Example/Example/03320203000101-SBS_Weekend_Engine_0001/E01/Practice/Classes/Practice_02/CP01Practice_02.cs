@@ -368,7 +368,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * 3 * 2 = 6
 			 * 3 * 3 = 9
 			 * 
-			 * ... 이하 생략
+			 * ...이하 생략
 			 */
 			Console.Write("단 입력 : ");
 			int nVal = int.Parse(Console.ReadLine());
