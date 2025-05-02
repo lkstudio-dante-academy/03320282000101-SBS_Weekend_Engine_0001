@@ -112,12 +112,12 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * - 치환 과정은 인접한 요소가 2 자릿수가 아닐 때까지 반복한다
 			 * 
 			 * Ex)
-			 * =====> 배열 요소 - 치환 전 <=====
+			 * =====> 배열 - 치환 전 <=====
 			 * 0, 2, 10, 1, 3, 5, 8, 15, 10, 1
 			 * 
 			 * 치환 시작 위치 입력 : 4
 			 * 
-			 * =====> 배열 요소 - 치환 후 <=====
+			 * =====> 배열 - 치환 후 <=====
 			 * 0, 2, 10, -1, -1, -1, -1, 15, 10, 1
 			 */
 			var oVals = new int[10];
@@ -127,7 +127,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 				oVals[i] = oRandom.Next(0, 14);
 			}
 
-			Console.WriteLine("=====> 배열 요소 - 치환 전 <=====");
+			Console.WriteLine("=====> 배열 - 치환 전 <=====");
 
 			for(int i = 0; i < oVals.Length; ++i) {
 				Console.Write("{0}, ", oVals[i]);
@@ -137,7 +137,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			int.TryParse(Console.ReadLine(), out int nIdx);
 
 			ReplaceVals(oVals, nIdx);
-			Console.WriteLine("\n=====> 배열 요소 - 치환 후 <=====");
+			Console.WriteLine("\n=====> 배열 - 치환 후 <=====");
 
 			for(int i = 0; i < oVals.Length; ++i) {
 				Console.Write("{0}, ", oVals[i]);
@@ -149,7 +149,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * - 각 숫자의 개수를 출력한다
 			 * 
 			 * Ex)
-			 * =====> 배열 요소 <=====
+			 * =====> 배열 <=====
 			 * 9, 1, 2, 0, 9, 0, 7, 5, 9, 3
 			 * 
 			 * =====> 결과 <=====
@@ -166,7 +166,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 				oVals[i] = oRandom.Next(0, 10);
 			}
 
-			Console.WriteLine("=====> 배열 요소 <=====");
+			Console.WriteLine("=====> 배열 <=====");
 
 			for(int i = 0; i < oVals.Length; ++i) {
 				Console.Write("{0}{1}", oVals[i], ((i + 1) % 10 <= 0) ? "\n" : ", ");

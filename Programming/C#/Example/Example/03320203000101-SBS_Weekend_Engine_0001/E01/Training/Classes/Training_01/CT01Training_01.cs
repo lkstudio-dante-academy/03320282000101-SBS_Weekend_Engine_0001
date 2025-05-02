@@ -228,7 +228,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Training.Classes.T
 			 * Ex)
 			 * 행, 열 개수 입력 : 5 4
 			 * 
-			 * =====> 배열 요소 <=====
+			 * =====> 배열 <=====
 			 *  1  2  3  4
 			 * 14 15 16  5
 			 * 13 20 17  6

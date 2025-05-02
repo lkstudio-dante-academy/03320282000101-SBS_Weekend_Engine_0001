@@ -410,18 +410,18 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				oValList.AddVal(i + 1);
 			}
 
-			Console.WriteLine("=====> 배열 요소 <=====");
+			Console.WriteLine("=====> 배열 <=====");
 			PrintVals(oValList);
 
 			oValList.AddVal(0, 100);
 
-			Console.WriteLine("\n=====> 배열 요소 - 추가 후 <=====");
+			Console.WriteLine("\n=====> 배열 - 추가 후 <=====");
 			PrintVals(oValList);
 
 			oValList.RemoveVal(100);
 			oValList.RemoveValAt(oValList.NumVals - 1);
 
-			Console.WriteLine("\n=====> 배열 요소 - 삭제 후 <=====");
+			Console.WriteLine("\n=====> 배열 - 삭제 후 <=====");
 			PrintVals(oValList);
 
 			Console.WriteLine();
@@ -443,7 +443,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				oValList.AddVal(i + 1);
 			}
 
-			Console.WriteLine("\n=====> 배열 요소 <=====");
+			Console.WriteLine("\n=====> 배열 <=====");
 			PrintVals(oValList);
 #endif // E10_GENERIC_01
 		}

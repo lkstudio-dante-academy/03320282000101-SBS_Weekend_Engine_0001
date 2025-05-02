@@ -107,7 +107,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			int[] anVals04 = (int[])anVals01.Clone();
 			anVals04[0] = 10;
 
-			Console.WriteLine("=====> 배열 요소 - 1 <=====");
+			Console.WriteLine("=====> 배열 - 1 <=====");
 
 			/*
 			 * Length 프로퍼티는 배열 요소의 총 개수를 가져오는 역할을 수행한다. (즉, 해당 프로퍼티를 활용하면
@@ -150,7 +150,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				anVals[i] = int.Parse(Console.ReadLine());
 			}
 
-			Console.WriteLine("\n=====> 배열 요소 - 2 <=====");
+			Console.WriteLine("\n=====> 배열 - 2 <=====");
 
 			for(int i = 0; i < anVals.Length; ++i)
 			{
@@ -316,7 +316,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				oQueue.Enqueue(i + 1);
 			}
 
-			Console.WriteLine("=====> 스택 요소 <=====");
+			Console.WriteLine("=====> 스택 <=====");
 
 			/*
 			 * Pop/Dequeue 메서드는 해당 컬렉션으로부터 데이터를 가져오는 역할을 수행한다. 또한, 해당
@@ -333,7 +333,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				Console.Write("{0}, ", oStack.Pop());
 			}
 
-			Console.WriteLine("\n\n=====> 큐 요소 <=====");
+			Console.WriteLine("\n\n=====> 큐 <=====");
 
 			while(oQueue.Count > 0)
 			{
@@ -367,7 +367,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				oValDict03.Add(oKey, (i + 1).ToString());
 			}
 
-			Console.WriteLine("=====> 딕셔너리 요소 <=====");
+			Console.WriteLine("=====> 딕셔너리 <=====");
 
 			/*
 			 * KeyValuePair 구조체는 키/벨류 데이터를 저장하기 위한 용도로 활용된다. (즉, 해당
@@ -425,7 +425,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				Console.WriteLine("\nValDict01 에 Key_02 데이터가 존재합니다.");
 			}
 
-			Console.WriteLine("\n=====> 딕셔너리 요소 - 제거 후 <=====");
+			Console.WriteLine("\n=====> 딕셔너리 - 제거 후 <=====");
 
 			foreach(KeyValuePair<string, int> stKeyVal in oValDict01)
 			{

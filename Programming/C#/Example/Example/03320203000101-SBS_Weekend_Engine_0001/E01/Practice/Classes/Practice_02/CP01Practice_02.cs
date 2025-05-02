@@ -388,7 +388,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * 랜덤 값 생성 방법은 연습 문제 1 - 5 참고
 			 * 
 			 * Ex)
-			 * =====> 배열 요소 <=====
+			 * =====> 배열 <=====
 			 * 10, 25, 33, 34, 46, 89, 90, 98, 0, 11
 			 * 
 			 * 최소 : 0
@@ -401,7 +401,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 				oVals[i] = oRandom.Next(0, 100);
 			}
 
-			Console.WriteLine("=====> 배열 요소 <=====");
+			Console.WriteLine("=====> 배열 <=====");
 
 			for(int i = 0; i < oVals.Length; ++i) {
 				Console.Write("{0}, ", oVals[i]);
@@ -617,7 +617,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * Ex)
 			 * 크기 입력 : 3
 			 * 
-			 * =====> 배열 요소 <=====
+			 * =====> 배열 <=====
 			 * 0 1 2
 			 * 3 4 5
 			 * 6 7 8
@@ -625,13 +625,13 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			 * 회전 방향 입력 (0 : 왼쪽 방향, 1 : 오른쪽 방향) : 0
 			 * 
 			 * Case 1. 왼쪽 회전
-			 * =====> 배열 요소 - 회전 후 <=====
+			 * =====> 배열 - 회전 후 <=====
 			 * 2 5 8
 			 * 1 4 7
 			 * 0 3 6
 			 * 
 			 * Case 2. 오른쪽 회전
-			 * =====> 배열 요소 - 회전 후 <=====
+			 * =====> 배열 - 회전 후 <=====
 			 * 6 3 0
 			 * 7 4 1
 			 * 8 5 2
@@ -642,7 +642,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 			var oVals = new int[nSize, nSize];
 			SetupVals(oVals);
 
-			Console.WriteLine("\n=====> 배열 요소 <=====");
+			Console.WriteLine("\n=====> 배열 <=====");
 			PrintVals(oVals);
 
 			Console.Write("\n회전 방향 입력 (0 : 왼쪽, 1 : 오른쪽) : ");
@@ -650,7 +650,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.P
 
 			RotateVals(oVals, nDirection);
 
-			Console.WriteLine("\n=====> 배열 요소 - 회전 후 <=====");
+			Console.WriteLine("\n=====> 배열 - 회전 후 <=====");
 			PrintVals(oVals);
 #elif P02_10
 			/*

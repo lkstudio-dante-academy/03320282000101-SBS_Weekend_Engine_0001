@@ -237,7 +237,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 			 * (즉, 호출 시 전달되는 입력 데이터 개수와 함수가 필요하는 데이터의 개수가 일치하지 않을 경우 컴파일 에러가
 			 * 발생한다.)
 			 */
-			Console.WriteLine("=====> 리스트 요소 <=====");
+			Console.WriteLine("=====> 리스트 <=====");
 			PrintVals(oValList);
 
 			var stResult = GetMinMaxVal(oValList);
@@ -331,7 +331,7 @@ namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Ex
 				oVals[i] = oRandom.Next(0, 99);
 			}
 
-			Console.WriteLine("\n=====> 배열 요소 <=====");
+			Console.WriteLine("\n=====> 배열 <=====");
 
 			for(int i = 0; i < oVals.Length; ++i)
 			{
