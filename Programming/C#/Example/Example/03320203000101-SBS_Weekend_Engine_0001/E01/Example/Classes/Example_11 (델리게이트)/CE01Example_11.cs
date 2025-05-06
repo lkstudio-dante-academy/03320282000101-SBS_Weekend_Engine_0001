@@ -44,7 +44,7 @@ using System.Threading.Tasks;
  * 람다 내부 구문이 한 줄로 처리되는 단순한 구문 일 경우에는 { } (영역 연산자) 명시를 생략하는 것이 가능하며, 해당 방식으로
  * 선언 된 람다를 람다문이라고 한다. (또한, 람다문에는 return 키워드도 생략을 할 필요가 있다.)
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_11
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_11
 {
 	internal class CE01Example_11
 	{

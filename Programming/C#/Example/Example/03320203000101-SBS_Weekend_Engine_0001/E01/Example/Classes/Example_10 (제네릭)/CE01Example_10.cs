@@ -37,7 +37,7 @@ using System.Diagnostics;
  *		void SomeMethodB<T>(T a_tValA, T1 a_tValB);	<- 제네릭 클래스 안에 제네릭 메서드 구현 가능
  * }
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_10
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_10
 {
 	internal class CE01Example_10
 	{

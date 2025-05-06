@@ -83,7 +83,7 @@ using System.Threading.Tasks;
  * 데이터를 가능한 빠르게 탐색하기 위해서 내부적으로 설정 된 연산에 의해서 데이터의 추가 위치가
  * 결정되는 특징이 존재한다.
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_07
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_07
 {
 	internal class CE01Example_07
 	{

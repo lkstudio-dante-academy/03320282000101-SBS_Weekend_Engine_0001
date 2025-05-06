@@ -37,7 +37,7 @@ using System.Threading.Tasks;
  * }
  * }
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_05
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_05
 {
 	class CE01Example_05
 	{

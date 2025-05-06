@@ -41,7 +41,7 @@ using System.Threading.Tasks;
  * 반복 할 명령어들이 모두 실행 된 후에 검사를 하기 때문에 처음부터 조건이 거짓이라 하더라도 반드시 한번 이상은
  * 실행 된다는 것을 알 수 있다.
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_06
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_06
 {
 	class CE01Example_06
 	{

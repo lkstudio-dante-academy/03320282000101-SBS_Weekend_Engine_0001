@@ -20,7 +20,7 @@ using System.Threading.Tasks;
  * - 조건 연산자 (?:)
  * - 기타 연산자 (sizeof, 형 변환 연산자, 우선 순위 연산자)
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_04
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_04
 {
 	class CE01Example_04
 	{

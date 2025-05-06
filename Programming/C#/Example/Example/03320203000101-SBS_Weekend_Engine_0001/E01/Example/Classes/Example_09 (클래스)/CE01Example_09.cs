@@ -102,7 +102,7 @@ using System.Threading.Tasks;
  * 
  * 따라서, is 키워드는 값 형식과 참조 형식에 모두 사용 할 수 있는 반면 as 키워드는 참조 형식 자료형에만 사용하는 것이 가능하다는 것을 알 수 있다.
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_09
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_09
 {
 	internal class CE01Example_09
 	{

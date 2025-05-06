@@ -17,7 +17,7 @@ using System.Threading.Tasks;
  * 해당 작업은 컴파일러에 의해서 수행된다. (즉, 컴파일러는 사용자 (프로그래머) 와 컴퓨터
  * 사이에 존재하는 통역사와 같은 역할을 수행한다.)
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_01
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_01
 {
 	class CE01Example_01
 	{

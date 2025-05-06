@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Training.Classes.Training_03
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Training.Classes.Training_03
 {
 	internal class CT01Training_03
 	{

@@ -32,7 +32,7 @@ using System.Threading.Tasks;
  * 또는 1 로 명시해서 음수를 표현하는 것이 아니라 2 의 보수법을 사용함으로써 비트 연산에 
  * 대한 처리를 단순화 시켰다는 것을 알 수 있다.)
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_03
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_03
 {
 	class CE01Example_03
 	{

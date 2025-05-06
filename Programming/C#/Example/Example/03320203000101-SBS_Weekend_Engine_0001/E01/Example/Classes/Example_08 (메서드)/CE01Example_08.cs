@@ -42,7 +42,7 @@ using System.Threading.Tasks;
  * 존재하는 차이점이 있다. (즉, 특정 메서드가 여러 데이터를 결과로 출력하기 위해서는 컬렉션 등을
  * 활용 할 필요가 있다는 것을 알 수 있다.)
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_08
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_08
 {
 	internal class CE01Example_08
 	{

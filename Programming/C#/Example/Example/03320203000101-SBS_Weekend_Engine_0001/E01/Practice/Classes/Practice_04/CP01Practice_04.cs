@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.Practice_04
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Practice.Classes.Practice_04
 {
 	internal class CP01Practice_04
 	{

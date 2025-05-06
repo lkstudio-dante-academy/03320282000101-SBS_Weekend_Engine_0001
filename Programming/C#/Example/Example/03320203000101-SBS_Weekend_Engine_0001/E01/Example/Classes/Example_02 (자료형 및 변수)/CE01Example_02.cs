@@ -108,7 +108,7 @@ using System.Threading.Tasks;
  *  
  *  또한, 첫 문자는 숫자로 시작 할 수 없다는 제한이 존재한다.
  */
-namespace Example._03320203000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_02
+namespace Example._03320282000101_SBS_Weekend_Engine_0001.E01.Example.Classes.Example_02
 {
 	class CE01Example_02
 	{
